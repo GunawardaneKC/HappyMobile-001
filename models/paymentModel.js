@@ -14,10 +14,10 @@ const paymentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // paymentID:{
-    //     type: String,
-    //     required: true
-    // },
+    payment:{
+        type: String,
+        default: "Pending"
+    },
     // address:{
     //     type: Object,
     //     required: true

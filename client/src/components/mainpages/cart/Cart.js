@@ -29,7 +29,6 @@ function Cart() {
         })
     }
 
-
     const increment = (id) =>{
         cart.forEach(item => {
             if(item._id === id){
@@ -66,9 +65,7 @@ function Cart() {
     }
 
     const tranSuccess = async(payment) => {
-        // const {paymentID, address} = payment;
-
-        // await axios.post('/api/payment', {cart, paymentID, address},
+ 
         await axios.post('/api/payment', {cart},
          {headers: {Authorization: token}})
 
@@ -116,6 +113,13 @@ function Cart() {
                 <PaypalButton
                 total={total}
                 tranSuccess={tranSuccess} />
+
+                <div>
+                <button onClick={() => tranSuccess()} className="btn btn-success">
+                    Purchase
+                 </button>
+                </div>
+
             </div>
         </div>
         </PayPalScriptProvider>
