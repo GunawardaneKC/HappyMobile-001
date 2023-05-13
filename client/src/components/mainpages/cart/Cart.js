@@ -3,6 +3,7 @@ import {GlobalState} from '../../../GlobalState'
 import axios from 'axios'
 import PaypalButton from './PaypalButton'
 import {PayPalScriptProvider} from "@paypal/react-paypal-js"
+import blackCart from '../../headers/icon/cart.svg'
 
 function Cart() {
     const state = useContext(GlobalState)
@@ -76,7 +77,13 @@ function Cart() {
 
 
     if(cart.length === 0) 
-        return <h2 style={{textAlign: "center", fontSize: "5rem"}}>Cart Empty</h2> 
+        return (
+            <div style={{textAlign: "center", marginTop: "50px"}}>
+                <img src={blackCart} alt='BlackCart' style={{display: "block", margin: "0 auto", width: "200px", height: "200px"}}/>
+                <h2 style={{fontSize: "3rem", marginTop: "30px", marginBottom: "10px"}}>Your Cart is Empty</h2>
+                <p style={{fontSize: "1.5rem", color: "#999"}}>Looks like you haven't added any items to your cart yet.</p>
+            </div>
+         )
 
     return (
         <PayPalScriptProvider>
