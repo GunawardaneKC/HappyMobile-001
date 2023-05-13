@@ -91,13 +91,13 @@ function Products() {
                         <Link to="productsId1" smooth={true} duration={900} className='text-purple-500 text-xl hover:text-red-700'>Our Products</Link>
                     </motion.div>
                     <motion.div variants={fadeIn('up', 0.7)} initial="hidden" whileInView={'show'} viewport={{once: false, amount: 0.7}} className='flex text-2xl gap-6 max-w-max mx-auto lg:mx-0'>
-                        <a href="youtube.com" className='text-white hover:text-red-800'>
+                        <a href="https://www.youtube.com/user/SLIITtube" className='text-white hover:text-red-800'>
                         <FaYoutube />
                         </a>
-                        <a href="github.com" className='text-white hover:text-slate-500'>
+                        <a href="https://github.com/GunawardaneKC/HappyMobile-001/tree/oshStyles" className='text-white hover:text-slate-500'>
                         <FaGithub />
                         </a>
-                        <a href="facebook.com" className='text-white hover:text-blue-800'>
+                        <a href="https://www.facebook.com/sliit.lk/" className='text-white hover:text-blue-800'>
                         <FaFacebook />
                         </a>
                     </motion.div>
