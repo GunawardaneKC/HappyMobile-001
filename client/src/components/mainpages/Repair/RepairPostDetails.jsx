@@ -17,50 +17,48 @@ export default function PostDetails() {
   const {repairID, customerName, phoneNum, device, Brand, Model, reason, givenDate, customerAddress, repairPrize} = post;
 
   return (
-    <div class="table-responsive" style={{marginTop: '20px'}}>
-      <h3>{repairID}</h3>
-  <table class="table table-bordered table-hover text-slate-100" >
-    <tbody>
-      <tr>
-        <td class="col-sm-3">Customer Name:</td>
-        <td class="col-sm-9">{customerName}</td>
-      </tr>
-      <tr>
-        <td class="col-sm-3">Phone Number:</td>
-        <td class="col-sm-9">{phoneNum}</td>
-      </tr>
-      <tr>
-        <td class="col-sm-3">Device:</td>
-        <td class="col-sm-9">{device}</td>
-      </tr>
-      <tr>
-        <td class="col-sm-3">Brand:</td>
-        <td class="col-sm-9">{Brand}</td>
-      </tr>
-      <tr>
-        <td class="col-sm-3">Model:</td>
-        <td class="col-sm-9">{Model}</td>
-      </tr>
-      <tr>
-        <td class="col-sm-3">Reason:</td>
-        <td class="col-sm-9">{reason}</td>
-      </tr>
-      <tr>
-        <td class="col-sm-3">Given Date:</td>
-        <td class="col-sm-9">{givenDate}</td>
-      </tr>
-      <tr>
-        <td class="col-sm-3">Customer Address:</td>
-        <td class="col-sm-9">{customerAddress}</td>
-      </tr>
-      <tr>
-        <td class="col-sm-3">Repaired Price:</td>
-        <td class="col-sm-9">{repairPrize}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
+      <div className="mt-10 ml-10">
+        <h3 className="text-xl font-bold mb-4">All the details about {repairID}</h3>
+        <table className="table-auto w-auto border bg-sky-800">
+          <tbody>
+            <tr className="border">
+              <td className="py-2 px-4 border">Customer Name:</td>
+              <td className="py-2 px-4 border">{customerName}</td>
+            </tr>
+            <tr className="border">
+              <td className="py-2 px-4 border">Phone Number:</td>
+              <td className="py-2 px-4 border">{phoneNum}</td>
+            </tr>
+            <tr className="border">
+              <td className="py-2 px-4 border">Device:</td>
+              <td className="py-2 px-4 border">{device}</td>
+            </tr>
+            <tr className="border">
+              <td className="py-2 px-4 border">Brand:</td>
+              <td className="py-2 px-4 border">{Brand}</td>
+            </tr>
+            <tr className="border">
+              <td className="py-2 px-4 border">Model:</td>
+              <td className="py-2 px-4 border">{Model}</td>
+            </tr>
+            <tr className="border">
+              <td className="py-2 px-4 border">Reason:</td>
+              <td className="py-2 px-4 border">{reason}</td>
+            </tr>
+            <tr className="border">
+              <td className="py-2 px-4 border">Given Date:</td>
+              <td className="py-2 px-4 border">{givenDate}</td>
+            </tr>
+            <tr className="border">
+              <td className="py-2 px-4 border">Customer Address:</td>
+              <td className="py-2 px-4 border">{customerAddress}</td>
+            </tr>
+            <tr className="border">
+              <td className="py-2 px-4 border">Repaired Price:</td>
+              <td className="py-2 px-4 border">{repairPrize}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
   );
 }

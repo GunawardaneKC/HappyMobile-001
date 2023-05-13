@@ -110,141 +110,87 @@ export default class CreatePosts extends Component {
     const { errors } = this.state;
 
     return (
-      <div className='col-md-8 mt-4 mx-auto'>
-        <h1 className='h3 mb-3 font-weight-normal'>Add new Repair</h1>
-        <form className='needs-validation' noValidate>
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom: '5px'}}>Repair ID</label>
-            <input
-              type='text'
-              className={`form-control ${
-                errors.repairID ? 'is-invalid' : ''
-              }`}
-              name='repairID'
-              placeholder='Enter Repair ID'
-              value={this.state.repairID}
-              onChange={this.handleInputChange}
-              required
-            />
-            {errors.repairID && (
-              <div className='invalid-feedback'>{errors.repairID}</div>
-            )}
-          </div>
-
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom: '5px'}}>Customer Name</label>
-            <input
-                type='text'
-                className={`form-control ${
-                  errors.customerName ? 'is-invalid' : ''
-                }`}
-                name='customerName'
-                placeholder="Enter Customer's Name"
-                value={this.state.customerName}
-                onChange={this.handleInputChange}
-                required
-              />
-              {errors.customerName && (
-                <div className='invalid-feedback'>{errors.customerName}</div>
-              )}
-          </div>
-
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom: '5px'}}>Phone Number</label>
-            <input
-              type='number'
-              className={`form-control ${
-                errors.phoneNum ? 'is-invalid' : ''
-              }`}
-              name='phoneNum'
-              placeholder='Enter Phone Number'
-              value={this.state.phoneNum}
-              onChange={this.handleInputChange}
-              required
-            />
-        {errors.phoneNum && (
-          <div className='invalid-feedback'>{errors.phoneNum}</div>
-        )}
-          </div>
-
-          <div className='' style={{marginBottom: '15px', width:'200px'}}>
-            <label style={{marginBottom: '5px'}}>Device</label>
-            {/* <input type="text" 
-            className='form-control'
-            name='device'
-            placeholder='Enter Device Name'
-            value={this.state.device}
-            onChange={this.handleInputChange}/> */}
-            <select
-          className={`form-control ${
-            errors.device ? 'is-invalid' : ''
-          }`}
-          name='device'
-          value={this.state.device}
-          onChange={this.handleInputChange}
-          required
-        >
-          <option value=''>Select a device</option>
-          <option value='Smart Phone'>Smart Phone</option>
-          <option value='Mobile Phone'>Mobile Phone</option>
-          <option value='Tablet'>Tablet</option>
-          <option value='Laptop'>Laptop</option>
-          <option value='iPad'>iPad</option>
-          <option value='iPhone'>iPhone</option>
-          <option value='Mac Book'>Mac Book</option>
-        </select>
-          {errors.device && (
-            <div className='invalid-feedback'>{errors.device}</div>
-          )}
-          </div>
-
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom: '5px'}}>Brand</label>
-            <input type="text" 
-           className={`form-control ${
-            errors.Brand ? 'is-invalid' : ''
-            }`}
-            name='Brand'
-            placeholder='Enter the Brand'
-            value={this.state.Brand}
-            onChange={this.handleInputChange}
-            required />
-            {errors.Brand && (
-                <div className='invalid-feedback'>{errors.Brand}</div>
-              )}
-          </div>
-
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom: '5px'}}>Model</label>
-            <input type="text" 
-            className={`form-control ${
-              errors.Model ? 'is-invalid' : ''
-              }`}
-            name='Model'
-            placeholder='Enter the Model'
-            value={this.state.Model}
-            onChange={this.handleInputChange}/>
-            {errors.Model && (
-                <div className='invalid-feedback'>{errors.Model}</div>
-              )}
-          </div>
-
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom: '5px'}}>Reason</label>
-            <textarea
-          className={`form-control ${
-            errors.reason ? 'is-invalid' : ''
-          }`}
-          name='reason'
-          placeholder='Enter the Reason'
-          value={this.state.reason}
-          onChange={this.handleInputChange}
-          required
-        ></textarea>
-        {errors.reason && (
-          <div className='invalid-feedback'>{errors.reason}</div> )}
-          </div>
-
+      <div className='mx-auto max-w-md'>
+  <h1 className='text-xl font-bold mb-4'>Add new Repair</h1>
+  <form className='needs-validation' noValidate>
+    <div className='mb-4'>
+      <label className='block mb-1' htmlFor='repairID'>Repair ID</label>
+      <input
+        type='text'
+        className={`w-full px-3 py-2 border rounded ${
+          errors.repairID ? 'border-red-500' : 'border-gray-400'
+        }`}
+        id='repairID'
+        name='repairID'
+        placeholder='Enter Repair ID'
+        value={this.state.repairID}
+        onChange={this.handleInputChange}
+        required
+      />
+      {errors.repairID && (
+        <div className='text-red-500 text-xs mt-1'>{errors.repairID}</div>
+      )}
+    </div>
+    <div className='mb-4'>
+      <label className='block mb-1' htmlFor='phoneNum'>Phone Number</label>
+      <input
+        type='number'
+        className={`w-full px-3 py-2 border rounded ${
+          errors.phoneNum ? 'border-red-500' : 'border-gray-400'
+        }`}
+        id='phoneNum'
+        name='phoneNum'
+        placeholder='Enter Phone Number'
+        value={this.state.phoneNum}
+        onChange={this.handleInputChange}
+        required
+      />
+      {errors.phoneNum && (
+        <div className='text-red-500 text-xs mt-1'>{errors.phoneNum}</div>
+      )}
+    </div>
+    <div className='mb-4'>
+      <label className='block mb-1' htmlFor='device'>Device</label>
+      <select
+        className={`w-full px-3 py-2 border rounded ${
+          errors.device ? 'border-red-500' : 'border-gray-400'
+        }`}
+        id='device'
+        name='device'
+        value={this.state.device}
+        onChange={this.handleInputChange}
+        required
+      >
+        <option value=''>Select a device</option>
+        <option value='Smart Phone'>Smart Phone</option>
+        <option value='Mobile Phone'>Mobile Phone</option>
+        <option value='Tablet'>Tablet</option>
+        <option value='Laptop'>Laptop</option>
+        <option value='iPad'>iPad</option>
+        <option value='iPhone'>iPhone</option>
+        <option value='Mac Book'>Mac Book</option>
+      </select>
+      {errors.device && (
+        <div className='text-red-500 text-xs mt-1'>{errors.device}</div>
+      )}
+    </div>
+    <div className='mb-4'>
+      <label className='block mb-1' htmlFor='reason'>Reason</label>
+      <textarea
+        className={`w-full px-3 py-2 border rounded ${
+          errors.reason ? 'border-red-500' : 'border-gray-400'
+        }`}
+        id='reason'
+        name='reason'
+        placeholder='Enter the Reason'
+        value={this.state.reason}
+        onChange={this.handleInputChange}
+        required
+      ></textarea>
+      {errors.reason && (
+        <div className='text-red-500 text-xs mt-1'>{errors.reason}</div>
+      )}
+    </div>
           <div className='' style={{marginBottom: '15px', width:'200px'}}>
             <label style={{marginBottom: '5px'}}>Date</label>
             <input type="date" 
