@@ -53,10 +53,10 @@ const CompletedTable = () => {
           <input className='form-control' type="search" placeholder='Search' value={searchQuery} onChange={handleSearch} />
         </div>
       </div>
-      <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/repair/reports`}>Get Report</a> 
-      <h3 className="mt-4">Completed Repairs</h3>
+      <button className="btn btn-primary" onClick={() => window.location.href = "/repair/reports"}>Get Report</button> 
+      <h3 className="mt-4 text-amber-400">Completed Repairs</h3>
       <div className="table-responsive mt-4">
-        <table className='table table-hover'>
+        <table className='table table-hover text-slate-100 font-secondary'>
           <thead>
             <tr>
               <th scope='col'>Repair No</th>

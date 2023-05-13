@@ -56,8 +56,8 @@ const Home = () => {
   };
 
   return (
-    <div className='container'>
-      <div className="row">
+    <div className='container text-amber-400'>
+      <div className="row ">
         <div className="col-lg-9 mt-2 mb-2">
         </div>
         <div className="col-lg-3 mt-2 mb-2">
@@ -65,13 +65,13 @@ const Home = () => {
         </div>
       </div>
       <div>
-        <button className="btn btn-success"><Link to='/addRepair' style={{textDecoration: 'none', color:'Black'}}>Add New Repair</Link></button>&nbsp;
-        <button className="btn btn-primary"> <br></br>
-          <Link to='/completedRepair' style={{textDecoration: 'none', color:'Black'}}>View Completed Repairs</Link>
+        <button className="btn btn-success"><Link to='/addRepair' style={{textDecoration: 'none', color:'white'}}>Add New Repair</Link></button>&nbsp;
+        <button className="btn btn-primary">
+          <Link to='/completedRepair' style={{textDecoration: 'none', color:'white'}}>View Completed Repairs</Link>
         </button>
       </div>
-      <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>All Repairs</h3>
-      <table className='table table-hover' style={{ marginTop: '40px' }}>
+      <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>Pending Repairs</h3>
+      <table className='table table-hover text-slate-100 font-secondary' style={{ marginTop: '40px' }}>
         <thead>
           <tr>
             <th scope='col'>No</th>
@@ -79,7 +79,7 @@ const Home = () => {
             <th scope='col'>Customer Name</th>
             <th scope='col'>Phone Number</th>
             <th scope='col'>Device</th>
-            <th scope='col'>Brand</th>
+            <th scope='col'>Model</th>
             <th scope='col'>Actions</th>
           </tr>
         </thead>
@@ -88,14 +88,14 @@ const Home = () => {
             <tr key={post._id}>
               <th scope='row'>{index + 1}</th>
               <td>
-                <Link to={`/postRepair/${post._id}`} style={{ textDecoration: 'none' }}>
+                <Link className='text-blue-600 hover:text-red-700' to={`/postRepair/${post._id}`} style={{ textDecoration: 'none' }}>
                   {post.repairID}
                 </Link>
               </td>
               <td>{post.customerName}</td>
               <td>{post.phoneNum}</td>
               <td>{post.device}</td>
-              <td>{post.Brand}</td>
+              <td>{post.Model}</td>
               <td>
                 <Link to={`/editRepair/${post._id}`} className='btn btn-warning'>
                   <i className='fas fa-edit'></i>&nbsp;Edit

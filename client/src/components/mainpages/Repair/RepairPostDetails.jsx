@@ -19,7 +19,7 @@ export default function PostDetails() {
   return (
     <div class="table-responsive" style={{marginTop: '20px'}}>
       <h3>{repairID}</h3>
-  <table class="table table-bordered table-hover" >
+  <table class="table table-bordered table-hover text-slate-100" >
     <tbody>
       <tr>
         <td class="col-sm-3">Customer Name:</td>
