@@ -1,12 +1,18 @@
 * {
-  padding: 0;
+  /* padding: 0; */
   box-sizing: border-box;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* margin: 0; */
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
+}
+
+body{
+  background-image: url(./images/site-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 code {
@@ -14,10 +20,10 @@ code {
     monospace;
 }
 .App{
-  max-width: 1230px;
+  max-width: 100%;
   min-height: 100vh;
-  margin: 0 auto;
-  padding: 0 20px;
+  /* margin: 0 auto; */
+  /* padding: 0 20px; */
   box-shadow: 0 0 35px #eee;
 }
 a{
@@ -131,5 +137,56 @@ button{
   }
   .create_product .upload{
     margin: 20px 0;
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient,
+.active {
+  background: linear-gradient(
+    92.23deg,
+    #406aff 21.43%,
+    #3bace2 50.63%,
+    #b936ee 100%,
+    #ff56f6 117.04%
+  );
+}
+
+.active {
+  color: #fff;
+  padding: 1rem;
+  border-radius: 100%;
+}
+
+@layer base {
+  body {
+    @apply font-secondary text-lg leading-8 text-white;
+  }
+  .h2 {
+    @apply font-primary text-[32px] mb-6 tracking-[10%] uppercase;
+  }
+  .h3 {
+    @apply font-primary font-semibold text-[26px] mb-6 leading-[46px];
+  }
+  .btn {
+    @apply rounded-full font-primary text-white font-medium;
+  }
+  .btn-sm {
+    @apply h-[48px] px-6 text-sm;
+  }
+  .btn-lg {
+    @apply h-[56px] px-10 text-base;
+  }
+  .btn-link {
+    @apply text-base;
+  }
+  .text-gradient {
+    @apply bg-gradient-to-r text-transparent bg-clip-text from-[#42A6E3] to-[#FF56F6] font-bold font-primary hover:from-[#FF56F6] hover:to-[#42A6E3];
+  }
+  .section {
+    @apply py-8 lg:py-24 lg:h-screen flex items-center;
   }
 }
