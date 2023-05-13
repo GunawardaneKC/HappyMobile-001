@@ -1,17 +1,18 @@
-import React, {useContext} from 'react'
-import {Routes, Route} from 'react-router-dom'
-import Products from './products/Products'
-import DetailProduct from './detailProduct/DetailProduct'
-import Login from './auth/Login'
-import Register from './auth/Register'
-import Profile from './users/Profile'
-// import Allusers from './users/Allusers'
-import OrderHistory from './history/OrderHistory'
-import OrderDetails from './history/OrderDetails'
-import Cart from './cart/Cart'
-import NotFound from './utils/not_found/NotFound'
-import Categories from './categories/Categories'
-import CreateProduct from './createProduct/CreateProduct'
+import React, {useContext} from 'react';
+import {Routes, Route} from 'react-router-dom';
+import Products from './products/Products';
+import DetailProduct from './detailProduct/DetailProduct';
+import Login from './auth/Login';
+import Register from './auth/Register';
+import DashBoard from './DashBoard/DashBoard';
+import Profile from './users/Profile';
+// import Allusers from './users/Allusers;'
+import OrderHistory from './history/OrderHistory';
+import OrderDetails from './history/OrderDetails';
+import Cart from './cart/Cart';
+import NotFound from './utils/not_found/NotFound';
+import Categories from './categories/Categories';
+import CreateProduct from './createProduct/CreateProduct';
 import Editemp from './employees/Editemp';
 import Addemp from './employees/Addemp';
 import ViewEmp from './employees/ViewEmp';
@@ -41,6 +42,7 @@ function Pages() {
             <Route path="/login" exact element={isLogged ? <NotFound/> : <Login/>} />
             <Route path="/register" exact element={isLogged ? <NotFound/> : <Register/>} />
             
+            <Route path="/dashBoard" exact element={isAdmin ? <DashBoard/> : <NotFound/>} />
 
             <Route path="/category" exact element={isAdmin ? <Categories/> : <NotFound/>} />
             <Route path="/create_product" exact element={isAdmin ? <CreateProduct/> : <NotFound/>} />
@@ -55,12 +57,12 @@ function Pages() {
 
             {/* <Route path="/all" exact element={<Allusers/>} /> */}
 
-            //emp
+            {/* //emp */}
             <Route path="/Emp"  exact element={isAdmin ? <ViewEmp/> : <NotFound/>} /> 
             <Route path="/Editemp/:id"  exact element={<Editemp/>}></Route> 
             <Route path="/add/emp"  exact element={<Addemp/>}></Route> 
 
-            //repair
+            {/* //repair */}
             <Route path="/Repair" exact element={<RepairHome />} />
             <Route path="/addRepair" exact element={<RepairCreatePosts />} />
             <Route path="/editRepair/:id" exact element={<RepairEditPost />} />

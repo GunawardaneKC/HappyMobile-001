@@ -1,8 +1,8 @@
-import React, {useState, useContext, useEffect} from 'react'
-import axios from 'axios'
-import {GlobalState} from '../../../GlobalState'
-import Loading from '../utils/loading/Loading'
-import {useNavigate, useParams} from 'react-router-dom'
+import React, {useState, useContext, useEffect} from 'react';
+import axios from 'axios';
+import {GlobalState} from '../../../GlobalState';
+import Loading from '../utils/loading/Loading';
+import {useNavigate, useParams} from 'react-router-dom';
 
 const initialState = {
     product_id: '',
@@ -122,7 +122,7 @@ function CreateProduct() {
         display: images ? "block" : "none"
     }
     return (
-        <div className="create_product">
+        <div className="create_product ">
             <div className="upload">
                 <input type="file" name="file" id="file_up" onChange={handleUpload}/>
                 {
@@ -136,40 +136,40 @@ function CreateProduct() {
                 
             </div>
 
-            <form onSubmit={handleSubmit}>
-                <div className="row">
+            <form onSubmit={handleSubmit} >
+                <div className="row text-stone-50">
                     <label htmlFor="product_id">Product ID</label>
-                    <input type="text" name="product_id" id="product_id" required
+                    <input className='text-gray-900' type="text" name="product_id" id="product_id" required
                     value={product.product_id} onChange={handleChangeInput} disabled={onEdit} />
                 </div>
 
-                <div className="row">
+                <div className="row text-stone-50">
                     <label htmlFor="title">Title</label>
-                    <input type="text" name="title" id="title" required
+                    <input className='text-gray-900' type="text" name="title" id="title" required
                     value={product.title} onChange={handleChangeInput} />
                 </div>
 
-                <div className="row">
+                <div className="row text-stone-50">
                     <label htmlFor="price">Price</label>
-                    <input type="number" name="price" id="price" required
+                    <input className='text-gray-900' type="number" name="price" id="price" required
                     value={product.price} onChange={handleChangeInput} />
                 </div>
 
-                <div className="row">
+                <div className="row text-stone-50">
                     <label htmlFor="description">Description</label>
-                    <textarea type="text" name="description" id="description" required
+                    <textarea className='text-gray-900' type="text" name="description" id="description" required
                     value={product.description} rows="5" onChange={handleChangeInput} />
                 </div>
 
-                <div className="row">
+                <div className="row text-stone-50">
                     <label htmlFor="content">Content</label>
-                    <textarea type="text" name="content" id="content" required
+                    <textarea className='text-gray-900' type="text" name="content" id="content" required
                     value={product.content} rows="7" onChange={handleChangeInput} />
                 </div>
 
-                <div className="row">
+                <div className="row text-stone-50">
                     <label htmlFor="categories">Categories: </label>
-                    <select name="category" value={product.category} onChange={handleChangeInput} >
+                    <select className='text-gray-900' name="category" value={product.category} onChange={handleChangeInput} >
                         <option value="">Please select a category</option>
                         {
                             categories.map(category => (
@@ -187,4 +187,4 @@ function CreateProduct() {
     )
 }
 
-export default CreateProduct
+export default CreateProduct;
