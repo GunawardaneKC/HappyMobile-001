@@ -244,11 +244,17 @@ html {
 }
 
 .loginPageLR .containerLR .formDiv .form .inputDiv input , .registerPageLR .containerLR .formDiv .form .inputDiv input {
-    background: none;
+            background: linear-gradient(180deg, #001f55 0%, #5a0040 100%) !important;
             outline: none;
             border: none;
             width: 200px;
 }
+
+.loginPageLR .containerLR .formDiv .form .inputDiv input:-webkit-autofill,
+.registerPageLR .containerLR .formDiv .form .inputDiv input:-webkit-autofill {
+    box-shadow: 0 0 0 30px #001f55 inset;
+}
+
 
 .loginPageLR .containerLR .formDiv .form .inputDiv label , .registerPageLR .containerLR .formDiv .form .inputDiv label {
     color: var(--blackColor);

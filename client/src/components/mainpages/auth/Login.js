@@ -55,7 +55,7 @@ function Login() {
                     <h3>Welcome Back!</h3>
                 </div>
 
-                <form noValidate onSubmit={loginSubmit} className='form grid'>
+                <form noValidate onSubmit={loginSubmit} className='form grid' autoComplete='off'>
                     <span className='showMessage'>Login Status will go here</span>
 
                     <div className="inputDiv">

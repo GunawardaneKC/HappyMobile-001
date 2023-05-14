@@ -81,7 +81,7 @@ export default function Dashboard() {
                         </a>                                              
                     </motion.div>
                     <motion.div variants={fadeIn('left', 0.2)} initial='hidden' whileInView={'show'} viewport={{once: false, amount:0.3}} className='flex-1 flex flex-col gap-y-14'>
-                        <a href={`/adminManageProduct`}>
+                        <a href={`/create_product`}>
                            <div className='group relative overflow-hidden border-2 border-white/50 rounded-xl w-200 h-56'>
                                <div className='group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300'></div>
                                <img className='group-hover:scale-125 transition-all duration-500' src={productImg} alt="pImg1" />

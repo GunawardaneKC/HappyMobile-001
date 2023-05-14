@@ -57,7 +57,7 @@ function Register() {
                     <h3>Let us Know You!</h3>
                 </div>
 
-                <form noValidate onSubmit={registerSubmit} className='form grid'>
+                <form noValidate onSubmit={registerSubmit} className='form grid' autoComplete='off'>
 
                     {/* <div className="inputDiv">
                             <label htmlFor="first_name">First Name</label>
