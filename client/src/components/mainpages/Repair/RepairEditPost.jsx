@@ -152,60 +152,60 @@ export default function EditPost() {
   
 
   return (
-    <div style={{ marginTop: '20px' }}>
-      <h4>Edit Repairs</h4>
+    <div className='max-w-lg mx-auto my-8'>
+      <h4 className='text-3xl font-bold mb-4'>Edit Repairs</h4>
       <hr />
 
-      <form onSubmit={handleFormSubmit}>
-        <div className='form-group'>
-          <label>Repair ID:</label>
+      <form className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4' onSubmit={handleFormSubmit}>
+        <div className='mb-4'>
+          <label className='block text-gray-700 font-bold mb-2'>Repair ID:</label>
           <input
             type='text'
-            className={`form-control ${errors.repairID && "is-invalid"}`}
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.repairID && "is-invalid"}`}
             name='repairID'
             value={repairID}
             onChange={handleInputChange}
             
           />
           {errors.repairID && (
-          <div className="invalid-feedback">{errors.repairID}</div>
+          <div className="invalid-feedback text-red-500">{errors.repairID}</div>
         )}
         </div>
 
-        <div className='form-group'>
-          <label>Customer Name:</label>
+        <div className='mb-4'>
+          <label className='block text-gray-700 font-bold mb-2'>Customer Name:</label>
           <input
             type='text'
-            className={`form-control ${errors.customerName && "is-invalid"}`}
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.customerName && "is-invalid"}`}
             name='customerName'
             value={customerName}
             onChange={handleInputChange}
           />
           {errors.customerName && (
-          <div className="invalid-feedback">{errors.customerName}</div>
+          <div className="invalid-feedback text-red-500">{errors.customerName}</div>
         )}
         </div>
 
-        <div className='form-group'>
-          <label>Phone Number:</label>
+        <div className='mb-4'>
+          <label className='block text-gray-700 font-bold mb-2'>Phone Number:</label>
           <input
             type='number'
             pattern="[0-9]{10}"
-            className={`form-control ${errors.phoneNum && "is-invalid"}`}
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.phoneNum && "is-invalid"}`}
             name='phoneNum'
             value={phoneNum}
             onChange={handleInputChange}
             
           />
           {errors.phoneNum && (
-          <div className="invalid-feedback">{errors.phoneNum}</div>
+          <div className="invalid-feedback text-red-500">{errors.phoneNum}</div>
         )}
         </div>
 
-        <div className='form-group'>
-          <label>Device:</label>
+        <div className='mb-4'>
+          <label className='block text-gray-700 font-bold mb-2'>Device:</label>
           <select 
-                className={`form-control ${errors.device && "is-invalid"}`} 
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.device && "is-invalid"}`} 
                 name='device' 
                 value={device} 
                 onChange={handleInputChange}
@@ -220,99 +220,99 @@ export default function EditPost() {
                 <option value="Mac Book">Mac Book</option>
             </select>
             {errors.device && (
-          <div className="invalid-feedback">{errors.device}</div>
+          <div className="invalid-feedback text-red-500">{errors.device}</div>
         )}
         </div>
 
-        <div className='form-group'>
-          <label>Brand:</label>
+        <div className='mb-4'>
+          <label className='block text-gray-700 font-bold mb-2'>Brand:</label>
           <input
             type='text'
-            className={`form-control ${errors.Brand && "is-invalid"}`}
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.Brand && "is-invalid"}`}
             name='Brand'
             value={Brand}
             onChange={handleInputChange}
           />
           {errors.Brand && (
-          <div className="invalid-feedback">{errors.Brand}</div>
+          <div className="invalid-feedback text-red-500">{errors.Brand}</div>
         )}
         </div>
 
-        <div className='form-group'>
-          <label>Model:</label>
+        <div className='mb-4'>
+          <label className='block text-gray-700 font-bold mb-2'>Model:</label>
           <input
             type='text'
-            className={`form-control ${errors.Model && "is-invalid"}`}
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.Model && "is-invalid"}`}
             name='Model'
             value={Model}
             onChange={handleInputChange}
           />
           {errors.Model && (
-          <div className="invalid-feedback">{errors.Model}</div>
+          <div className="invalid-feedback text-red-500">{errors.Model}</div>
         )}
         </div>
 
-        <div className='form-group'>
-          <label>Reason:</label>
+        <div className='mb-4'>
+          <label className='block text-gray-700 font-bold mb-2'>Reason:</label>
           <textarea
             type='text'
-            className={`form-control ${errors.reason && "is-invalid"}`}
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.reason && "is-invalid"}`}
             name='reason'
             value={reason}
             onChange={handleInputChange}
             
           />
           {errors.reason && (
-          <div className="invalid-feedback">{errors.reason}</div>
+          <div className="invalid-feedback text-red-500 -mt-3">{errors.reason}</div>
         )}
         </div>
 
-        <div className='form-group'>
-          <label>Date:</label>
+        <div className='mb-4'>
+          <label className='block text-gray-700 font-bold mb-2'>Date:</label>
           <input
             type='date'
-            className={`form-control ${errors.givenDate && "is-invalid"}`}
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.givenDate && "is-invalid"}`}
             name='givenDate'
             value={givenDate}
             onChange={handleInputChange}
             
           />
           {errors.givenDate && (
-          <div className="invalid-feedback">{errors.givenDate}</div>
+          <div className="invalid-feedback text-red-500">{errors.givenDate}</div>
         )}
         </div>
 
-        <div className='form-group'>
-          <label>Customer Address:</label>
+        <div className='mb-4'>
+          <label className='block text-gray-700 font-bold mb-2'>Customer Address:</label>
           <input
             type='text'
-            className={`form-control ${errors.customerAddress && "is-invalid"}`}
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.customerAddress && "is-invalid"}`}
             name='customerAddress'
             value={customerAddress}
             onChange={handleInputChange}
           />
           {errors.customerAddress && (
-          <div className="invalid-feedback">{errors.customerAddress}</div>
+          <div className="invalid-feedback text-red-500">{errors.customerAddress}</div>
         )}
         </div>
 
-        <div className='form-group'>
-          <label>Repair Price:</label>
+        <div className='mb-4'>
+          <label className='block text-gray-700 font-bold mb-2'>Repair Price:</label>
           <input
             type='text'
-            className={`form-control ${errors.repairPrize && "is-invalid"}`}
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.repairPrize && "is-invalid"}`}
             name='repairPrize'
             value={repairPrize}
             onChange={handleInputChange}         
           />
           {errors.repairPrize && (
-          <div className="invalid-feedback">{errors.repairPrize}</div>
+          <div className="invalid-feedback text-red-500">{errors.repairPrize}</div>
         )}
         </div>
 
         <button
           type='submit'
-          className='btn btn-success'
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
           style={{ marginTop: '15px' }}
         >
           <i className='far fa-check-square'></i>

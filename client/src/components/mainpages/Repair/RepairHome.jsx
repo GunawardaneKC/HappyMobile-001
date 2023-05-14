@@ -62,13 +62,13 @@ const Home = () => {
       <div className='w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center'>
         <i className='fas fa-search text-gray-500'></i>
       </div>
-      <input className='ml-3 py-2 px-4 w-80 border border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-cyan-500' type='search' placeholder='Search' name='searchQuery' onChange={handleSearch} />
+      <input className='ml-3 py-2 px-4 w-80 border border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-cyan-500 text-gray-950' type='search' placeholder='Search' name='searchQuery' onChange={handleSearch} />
     </div>
     <div className='flex space-x-4'>
-      <button className='py-2 px-4 bg-cyan-500 hover:bg-cyan-600 text-white rounded-md'>
+      <button className='py-2 px-4 bg-purple-500 hover:bg-purple-600 text-white rounded-md'>
         <Link to='/addRepair' style={{ textDecoration: 'none' }}>Add New Repair</Link>
       </button>
-      <button className='py-2 px-4 bg-purple-500 hover:bg-purple-600 text-white rounded-md'>
+      <button className='py-2 px-4 bg-cyan-500 hover:bg-cyan-600 text-white rounded-md'>
         <Link to='/completedRepair' style={{ textDecoration: 'none' }}>View Completed Repairs</Link>
       </button>
     </div>

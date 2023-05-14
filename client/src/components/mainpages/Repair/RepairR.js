@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 import { PDFExport } from '@progress/kendo-react-pdf';
-import logo from '../../../images/logo-hm.png';
 
 const PdfExportButton = () => {
   const [pdfExportComponent, setPdfExportComponent] = useState(null);
@@ -44,20 +43,16 @@ const PdfExportButton = () => {
   });
 
   return (
-    <div style={{fontSize:"10px"}}>
-    <button className='btn btn-primary' style={{ marginTop: "20px" }} onClick={handleExport}>Export to PDF</button>
-    <PDFExport ref={(component) => setPdfExportComponent(component)} paperSize="A4" margin={{ top: 30, left: 30, right: 30, bottom: 30 }}>
-      <div className='container'>
+    <div className='' style={{fontSize:"10px"}}>
+    <PDFExport ref={(component) => setPdfExportComponent(component)} paperSize="Tabloid">
+      <div className='container pb-20 mx-auto'>
         <div className="row">
           <div className="col-lg-9 mt-2 mb-2">
-            <h3 className="mt-4 text-2xl">Completed Repairs</h3>
-          </div>
-          <div className="col-lg-3 mt-2 mb-2">
-            <img src={logo} alt="logo" style={{ height: "70px" }} />
+            <h3 className="mt-4 text-2xl text-red-700">Completed Repairs</h3>
           </div>
         </div>
         <div className="table-responsive mt-4">
-        <table className='table table-hover text-slate-100' style={{borderCollapse: 'collapse', width: '100%'}}>
+        <table className='table table-hover text-slate-100 ' style={{borderCollapse: 'collapse', width: '100%'}}>
   <thead>
     <tr style={{backgroundColor: '#480258'}}>
       <th scope='col' style={{padding: '10px', border: '1px solid #ddd'}}>Repair ID</th>
@@ -85,9 +80,12 @@ const PdfExportButton = () => {
     ))}
   </tbody>
 </table>
+
         </div>
+        
       </div>
     </PDFExport>
+    <button className="py-2 px-4 ml-44 bg-purple-500 hover:bg-purple-600 text-white rounded-md" onClick={handleExport}>Export to PDF</button>
   </div>
   );
 };
