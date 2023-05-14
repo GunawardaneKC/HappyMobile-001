@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 const Ord = () => {
   const [posts, setPosts] = useState([]);
@@ -10,7 +9,7 @@ const Ord = () => {
   }, []);
 
   const retrievePosts = () => {
-    axios.get('/Ord').then(res => {
+    axios.get('/delivery').then(res => {
       if (res.data.success) {
         setPosts(res.data.existingPosts);
       }
@@ -18,7 +17,7 @@ const Ord = () => {
   };
 
   const deletePost = (id) => {
-    axios.delete(`payment/delete/${id}`).then(res => {
+    axios.delete(`/delivery/delete/${id}`).then(res => {
       alert('Deleted Successfully');
       retrievePosts();
     });
@@ -34,7 +33,7 @@ const Ord = () => {
 
   const handleSearch = (e) => {
     const searchKey = e.currentTarget.value.toLowerCase();
-    axios.get('/Ord').then(res => {
+    axios.get('/delivery').then(res => {
       if (res.data.success) {
         filterPosts(res.data.existingPosts, searchKey);
       }
@@ -50,19 +49,19 @@ const Ord = () => {
           <input className='form-control' type="search" placeholder='Search' name='searchQuery' onChange={handleSearch} />
         </div>
       </div>
-      <div>
-        <button className="btn btn-success"><Link to='/add/emp' style={{textDecoration: 'none', color:'black'}}>Add New Employee</Link></button>&nbsp;
-      </div>
-      <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>Employees</h3>
+     
+      <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>Deliveries</h3>
       <table className='table table-hover' style={{ marginTop: '40px' }}>
         <thead>
           <tr>
             <th scope='col'>No</th>
             <th scope='col'>Order ID</th>
-            <th scope='col'>Name</th>
-            <th scope='col'>Email Address</th>
-            <th scope='col'>Payment</th>
-            <th scope='col'>Details</th>
+            <th scope='col'>Recipient's Name</th>
+            <th scope='col'>Phone Number</th>
+            <th scope='col'>Recipient's Address</th>
+            <th scope='col'>NIC</th>
+            <th scope='col'>Recipient's email</th>
+            <th scope='col'>Delivery Status</th>
             <th scope='col'></th>
           </tr>
         </thead>
@@ -70,18 +69,21 @@ const Ord = () => {
           {posts.map((post, index) => (
             <tr key={post._id}>
               <th scope='row'>{index + 1}</th>
-              <td>{post.orderId}</td>
-              <td>{post.name}</td>
+              <td>{post.OrderID}</td>
+              <td>{post.Name}</td>
+              <td>{post.phone}</td>
+              <td>{post.Address}</td>
+              <td>{post.NIC}</td>
               <td>{post.email}</td>
               <td>
                 <select
                   className="form-select"
                   aria-label="Default select example"
-                  value={post.payment}
+                  value={post.Status}
                   onChange={(e) => {
                     const value = e.target.value;
                     const id = post._id;
-                    axios.put(`/payment/update/${id}`, { payment: value })
+                    axios.put(`/delivery/update/${id}`, { Status: value })
                       .then((response) => {
                         console.log(response.data);
                         retrievePosts();
@@ -92,30 +94,8 @@ const Ord = () => {
                   }}
                 >
                   <option value="Pending">Pending</option>
-                  <option value="Paid">Paid</option>
+                  <option value="Delivered">Delivered</option>
                 </select>
-              </td>
-              <td>
-                <table style={{ margin: "30px 0px" }}>
-                  <thead>
-                    <tr>
-                      <th>Product ID</th>
-                      <th>Products</th>
-                      <th>Quantity</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {post.cart.map((item) => (
-                      <tr key={item._id}>
-                        <td>{item.product_id}</td>
-                        <td>{item.title}</td>
-                        <td>{item.quantity}</td>
-                        <td>LKR {item.price * item.quantity}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
               </td>
               <td>
                 &nbsp;

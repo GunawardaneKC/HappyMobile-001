@@ -29,6 +29,7 @@ function Header() {
                 <li><Link to="/Emp">Employees</Link></li>
                 <li><Link to="/Repair">Repairs</Link></li>
                 <li><Link to="/allord">Orders</Link></li>
+                <li><Link to="/all-deliveries">Deliveries</Link></li>
             </>
         )
     }

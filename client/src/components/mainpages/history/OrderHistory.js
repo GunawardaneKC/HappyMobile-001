@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { GlobalState } from '../../../GlobalState'
 import { useParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 function OrderHistory() {

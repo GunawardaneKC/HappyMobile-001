@@ -22,6 +22,8 @@ import RepairPostDetails from './Repair/RepairPostDetails';
 import RepairCompletedTable from './Repair/RepairCompletedTable';
 import ReportRepair from './Repair/RepairR';
 import Allorders from './history/Allorders';
+import AddDelivery from './Delivery/AddDelivery';
+import AllDeliveries from './Delivery/AllDeliveries';
 
 
 import {GlobalState} from '../../GlobalState'
@@ -72,6 +74,9 @@ function Pages() {
             <Route path="*" exact element={<NotFound/>} />
 
             <Route path="/allord" exact element={<Allorders />} />
+
+            <Route path="/delivery-info" exact element={<AddDelivery />} />
+            <Route path="/all-deliveries" exact element={<AllDeliveries />} />
 
         </Routes>
     )
