@@ -10,6 +10,7 @@ import rentImg from '../../../images/rentingIMG.jpg';
 import customerImg from '../../../images/Main-1.gif';
 import supplyImg from '../../../images/supply.jpg';
 import returnImg from '../../../images/product-return01.png';
+import empImg from '../../../images/EmployeeImg.png';
 
 export default function Dashboard() {
   return (
@@ -67,12 +68,12 @@ export default function Dashboard() {
                             </div>
                         </div>
                         </a>                                              
-                        <a href={`/Supplier`}>
+                        <a href={`/Emp`}>
                         <div className='group relative overflow-hidden border-2 border-white/50 rounded-xl w-200 h-56'>
                             <div className='group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300'></div>
-                            <img className='group-hover:scale-125 transition-all duration-500' src={supplyImg} alt="pImg1" />
+                            <img className='group-hover:scale-125 transition-all duration-500' src={empImg} alt="pImg1" />
                             <div className='absolute -bottom-full left-12 group-hover:bottom-24 transition-all duration-500 z-50'>
-                                <span className=' text-3xl font-bold bg-gradient-to-r from-yellow-500 to-lime-400 bg-clip-text text-transparent'>Supplier</span>
+                                <span className=' text-3xl font-bold bg-gradient-to-r from-amber-400 to-purple-600 bg-clip-text text-transparent'>Employee</span>
                             </div>
                             <div className='absolute -bottom-full left-12 group-hover:bottom-14 transition-all duration-700 z-50'>
                                 <span className='text-white text-xl'><a href='work'>Management</a></span>
