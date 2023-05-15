@@ -16,15 +16,16 @@ const Ord = () => {
     });
   };
 
-  const deletePost = (id) => {
-    axios.delete(`payment/delete/${id}`).then(res => {
-      alert('Deleted Successfully');
-      retrievePosts();
-    });
-  };
+  // const deletePost = (id) => {
+  //   axios.delete(`payment/delete/${id}`).then(res => {
+  //     alert('Deleted Successfully');
+  //     retrievePosts();
+  //   });
+  // };
 
   const filterPosts = (posts, searchKey) => {
     const result = posts.filter(post =>
+      post.orderId.toLowerCase().includes(searchKey) ||
       post.email.toLowerCase().includes(searchKey) ||
       post.name.toLowerCase().includes(searchKey)
     );
@@ -49,6 +50,9 @@ const Ord = () => {
           <input className='form-control' type="search" placeholder='Search' name='searchQuery' onChange={handleSearch} />
         </div>
       </div>
+
+      <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/warranty/reports`}>Get Report</a> 
+
       <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>Orders</h3>
       <table className='table table-hover' style={{ marginTop: '40px' }}>
         <thead>
@@ -113,12 +117,12 @@ const Ord = () => {
                   </tbody>
                 </table>
               </td>
-              <td>
+              {/* <td>
                 &nbsp;
                 <button className='btn btn-danger' onClick={() => deletePost(post._id)}>
                   <i className='fas fa-trash-alt'></i>&nbsp;Delete
                 </button>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>

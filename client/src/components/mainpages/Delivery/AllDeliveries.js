@@ -25,6 +25,8 @@ const Ord = () => {
 
   const filterPosts = (posts, searchKey) => {
     const result = posts.filter(post =>
+      post.OrderID.toLowerCase().includes(searchKey) ||
+      post.Address.toLowerCase().includes(searchKey) ||
       post.email.toLowerCase().includes(searchKey) ||
       post.NIC.toLowerCase().includes(searchKey)
     );
@@ -49,6 +51,8 @@ const Ord = () => {
           <input className='form-control' type="search" placeholder='Search' name='searchQuery' onChange={handleSearch} />
         </div>
       </div>
+
+      <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/warranty/reports`}>Get Report</a> 
      
       <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>Deliveries</h3>
       <table className='table table-hover' style={{ marginTop: '40px' }}>

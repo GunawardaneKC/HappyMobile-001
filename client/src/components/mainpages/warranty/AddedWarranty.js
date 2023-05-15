@@ -36,12 +36,12 @@ const Home = () => {
 
   const filterPosts = (posts, searchKey) => {
     const result = posts.filter(post =>
-      post.repairID.toLowerCase().includes(searchKey) ||
-      post.customerName.toLowerCase().includes(searchKey) ||
-      post.phoneNum.toLowerCase().includes(searchKey) ||
-      post.device.toLowerCase().includes(searchKey) ||
-      post.Brand.toLowerCase().includes(searchKey) ||
-      post.Model.toLowerCase().includes(searchKey)
+      post.invoiceNo.toLowerCase().includes(searchKey) ||
+      post.cName.toLowerCase().includes(searchKey) ||
+      post.phoneNo.toLowerCase().includes(searchKey) ||
+      post.imeiNo.toLowerCase().includes(searchKey) ||
+      post.model.toLowerCase().includes(searchKey) ||
+      post.status.toLowerCase().includes(searchKey)
     );
     setPosts(result);
   };
@@ -70,6 +70,9 @@ const Home = () => {
           <Link to='/returnitems' style={{textDecoration: 'none', color:'Black'}}>Returned Items</Link>
         </button>
       </div>
+
+      <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/warranty/reports`}>Get Report</a> 
+
       <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>Warranty Items</h3>
       <table className='table table-hover' style={{ marginTop: '40px' }}>
         <thead>
