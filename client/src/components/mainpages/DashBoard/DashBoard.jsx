@@ -73,7 +73,7 @@ export default function Dashboard() {
                             <div className='group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300'></div>
                             <img className='group-hover:scale-125 transition-all duration-500' src={empImg} alt="pImg1" />
                             <div className='absolute -bottom-full left-12 group-hover:bottom-24 transition-all duration-500 z-50'>
-                                <span className=' text-3xl font-bold bg-gradient-to-r from-amber-400 to-purple-600 bg-clip-text text-transparent'>Employee</span>
+                                <span className=' text-3xl font-bold bg-gradient-to-r from-purple-700 to-amber-400 bg-clip-text text-transparent'>Employee</span>
                             </div>
                             <div className='absolute -bottom-full left-12 group-hover:bottom-14 transition-all duration-700 z-50'>
                                 <span className='text-white text-xl'><a href='work'>Management</a></span>
