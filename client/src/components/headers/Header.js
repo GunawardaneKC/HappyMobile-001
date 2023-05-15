@@ -10,6 +10,7 @@ function Header() {
     const state = useContext(GlobalState)
     const [isLogged] = state.userAPI.isLogged
     const [isAdmin] = state.userAPI.isAdmin
+    const [isUser] = state.userAPI.isUser
     const [cart] = state.userAPI.cart
     const [menu, setMenu] = useState(false)
 
@@ -30,6 +31,7 @@ function Header() {
                 <li><Link to="/Repair">Repairs</Link></li>
                 <li><Link to="/allord">Orders</Link></li>
                 <li><Link to="/all-deliveries">Deliveries</Link></li>
+                <li><Link to="/addedwarranty">Warranties</Link></li>
             </>
         )
     }
@@ -37,13 +39,18 @@ function Header() {
     const loggedRouter = () =>{
         return(
             <>
-                <li><Link to="/history">History</Link></li>
                 <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
-                {/* <li><Link to="/pro">Profile</Link></li> */}
             </>
         )
     }
 
+    const UserRouter = () =>{
+        return(
+            <>
+                <li><Link to="/history">Your History</Link></li>
+            </>
+        )
+    }
 
     const styleMenu = {
         left: menu ? 0 : "-100%"
@@ -64,7 +71,11 @@ function Header() {
             <ul style={styleMenu}>
                 <li><Link to="/">{isAdmin ? 'Products' : 'Shop'}</Link></li>
 
+                <li><Link to="/cuswarranty">{isAdmin ? '' : 'Your Warranties'}</Link></li>
+
                 {isAdmin && adminRouter()}
+
+                {isUser && UserRouter()}
 
                 {
                     isLogged ? loggedRouter() : <li><Link to="/login">Login ✥ Register</Link></li>

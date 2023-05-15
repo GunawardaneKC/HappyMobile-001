@@ -31,7 +31,7 @@ const postEmp = require('./routes/emp');
 const postRepair = require('./routes/postRepair');
 const postOrd = require('./routes/paymentRouter');
 const postDelivery = require('./routes/postDelivery');
-
+const postWarranty = require('./routes/postWarranty');
 
 
 
@@ -40,6 +40,7 @@ app.use(postEmp);
 app.use(postRepair);
 app.use(postOrd);
 app.use(postDelivery);
+app.use(postWarranty);
 
 // app.get("/",(req,res)=>{
 //     res.send("upload file")

@@ -1,15 +1,19 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-const Ord = () => {
+const Home = () => {
+
   const [posts, setPosts] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [completedPosts, setCompletedPosts] = useState([]);
 
   useEffect(() => {
     retrievePosts();
   }, []);
 
   const retrievePosts = () => {
-    axios.get('/Ord').then(res => {
+    axios.get('/getwarranty').then(res => {
       if (res.data.success) {
         setPosts(res.data.existingPosts);
       }
@@ -17,23 +21,34 @@ const Ord = () => {
   };
 
   const deletePost = (id) => {
-    axios.delete(`payment/delete/${id}`).then(res => {
+    axios.delete(`/warranty/delete/${id}`).then(res => {
       alert('Deleted Successfully');
+      retrievePosts();
+    });
+  };
+
+  const markAsComplete = (id) => {
+    axios.put(`/warranty/markAsComplete/${id}`).then(res => {
+      alert('Marked as Complete');
       retrievePosts();
     });
   };
 
   const filterPosts = (posts, searchKey) => {
     const result = posts.filter(post =>
-      post.email.toLowerCase().includes(searchKey) ||
-      post.name.toLowerCase().includes(searchKey)
+      post.repairID.toLowerCase().includes(searchKey) ||
+      post.customerName.toLowerCase().includes(searchKey) ||
+      post.phoneNum.toLowerCase().includes(searchKey) ||
+      post.device.toLowerCase().includes(searchKey) ||
+      post.Brand.toLowerCase().includes(searchKey) ||
+      post.Model.toLowerCase().includes(searchKey)
     );
     setPosts(result);
   };
 
   const handleSearch = (e) => {
     const searchKey = e.currentTarget.value.toLowerCase();
-    axios.get('/Ord').then(res => {
+    axios.get('/getwarranty').then(res => {
       if (res.data.success) {
         filterPosts(res.data.existingPosts, searchKey);
       }
@@ -49,35 +64,44 @@ const Ord = () => {
           <input className='form-control' type="search" placeholder='Search' name='searchQuery' onChange={handleSearch} />
         </div>
       </div>
-      <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>Orders</h3>
+      <div>
+        <button className="btn btn-success"><Link to='/addwarranty' style={{textDecoration: 'none', color:'Black'}}>Add Warranty</Link></button>&nbsp;
+        <button className="btn btn-primary"> <br></br>
+          <Link to='/returnitems' style={{textDecoration: 'none', color:'Black'}}>Returned Items</Link>
+        </button>
+      </div>
+      <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>Warranty Items</h3>
       <table className='table table-hover' style={{ marginTop: '40px' }}>
         <thead>
           <tr>
             <th scope='col'>No</th>
-            <th scope='col'>Order ID</th>
-            <th scope='col'>Name</th>
-            <th scope='col'>Email Address</th>
-            <th scope='col'>Payment</th>
-            <th scope='col'>Details</th>
-            <th scope='col'></th>
+            <th scope='col'>Invoice Number</th>
+            <th scope='col'>Customer Name</th>
+            <th scope='col'>Phone Number</th>
+            <th scope='col'>Imei Number</th>
+            <th scope='col'>Phone Model</th>
+            <th scope='col'>Warranty Status</th>
+            <th scope='col'>Actions</th>
           </tr>
         </thead>
         <tbody>
           {posts.map((post, index) => (
             <tr key={post._id}>
               <th scope='row'>{index + 1}</th>
-              <td>{post.orderId}</td>
-              <td>{post.name}</td>
-              <td>{post.email}</td>
+              <td>{post.invoiceNo}</td>
+              <td>{post.cName}</td>
+              <td>{post.phoneNo}</td>
+              <td>{post.imeiNo}</td>
+              <td>{post.model}</td>
               <td>
                 <select
                   className="form-select"
                   aria-label="Default select example"
-                  value={post.payment}
+                  value={post.status}
                   onChange={(e) => {
                     const value = e.target.value;
                     const id = post._id;
-                    axios.put(`/payment/update/${id}`, { payment: value })
+                    axios.put(`/warranty/update/${id}`, { status: value })
                       .then((response) => {
                         console.log(response.data);
                         retrievePosts();
@@ -88,32 +112,13 @@ const Ord = () => {
                   }}
                 >
                   <option value="Pending">Pending</option>
-                  <option value="Paid">Paid</option>
+                  <option value="Accepted">Accepted</option>
+                  <option value="Accepted and Returned">Accepted & Returned</option>
                 </select>
               </td>
-              <td>
-                <table style={{ margin: "30px 0px" }}>
-                  <thead>
-                    <tr>
-                      <th>Product ID</th>
-                      <th>Products</th>
-                      <th>Quantity</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {post.cart.map((item) => (
-                      <tr key={item._id}>
-                        <td>{item.product_id}</td>
-                        <td>{item.title}</td>
-                        <td>{item.quantity}</td>
-                        <td>LKR {item.price * item.quantity}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </td>
-              <td>
+              <td><button className="btn btn-success" onClick={() => markAsComplete(post._id)}>
+                  <i className="fa-solid fa-circle-check"></i>&nbsp;Returned
+                </button>
                 &nbsp;
                 <button className='btn btn-danger' onClick={() => deletePost(post._id)}>
                   <i className='fas fa-trash-alt'></i>&nbsp;Delete
@@ -126,4 +131,4 @@ const Ord = () => {
     </div>
   );
 }
-  export default Ord;
+export default Home;  

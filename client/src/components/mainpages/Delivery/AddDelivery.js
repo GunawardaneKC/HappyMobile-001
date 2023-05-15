@@ -9,7 +9,6 @@ const paymentId = new URLSearchParams(location.search).get('orderId');
 const [orderId, setOrderId] = useState(paymentId);
 const [error, setError] = useState({});
 
-
 const validate = () => {
   const newError = {};
 
@@ -29,8 +28,8 @@ const validate = () => {
 
   if (!formData.NIC) {
     newError.NIC = 'NIC is required';
-  } else if (!/^[0-9]{9}[vVxX]$/i.test(formData.NIC)) {
-    newError.NIC = 'NIC is invalid';
+  } else if (!/^[0-9]{10}[vV]$/i.test(formData.NIC)) {
+    newError.NIC = 'NIC is invalid (##########V/v)';
   }
 
   if (!formData.email) {
@@ -42,7 +41,6 @@ const validate = () => {
   setError(newError);
   return Object.keys(newError).length === 0;
 };
-
 
   const [formData, setFormData] = useState({
     OrderID: orderId,
@@ -85,8 +83,6 @@ const validate = () => {
     }
   };
   
-
-//   render () {
     return (
 
       <div className='col-md-8 mt-4 mx-auto'>
@@ -168,6 +164,6 @@ const validate = () => {
         </form>
       </div>
     );
-    // }
+
 }
 export default AddDelivery
