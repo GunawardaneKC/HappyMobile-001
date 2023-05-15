@@ -65,7 +65,7 @@ const Ord = () => {
   };
 
   return (
-    <div className="mt-8 mx-auto max-w-7xl text-gray-950">
+    <div className="mt-8 mx-auto max-w-7xl text-gray-950 ml-14">
   <div className="flex justify-between items-center">
     <div className="flex-1">
       <div className="relative text-gray-600 focus-within:text-gray-400">
@@ -91,7 +91,7 @@ const Ord = () => {
   </div>
   <h3 className="text-2xl mt-8 mb-4 font-bold text-zinc-50">Orders</h3>
   <table className="min-w-full divide-y divide-gray-200">
-  <thead className='bg-blue-500'>
+  <thead className='bg-blue-500 text-lg'>
     <tr>
       <th className="px-6 py-3 text-center text-gray-900 uppercase tracking-wider">#
       </th>
@@ -108,7 +108,7 @@ const Ord = () => {
       <th className="px-6 py-3">Action</th>
     </tr>
   </thead>
-  <tbody className="bg-blue-200 divide-y divide-gray-200">
+  <tbody className="bg-blue-400 divide-y divide-gray-200">
     {posts.map((post, index) => (
       <tr key={post._id}>
         <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
@@ -141,7 +141,7 @@ const Ord = () => {
         <td className="px-6 py-4 whitespace-nowrap">
           <table className="table-auto">
             <thead>
-              <tr className="text-slate-500">
+              <tr className="text-stone-950">
                 <th className="">Product ID</th>
                 <th className="">Products</th>
                 <th className="">Quantity</th>

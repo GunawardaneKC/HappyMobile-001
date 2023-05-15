@@ -92,7 +92,7 @@ function CreateProduct() {
     }
 
     const handleChangeInput = e =>{
-        const {name, value} = e.target
+        const {name, value} = e.target;
         setProduct({...product, [name]:value})
     }
 

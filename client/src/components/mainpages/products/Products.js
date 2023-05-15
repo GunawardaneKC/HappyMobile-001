@@ -122,14 +122,16 @@ function Products() {
             </div>
         }
 
-        <div className="products" id='productsId1'>
+        <motion.div variants={fadeIn('left', 0.6)} initial="hidden" whileInView={'show'} className="products" id='productsId1'>
             {
                 products.map(product => {
-                    return <ProductItem key={product._id} product={product}
+                    
+                    return ( <ProductItem key={product._id} product={product}
                     isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck} />
+                    )
                 })
             } 
-        </div>
+        </motion.div>
 
         <LoadMore />
         {products.length === 0 && <Loading />}
