@@ -31,6 +31,11 @@
     text-transform: uppercase;
 }
 
+.delete-all button:hover {
+    background-color: crimson;
+    color: black;
+}
+
 /* ------------ Filters Menu ----------------- */
 .filter_menu{
     width: 100%;
