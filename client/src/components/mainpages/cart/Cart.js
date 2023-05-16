@@ -65,16 +65,28 @@ function Cart() {
         }
     }
 
-    const tranSuccess = async(payment) => {
- 
-        await axios.post('/api/payment', {cart},
-         {headers: {Authorization: token}})
-
-        setCart([])
-        addToCart([])
-        alert("You have successfully placed an order.")
-    }
-
+    const generateOrderId = () => {
+        const timestamp = Date.now();
+        const randomString = Math.random().toString(36).substring(2, 15);
+        const orderId = `${timestamp}-${randomString}`;
+        return orderId;
+      };
+      
+      const tranSuccess = async (payment) => {
+        const orderId = generateOrderId();
+        await axios.post('/api/payment', { 
+            cart, 
+            orderId 
+        }, { 
+          headers: { Authorization: token } 
+        });
+      
+        setCart([]);
+        addToCart([]);
+        alert('You have successfully placed an order.');
+      
+        window.location = `/delivery-info?orderId=${orderId}`;
+      };
 
     if(cart.length === 0) 
         return (
@@ -122,9 +134,11 @@ function Cart() {
                 tranSuccess={tranSuccess} />
 
                 <div>
+                {/* <Link to={`/delivery-info`}> */}
                 <button onClick={() => tranSuccess()} className="btn btn-success">
                     Purchase
                  </button>
+                 {/* </Link> */}
                 </div>
 
             </div>

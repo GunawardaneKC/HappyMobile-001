@@ -10,6 +10,7 @@ function Header() {
     const state = useContext(GlobalState)
     const [isLogged] = state.userAPI.isLogged
     const [isAdmin] = state.userAPI.isAdmin
+    const [isUser] = state.userAPI.isUser
     const [cart] = state.userAPI.cart
     const [menu, setMenu] = useState(false)
 
@@ -26,6 +27,13 @@ function Header() {
             <>
                 <li><Link to="/create_product">Create Product</Link></li>
                 <li><Link to="/category">Categories</Link></li>
+ 
+                <li><Link to="/Emp">Employees</Link></li>
+                <li><Link to="/Repair">Repairs</Link></li>
+                <li><Link to="/allord">Orders</Link></li>
+                <li><Link to="/all-deliveries">Deliveries</Link></li>
+                <li><Link to="/addedwarranty">Warranties</Link></li>
+
                 <li className='dashBoardColor'><Link to="/dashBoard">DashBoard</Link></li>
                 <style>{`
                         .dashBoardColor:hover a {
@@ -34,6 +42,7 @@ function Header() {
                             -webkit-text-fill-color: transparent;
                           }
                     `}</style>
+
             </>
         )
     }
@@ -41,6 +50,8 @@ function Header() {
     const loggedRouter = () =>{
         return(
             <>
+ 
+                <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
                 <li><Link to="/history">History</Link></li>
                 <li className='logOutRed'><Link to="/" onClick={logoutUser}>Logout</Link></li>
                 {/* <li><Link to="/pro">Profile</Link></li> */}
@@ -49,10 +60,18 @@ function Header() {
                         color: red;
                         }
                     `}</style>
+ 
             </>
         )
     }
 
+    const UserRouter = () =>{
+        return(
+            <>
+                <li><Link to="/history">Your History</Link></li>
+            </>
+        )
+    }
 
     const styleMenu = {
         left: menu ? 0 : "-100%"
@@ -80,7 +99,11 @@ function Header() {
             <ul style={styleMenu}>
                 <li><Link to="/">{isAdmin ? 'Products' : 'Shop'}</Link></li>
 
+                <li><Link to="/cuswarranty">{isAdmin ? '' : 'Your Warranties'}</Link></li>
+
                 {isAdmin && adminRouter()}
+
+                {isUser && UserRouter()}
 
                 {
                     isLogged ? loggedRouter() : <li><Link to="/login">Login ✥ Register</Link></li>

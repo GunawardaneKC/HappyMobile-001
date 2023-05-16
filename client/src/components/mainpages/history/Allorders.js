@@ -1,16 +1,8 @@
 import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import { GlobalState } from '../../../GlobalState';
 
 const Ord = () => {
-  const state = useContext(GlobalState);
-  const [history] = state.userAPI.history;
-  const [orderDetails, setOrderDetails] = useState([]);
   const [posts, setPosts] = useState([]);
-
-  const params = useParams();
 
   useEffect(() => {
     retrievePosts();
@@ -24,25 +16,18 @@ const Ord = () => {
     });
   };
 
-  useEffect(() => {
-    if(params.id){
-      history.forEach(item => {
-        if(item._id === params.id) setOrderDetails(item);
-      });
-    }
-  }, [params.id, history]);
-
-  const deletePost = (id) => {
-    axios.delete(`payment/delete/${id}`).then(res => {
-      alert('Deleted Successfully');
-      retrievePosts();
-    });
-  };
+  // const deletePost = (id) => {
+  //   axios.delete(`payment/delete/${id}`).then(res => {
+  //     alert('Deleted Successfully');
+  //     retrievePosts();
+  //   });
+  // };
 
   const filterPosts = (posts, searchKey) => {
     const result = posts.filter(post =>
+      post.orderId.toLowerCase().includes(searchKey) ||
       post.email.toLowerCase().includes(searchKey) ||
-      post.NIC.toLowerCase().includes(searchKey)
+      post.name.toLowerCase().includes(searchKey)
     );
     setPosts(result);
   };
@@ -53,14 +38,6 @@ const Ord = () => {
       if (res.data.success) {
         filterPosts(res.data.existingPosts, searchKey);
       }
-    });
-  };
-
-  const handleSelectChange = (e, post) => {
-    const value = e.target.value;
-    axios.put(`/payment/update/${post._id}`, { payment: value }).then(res => {
-      alert('Updated Successfully');
-      retrievePosts();
     });
   };
 
@@ -80,6 +57,86 @@ const Ord = () => {
           onChange={handleSearch}
         />
       </div>
+ master
+
+      <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/warranty/reports`}>Get Report</a> 
+
+      <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>Orders</h3>
+      <table className='table table-hover' style={{ marginTop: '40px' }}>
+        <thead>
+          <tr>
+            <th scope='col'>No</th>
+            <th scope='col'>Order ID</th>
+            <th scope='col'>Name</th>
+            <th scope='col'>Email Address</th>
+            <th scope='col'>Payment</th>
+            <th scope='col'>Details</th>
+            <th scope='col'></th>
+          </tr>
+        </thead>
+        <tbody>
+          {posts.map((post, index) => (
+            <tr key={post._id}>
+              <th scope='row'>{index + 1}</th>
+              <td>{post.orderId}</td>
+              <td>{post.name}</td>
+              <td>{post.email}</td>
+              <td>
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                  value={post.payment}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    const id = post._id;
+                    axios.put(`/payment/update/${id}`, { payment: value })
+                      .then((response) => {
+                        console.log(response.data);
+                        retrievePosts();
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                      });
+                  }}
+                >
+                  <option value="Pending">Pending</option>
+                  <option value="Paid">Paid</option>
+                </select>
+              </td>
+              <td>
+                <table style={{ margin: "30px 0px" }}>
+                  <thead>
+                    <tr>
+                      <th>Product ID</th>
+                      <th>Products</th>
+                      <th>Quantity</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {post.cart.map((item) => (
+                      <tr key={item._id}>
+                        <td>{item.product_id}</td>
+                        <td>{item.title}</td>
+                        <td>{item.quantity}</td>
+                        <td>LKR {item.price * item.quantity}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </td>
+              {/* <td>
+                &nbsp;
+                <button className='btn btn-danger' onClick={() => deletePost(post._id)}>
+                  <i className='fas fa-trash-alt'></i>&nbsp;Delete
+                </button>
+              </td> */}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+ oshStyles
     </div>
     <div>
       <button className="ml-14 py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-md">

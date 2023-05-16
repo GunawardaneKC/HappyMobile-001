@@ -51,19 +51,19 @@ function Products() {
         }
     }
 
-    const checkAll = () =>{
-        products.forEach(product => {
-            product.checked = !isCheck
-        })
-        setProducts([...products])
-        setIsCheck(!isCheck)
-    }
+    // const checkAll = () =>{
+    //     products.forEach(product => {
+    //         product.checked = !isCheck
+    //     })
+    //     setProducts([...products])
+    //     setIsCheck(!isCheck)
+    // }
 
-    const deleteAll = () =>{
-        products.forEach(product => {
-            if(product.checked) deleteProduct(product._id, product.images.public_id)
-        })
-    }
+    // const deleteAll = () =>{
+    //     products.forEach(product => {
+    //         if(product.checked) deleteProduct(product._id, product.images.public_id)
+    //     })
+    // }
 
     if(loading) return <div><Loading /></div>
     return (
@@ -113,14 +113,16 @@ function Products() {
        </div>
         <Filters />
         
-        {
+        <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/warranty/reports`}>Get Report</a> 
+
+        {/* {
             isAdmin && 
             <div className="delete-all">
                 <span>Select all</span>
                 <input type="checkbox" checked={isCheck} onChange={checkAll} />
                 <button onClick={deleteAll}>Delete ALL</button>
             </div>
-        }
+        } */}
 
         <div className="products" id='productsId1'>
             {
