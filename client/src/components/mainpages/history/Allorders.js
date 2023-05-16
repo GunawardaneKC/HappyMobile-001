@@ -1,16 +1,9 @@
 import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import { GlobalState } from '../../../GlobalState';
+import {Link} from 'react-router-dom';
 
 const Ord = () => {
-  const state = useContext(GlobalState);
-  const [history] = state.userAPI.history;
-  const [orderDetails, setOrderDetails] = useState([]);
   const [posts, setPosts] = useState([]);
-
-  const params = useParams();
 
   useEffect(() => {
     retrievePosts();
@@ -24,25 +17,18 @@ const Ord = () => {
     });
   };
 
-  useEffect(() => {
-    if(params.id){
-      history.forEach(item => {
-        if(item._id === params.id) setOrderDetails(item);
-      });
-    }
-  }, [params.id, history]);
-
-  const deletePost = (id) => {
-    axios.delete(`payment/delete/${id}`).then(res => {
-      alert('Deleted Successfully');
-      retrievePosts();
-    });
-  };
+  // const deletePost = (id) => {
+  //   axios.delete(`payment/delete/${id}`).then(res => {
+  //     alert('Deleted Successfully');
+  //     retrievePosts();
+  //   });
+  // };
 
   const filterPosts = (posts, searchKey) => {
     const result = posts.filter(post =>
+      post.orderId.toLowerCase().includes(searchKey) ||
       post.email.toLowerCase().includes(searchKey) ||
-      post.NIC.toLowerCase().includes(searchKey)
+      post.name.toLowerCase().includes(searchKey)
     );
     setPosts(result);
   };
@@ -53,14 +39,6 @@ const Ord = () => {
       if (res.data.success) {
         filterPosts(res.data.existingPosts, searchKey);
       }
-    });
-  };
-
-  const handleSelectChange = (e, post) => {
-    const value = e.target.value;
-    axios.put(`/payment/update/${post._id}`, { payment: value }).then(res => {
-      alert('Updated Successfully');
-      retrievePosts();
     });
   };
 
@@ -162,7 +140,7 @@ const Ord = () => {
         </td>
         <td className="px-6 py-4 whitespace-nowrap">
           &nbsp;
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline" onClick={() => deletePost(post._id)}>
+          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline">
                 <i className='fas fa-trash-alt'></i>&nbsp;Delete
               </button>
             </td>

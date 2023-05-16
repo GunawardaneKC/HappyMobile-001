@@ -3,6 +3,7 @@ import BtnRender from './BtnRender';
 
 function ProductItem({product, isAdmin, deleteProduct, handleCheck}) {
     return (
+
         <div className="bg-white rounded-lg shadow-md ml-4 mr-4 p-6">
             {isAdmin && (
                 <input
@@ -13,6 +14,7 @@ function ProductItem({product, isAdmin, deleteProduct, handleCheck}) {
                 />
             )}
             <img src={product.images.url} alt="" className="mx-auto w-64 h-64 object-contain" />
+
 
             <div className="text-center mt-6">
                 <h2 className="text-lg font-medium text-gray-900 mb-2" title={product.title}>

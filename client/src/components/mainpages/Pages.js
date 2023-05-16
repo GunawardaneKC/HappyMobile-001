@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route,} from 'react-router-dom';
 import Products from './products/Products';
 import DetailProduct from './detailProduct/DetailProduct';
 import Login from './auth/Login';
@@ -25,6 +25,12 @@ import ReportRepair from './Repair/RepairR';
 import Allorders from './history/Allorders';
 import SupportChat from './LiveChat/SupportAdmin/index';
 import ContactUs from './LiveChat/ContactUs';
+import AddDelivery from './Delivery/AddDelivery';
+import AllDeliveries from './Delivery/AllDeliveries';
+import AddWarranty from './warranty/AddWarranty';
+import AllWarranty from './warranty/AddedWarranty';
+import Allreturn from './warranty/return';
+import Cuswarranty from './warranty/cuswarranty';
 
 
 import {GlobalState} from '../../GlobalState';
@@ -79,6 +85,14 @@ function Pages() {
             <Route path="/allOrder" exact element={<Allorders />} />
             <Route path="/contactUs" exact element={<ContactUs />} />
             
+
+            <Route path="/delivery-info" exact element={<AddDelivery />} />
+            <Route path="/all-deliveries" exact element={<AllDeliveries />} />
+
+            <Route path="/addwarranty" exact element={<AddWarranty />} />
+            <Route path="/addedwarranty" exact element={<AllWarranty />} />
+            <Route path="/returnitems" exact element={<Allreturn />} />
+            <Route path="/cuswarranty" exact element={<Cuswarranty />} />
 
         </Routes>
         

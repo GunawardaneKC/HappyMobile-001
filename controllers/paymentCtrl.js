@@ -19,12 +19,13 @@ const paymentCtrl = {
 
             // const {cart, paymentID, address} = req.body;
             const {cart} = req.body;
+            const {orderId} = req.body;
 
             const {_id, name, email} = user;
 
             const newPayment = new Payments({
                 // user_id: _id, name, email, cart, paymentID, address
-                user_id: _id, name, email, cart
+                user_id: _id, name, email, cart, orderId
             })
 
             // cart.filter(item => {

@@ -65,16 +65,28 @@ function Cart() {
         }
     }
 
-    const tranSuccess = async(payment) => {
- 
-        await axios.post('/api/payment', {cart},
-         {headers: {Authorization: token}})
-
-        setCart([])
-        addToCart([])
-        alert("You have successfully placed an order.")
-    }
-
+    const generateOrderId = () => {
+        const timestamp = Date.now();
+        const randomString = Math.random().toString(36).substring(2, 15);
+        const orderId = `${timestamp}-${randomString}`;
+        return orderId;
+      };
+      
+      const tranSuccess = async (payment) => {
+        const orderId = generateOrderId();
+        await axios.post('/api/payment', { 
+            cart, 
+            orderId 
+        }, { 
+          headers: { Authorization: token } 
+        });
+      
+        setCart([]);
+        addToCart([]);
+        alert('You have successfully placed an order.');
+      
+        window.location = `/delivery-info?orderId=${orderId}`;
+      };
 
     if(cart.length === 0) 
         return (
@@ -87,50 +99,52 @@ function Cart() {
 
     return (
         <PayPalScriptProvider>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-zinc-200 mt-8 ml-8">
-  {cart.map((product) => (
-    <div className="bg-purple-950 rounded-lg shadow-lg p-6 h-full w-4/5 border border-red-950" key={product._id}>
-      <img src={product.images.url} alt={product.title} className="w-48 h-48 object-cover rounded-md" />
+        <div>
+            {
+                cart.map(product => (
+                    <div className="detail cart" key={product._id}>
+                        <img src={product.images.url} alt="" />
 
-      <div className="mt-4">
-        <h2 className="text-3xl font-semibold">{product.title}</h2>
+                        <div className="box-detail">
+                            <h2>{product.title}</h2>
 
-        <h3 className="text-lg font-medium">LKR {product.price * product.quantity}</h3>
-        <p className="text-cyan-300 my-4">{product.description}</p>
-        <p className="text-cyan-300 my-4">{product.content}</p>
+                            <h3>LKR {product.price * product.quantity}</h3>
+                            <p>{product.description}</p>
+                            <p>{product.content}</p>
 
-        <div className="flex items-center mt-4">
-          <button className="px-3 py-1 rounded-md bg-purple-500 hover:bg-purple-600 text-neutral-950 text-2xl font-bold" onClick={() => decrement(product._id)}>
-            -
-          </button>
-          <span className="mx-2 text-lime-50">{product.quantity}</span>
-          <button className="px-3 py-1 rounded-md bg-purple-500 hover:bg-purple-600 text-neutral-950 text-2xl font-bold" onClick={() => increment(product._id)}>
-            +
-          </button>
+                            <div className="amount">
+                                <button onClick={() => decrement(product._id)}> - </button>
+                                <span>{product.quantity}</span>
+                                <button onClick={() => increment(product._id)}> + </button>
+                            </div>
+                            
+                            <div className="delete" 
+                            onClick={() => removeProduct(product._id)}>
+                                X
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+
+            <div className="total">
+                <h3>Total: LKR {total}</h3>
+                <PaypalButton
+                total={total}
+                tranSuccess={tranSuccess} />
+
+                <div>
+                {/* <Link to={`/delivery-info`}> */}
+                <button onClick={() => tranSuccess()} className="btn btn-success">
+                    Purchase
+                 </button>
+                 {/* </Link> */}
+                </div>
+
+            </div>
         </div>
-
-        <div className="mt-4 cursor-pointer text-red-500 hover:underline" onClick={() => removeProduct(product._id)}>
-        <i class="fas fa-trash-alt"></i>&nbsp;Delete
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
-
-
-<div className="flex flex-col items-center mt-6">
-  <h3 className="text-xl font-semibold">Total: LKR {total}</h3>
-  <PaypalButton total={total} tranSuccess={tranSuccess} />
-
-  <div>
-    <button onClick={() => tranSuccess()} className="px-4 py-2 mt-4 bg-purple-500 hover:bg-purple-600 text-white rounded-md shadow-lg">
-      Purchase
-    </button>
-  </div>
-</div>
-
         </PayPalScriptProvider>
     )
 }
 
-export default Cart
+export default Cart;

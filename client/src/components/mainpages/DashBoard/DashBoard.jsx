@@ -32,7 +32,7 @@ export default function Dashboard() {
                             </div>
                         </div>
                         </a>                                              
-                        <a href={`/delivery/ad`}>
+                        <a href={`/all-deliveries`}>
                         <div className='group relative overflow-hidden border-2 border-white/50 rounded-xl w-200 h-56'>
                             <div className='group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300'></div>
                             <img className='group-hover:scale-125 transition-all duration-500' src={deliveryImg} alt="pImg1" />
@@ -106,7 +106,7 @@ export default function Dashboard() {
                                </div>
                            </div>
                         </a>                                               
-                        <a href={`/Adminwarrenty`}>
+                        <a href={`/addedwarranty`}>
                            <div className='group relative overflow-hidden border-2 border-white/50 rounded-xl w-200 h-56'>
                                <div className='group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300'></div>
                                <img className='group-hover:scale-125 transition-all duration-500' src={warrantyImg} alt="pImg1" />
@@ -118,7 +118,7 @@ export default function Dashboard() {
                                </div>
                            </div>
                         </a>                                               
-                        <a href={`/customer/ad`}>
+                        <a href={`/cuswarranty`}>
                            <div className='group relative overflow-hidden border-2 border-white/50 rounded-xl w-200 h-56'>
                                <div className='group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300'></div>
                                <img className='group-hover:scale-125 transition-all duration-500' src={customerImg} alt="pImg1" />

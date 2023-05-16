@@ -1,11 +1,11 @@
 const express = require('express');
-const Posts = require('../models/repairPosts');
+const Posts = require('../models/postWarranty');
 const bodyParser = require('body-parser');
 const router = express.Router();
-const Completed = require('../models/repairCompleted');
+const Completed = require('../models/return');
 
 //save posts
-router.post('/repair/save', (req,res) => {
+router.post('/warranty/save', (req,res) => {
     let newPost = new Posts(req.body);
     newPost.save()
         .then(savedPost => {
@@ -22,7 +22,7 @@ router.post('/repair/save', (req,res) => {
 });
 
 //get posts 
-router.get('/getRepairs', (req, res) => {
+router.get('/getwarranty', (req, res) => {
     Posts.find()
         .then(posts => {
             return res.status(200).json({
@@ -38,7 +38,7 @@ router.get('/getRepairs', (req, res) => {
 });
 
 //update posts
-router.put('/repair/update/:id', async (req, res) => {
+router.put('/warranty/update/:id', async (req, res) => {
     try {
         const post = await Posts.findByIdAndUpdate(req.params.id, req.body);
         return res.status(200).json({ success: "Updated Successfully" });
@@ -48,7 +48,7 @@ router.put('/repair/update/:id', async (req, res) => {
 });
 
 //delete posts
-router.delete('/repair/delete/:id', async (req, res) => {
+router.delete('/warranty/delete/:id', async (req, res) => {
     try {
         const deletedPost = await Posts.findOneAndDelete({ _id: req.params.id });
         if (!deletedPost) {
@@ -61,7 +61,7 @@ router.delete('/repair/delete/:id', async (req, res) => {
 });
 
 //get a specific post
-router.get('/repair/:id', async (req, res) => {
+router.get('/warranty/:id', async (req, res) => {
     try {
         const postId = req.params.id;
         const post = await Posts.findById(postId);
@@ -76,8 +76,7 @@ router.get('/repair/:id', async (req, res) => {
         return res.status(400).json({ success: false, error: err.message });
     }
 });
-
-router.get('/repair/markAsComplete/:id', async (req, res) => {
+router.get('/warranty/markAsComplete/:id', async (req, res) => {
     try {
         const postId = req.params.id;
         const post = await Posts.findById(postId);
@@ -98,13 +97,13 @@ router.get('/repair/markAsComplete/:id', async (req, res) => {
 
 
 //mark post as complete
-router.put('/repair/markAsComplete/:id', async (req, res) => {
+router.put('/warranty/markAsComplete/:id', async (req, res) => {
     try {
       const post = await Posts.findById(req.params.id);
-      const {repairID, customerName, phoneNum, device, Brand, Model, reason, givenDate, customerAddress, repairPrize} = post;
-      const completedPost = new Completed({repairID, customerName, phoneNum, device, Brand, Model, reason, givenDate, customerAddress, repairPrize});
+      const {invoiceNo, cName, imeiNo, model, phoneNo} = post;
+      const completedPost = new Completed({invoiceNo, cName, imeiNo, model, phoneNo});
       await completedPost.save();
-      await Posts.findByIdAndDelete(req.params.id);
+    //   await Posts.findByIdAndDelete(req.params.id);
       res.json({ success: true });
     } catch (error) {
       console.log(error);
@@ -113,7 +112,7 @@ router.put('/repair/markAsComplete/:id', async (req, res) => {
   });
 
   // get completed posts
-router.get('/repairCompleted', async (req, res) => {
+router.get('/warrantyCompleted', async (req, res) => {
     try {
       const completedPosts = await Completed.find();
       return res.status(200).json({
@@ -129,7 +128,7 @@ router.get('/repairCompleted', async (req, res) => {
   });
 
   //delete completed post
-router.delete('/repairCompleted/delete/:id', async (req, res) => {
+router.delete('/warrantyCompleted/delete/:id', async (req, res) => {
     try {
       const deletedPost = await Completed.findOneAndDelete({ _id: req.params.id });
       if (!deletedPost) {

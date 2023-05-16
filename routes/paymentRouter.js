@@ -65,5 +65,21 @@ router.get('/Ord', (req, res) => {
     });
 });
 
+router.get('/payment/:id', async (req, res) => {
+    try {
+        const postId = req.params.id;
+        const post = await Posts.findById(postId);
+        if (!post) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
+        return res.status(200).json({
+            success: true,
+            post
+        });
+    } catch (err) {
+        return res.status(400).json({ success: false, error: err.message });
+    }
+});
+
 
 module.exports = router
