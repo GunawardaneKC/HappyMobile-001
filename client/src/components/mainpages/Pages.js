@@ -23,10 +23,11 @@ import RepairPostDetails from './Repair/RepairPostDetails';
 import RepairCompletedTable from './Repair/RepairCompletedTable';
 import ReportRepair from './Repair/RepairR';
 import Allorders from './history/Allorders';
+import SupportChat from './LiveChat/SupportAdmin/index';
+import ContactUs from './LiveChat/ContactUs';
 
 
-import {GlobalState} from '../../GlobalState'
-
+import {GlobalState} from '../../GlobalState';
 
 function Pages() {
     const state = useContext(GlobalState)
@@ -38,6 +39,8 @@ function Pages() {
         <Routes>
             <Route path="/" exact element={<Products/>} />
             <Route path="/detail/:id" exact element={<DetailProduct/>} />
+
+            <Route path="/supportChat" exact element={<SupportChat/>} />
 
             <Route path="/login" exact element={isLogged ? <NotFound/> : <Login/>} />
             <Route path="/register" exact element={isLogged ? <NotFound/> : <Register/>} />
@@ -73,9 +76,12 @@ function Pages() {
 
             <Route path="*" exact element={<NotFound/>} />
 
-            <Route path="/allord" exact element={<Allorders />} />
+            <Route path="/allOrder" exact element={<Allorders />} />
+            <Route path="/contactUs" exact element={<ContactUs />} />
+            
 
         </Routes>
+        
     )
 }
 
