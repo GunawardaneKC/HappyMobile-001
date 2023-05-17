@@ -38,39 +38,43 @@ const Home = () => {
   };
 
   return (
-    <div className='container'>
-      <div className="row">
-        <div className="col-lg-9 mt-2 mb-2">
-        </div>
-        <div className="col-lg-3 mt-2 mb-2">
-          <input className='form-control' type="search" placeholder='Search' name='searchQuery' onChange={handleSearch} />
-        </div>
-      </div>
-      <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>About Your Warranty</h3>
-      <table className='table table-hover' style={{ marginTop: '40px' }}>
-        <thead>
-          <tr>
-            <th scope='col'>No</th>
-            <th scope='col'>Invoice Number</th>
-            <th scope='col'>Customer Name</th>
-            <th scope='col'>Phone Model</th>
-            <th scope='col'>Warranty Status</th>
+    <div className="bg-opacity-10 bg-gray-100 backdrop-filter backdrop-blur-lg p-6 rounded-md mt-8 mx-8">
+  <div className="mb-4">
+    <input
+      type="search"
+      placeholder="Search"
+      name="searchQuery"
+      onChange={handleSearch}
+      className="w-1/5 p-2 border border-gray-300 rounded-md focus:outline-none"
+    />
+  </div>
+  <h3 className="mb-4 text-3xl text-cyan-500 font-bold">About Your Warranty</h3>
+  <div>
+    <table className="w-full">
+      <thead>
+        <tr>
+          <th className="py-2">No</th>
+          <th className="py-2">Invoice Number</th>
+          <th className="py-2">Customer Name</th>
+          <th className="py-2">Phone Model</th>
+          <th className="py-2">Warranty Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {posts.map((post, index) => (
+          <tr key={post._id}>
+            <td className="py-2">{index + 1}</td>
+            <td className="py-2">{post.invoiceNo}</td>
+            <td className="py-2">{post.cName}</td>
+            <td className="py-2">{post.model}</td>
+            <td className="py-2">{post.status}</td>
           </tr>
-        </thead>
-        <tbody>
-          {posts.map((post, index) => (
-            <tr key={post._id}>
-              <th scope='row'>{index + 1}</th>
-              <td>{post.invoiceNo}</td>
-              <td>{post.cName}</td>
-              <td>{post.model}</td>
-              <td>{post.status}</td>
-              
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
   );
 }
-export default Home;  
+
+export default Home;

@@ -8,7 +8,7 @@ const postwarrantySchema = new mongoose.Schema({
     cName:{
         type:String,
         required:true,
-        minlength:[5, "minlength is 5"],
+        minlength:[2, "minlength is 2"],
         maxlength:[20,"maxlength is 20"]
     },
     imeiNo:{

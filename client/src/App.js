@@ -4,6 +4,7 @@ import {DataProvider} from './GlobalState';
 import Header from './components/headers/Header';
 import MainPages from './components/mainpages/Pages';
 import Footer from './components/Footer/Footer';
+// import SupportEngine from './components/mainpages/LiveChat/SupportEngine/index';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Footer />
         </div>
       </Router>
+      {/* <SupportEngine/> */}
     </DataProvider>
     
   );

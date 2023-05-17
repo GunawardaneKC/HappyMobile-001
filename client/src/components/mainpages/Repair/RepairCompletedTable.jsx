@@ -72,7 +72,7 @@ const CompletedTable = () => {
         {filteredPosts.map((post, index) => (
           <tr key={post._id}>
             <td className="px-4 py-2 border border-gray-400">
-              <Link to={`/postRepair/${post._id}`} className="text-blue-500 hover:underline" style={{ textDecoration: 'none' }}>
+              <Link to={`/postRepair/${post._id}`} className="text-slate-900 hover:underline" style={{ textDecoration: 'none' }}>
                 {post.repairID}
               </Link>
             </td>

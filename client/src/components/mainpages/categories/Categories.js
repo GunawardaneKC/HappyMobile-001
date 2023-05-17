@@ -1,6 +1,8 @@
-import React, {useState, useContext} from 'react'
-import {GlobalState} from '../../../GlobalState'
-import axios from 'axios'
+import React, {useState, useContext} from 'react';
+import {GlobalState} from '../../../GlobalState';
+import axios from 'axios';
+import {motion} from 'framer-motion';
+import {fadeIn} from '../../../variants';
 
 function Categories() {
     const state = useContext(GlobalState)
@@ -53,7 +55,7 @@ function Categories() {
     }
 
     return (
-        <div className='mt-8 ' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <motion.div variants={fadeIn('left', 0.3)} initial='hidden' whileInView={'show'} viewport={{once: false, amount:0.3}}className='mt-8 ' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
   <div className="bg-violet-500 px-4 py-6 max-w-sm border rounded-lg border-purple-700">
     <form onSubmit={createCategory}>
       <label htmlFor="category" className="block text-gray-700 font-bold mb-2">Category</label>
@@ -88,7 +90,7 @@ function Categories() {
       ))}
     </div>
   </div>
-</div>
+</motion.div>
 
     )
 }

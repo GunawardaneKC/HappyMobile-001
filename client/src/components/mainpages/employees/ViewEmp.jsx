@@ -201,11 +201,9 @@ const Emp = () => {
         </div>
       </div>
 
-      <div>
-        <a className="btn btn-primary" style={{ textDecoration: 'none' }} href={`/empR`}>Get Report</a>
-      </div>
+      <a className="bg-yellow-400 hover:bg-yellow-700 text-white py-2 px-4 rounded-lg" style={{textDecoration:'none'}} href={`/empR`}>Get Report</a> 
+      <h3 className='mb-4 mt-8 text-3xl font-medium'>Employees</h3>
 
-      <h3 style={{ marginTop: '40px', marginBottom: '-30px' }}>Employees</h3>
       <table className='w-full border-collapse border border-gray-400'>
         <thead>
           <tr className="bg-purple-950">

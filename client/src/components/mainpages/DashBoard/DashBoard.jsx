@@ -20,7 +20,7 @@ export default function Dashboard() {
                 <div className='flex flex-col lg:flex-row gap-x-10'>
                     <motion.div variants={fadeIn('right', 0.3)} initial='hidden' whileInView={'show'} viewport={{once: false, amount:0.3}} className='flex-1 flex flex-col gap-y-14 lg:mb-0'>
                         
-                        <a href={`/allord`}>
+                        <a href={`/allOrder`}>
                         <div className='group relative overflow-hidden border-2 border-white/50 rounded-xl w-200 h-56'>
                             <div className='group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300'></div>
                             <img className='group-hover:scale-125 transition-all duration-500' src={orderingGif} alt="pImg1" />
@@ -32,7 +32,7 @@ export default function Dashboard() {
                             </div>
                         </div>
                         </a>                                              
-                        <a href={`/delivery/ad`}>
+                        <a href={`/all-deliveries`}>
                         <div className='group relative overflow-hidden border-2 border-white/50 rounded-xl w-200 h-56'>
                             <div className='group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300'></div>
                             <img className='group-hover:scale-125 transition-all duration-500' src={deliveryImg} alt="pImg1" />
@@ -106,7 +106,7 @@ export default function Dashboard() {
                                </div>
                            </div>
                         </a>                                               
-                        <a href={`/Adminwarrenty`}>
+                        <a href={`/addedwarranty`}>
                            <div className='group relative overflow-hidden border-2 border-white/50 rounded-xl w-200 h-56'>
                                <div className='group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300'></div>
                                <img className='group-hover:scale-125 transition-all duration-500' src={warrantyImg} alt="pImg1" />
@@ -118,7 +118,7 @@ export default function Dashboard() {
                                </div>
                            </div>
                         </a>                                               
-                        <a href={`/customer/ad`}>
+                        <a href={`/cuswarranty`}>
                            <div className='group relative overflow-hidden border-2 border-white/50 rounded-xl w-200 h-56'>
                                <div className='group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300'></div>
                                <img className='group-hover:scale-125 transition-all duration-500' src={customerImg} alt="pImg1" />
@@ -130,7 +130,7 @@ export default function Dashboard() {
                                </div>
                            </div>
                         </a>                                               
-                        <a href={`/AdminReturn`}>
+                        <a href={`/returnitems`}>
                            <div className='group relative overflow-hidden border-2 border-white/50 rounded-xl w-200 h-56'>
                                <div className='group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300'></div>
                                <img className='group-hover:scale-125 transition-all duration-500' src={returnImg} alt="pImg1" />
