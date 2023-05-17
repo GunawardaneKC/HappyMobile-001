@@ -1,7 +1,7 @@
 .history-page{
     overflow-x: auto;
 }
-.history-page h2, h4{
+.history-page h2, .history-page h4{
     text-align: center;
     margin: 20px;
     text-transform: uppercase;
@@ -11,7 +11,7 @@
     margin: auto;
     width: 100%;
 }
-.history-page table,th,tr,td{
+.history-page table, .history-page th, .history-page tr, .history-page td{
     border: 1px solid #ddd;
     border-collapse: collapse;
 }

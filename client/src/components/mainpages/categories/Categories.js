@@ -53,29 +53,43 @@ function Categories() {
     }
 
     return (
-        <div className="categories">
-            <form onSubmit={createCategory}>
-                <label htmlFor="category">Category</label>
-                <input type="text" name="category" value={category} required
-                onChange={e => setCategory(e.target.value)} />
+        <div className='mt-8 ' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+  <div className="bg-violet-500 px-4 py-6 max-w-sm border rounded-lg border-purple-700">
+    <form onSubmit={createCategory}>
+      <label htmlFor="category" className="block text-gray-700 font-bold mb-2">Category</label>
+      <div className="flex items-center">
+        <input type="text" name="category" value={category} required
+          onChange={e => setCategory(e.target.value)}
+          className="appearance-none border rounded w-full py-2 px-3 mr-4 leading-tight focus:outline-none focus:shadow-outline text-slate-900"
+        />
+        <button type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          {onEdit ? "Update" : "Create"}
+        </button>
+      </div>
+    </form>
 
-                <button type="submit">{onEdit? "Update" : "Create"}</button>
-            </form>
-
-            <div className="col">
-                {
-                    categories.map(category => (
-                        <div className="row" key={category._id}>
-                            <p>{category.name}</p>
-                            <div>
-                                <button onClick={() => editCategory(category._id, category.name)}>Edit</button>
-                                <button onClick={() => deleteCategory(category._id)}>Delete</button>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>
+    <div className="mt-6">
+      {categories.map(category => (
+        <div className="bg-violet-600 rounded-lg shadow-md p-4 mb-4 flex justify-between items-center"
+          key={category._id}>
+          <p className="text-gray-200">{category.name}</p>
+          <div>
+            <button onClick={() => editCategory(category._id, category.name)}
+              className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline mr-2">
+              Edit
+            </button>
+            <button onClick={() => deleteCategory(category._id)}
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline">
+              Delete
+            </button>
+          </div>
         </div>
+      ))}
+    </div>
+  </div>
+</div>
+
     )
 }
 

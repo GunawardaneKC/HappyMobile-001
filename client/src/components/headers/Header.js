@@ -1,10 +1,10 @@
-import React, {useContext, useState} from 'react'
-import {GlobalState} from '../../GlobalState'
-import Menu from './icon/menu.svg'
-import Close from './icon/close.svg'
-import Cart from './icon/cart.svg'
-import {Link} from 'react-router-dom'
-import axios from 'axios'
+import React, {useContext, useState} from 'react';
+import {GlobalState} from '../../GlobalState';
+import Menu from './icon/menu.svg';
+import Close from './icon/close.svg';
+import Cart from './icon/shopping-cart.svg';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 function Header() {
     const state = useContext(GlobalState)
@@ -27,11 +27,22 @@ function Header() {
             <>
                 <li><Link to="/create_product">Create Product</Link></li>
                 <li><Link to="/category">Categories</Link></li>
+ 
                 <li><Link to="/Emp">Employees</Link></li>
                 <li><Link to="/Repair">Repairs</Link></li>
                 <li><Link to="/allord">Orders</Link></li>
                 <li><Link to="/all-deliveries">Deliveries</Link></li>
                 <li><Link to="/addedwarranty">Warranties</Link></li>
+
+                <li className='dashBoardColor'><Link to="/dashBoard">DashBoard</Link></li>
+                <style>{`
+                        .dashBoardColor:hover a {
+                            background-image: linear-gradient(to right, #1BDFDF, #056ED7, #47C6FD);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                          }
+                    `}</style>
+
             </>
         )
     }
@@ -39,7 +50,17 @@ function Header() {
     const loggedRouter = () =>{
         return(
             <>
+ 
                 <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
+                <li><Link to="/history">History</Link></li>
+                <li className='logOutRed'><Link to="/" onClick={logoutUser}>Logout</Link></li>
+                {/* <li><Link to="/pro">Profile</Link></li> */}
+                <style>{`
+                        .logOutRed:hover a {
+                        color: red;
+                        }
+                    `}</style>
+ 
             </>
         )
     }
@@ -57,15 +78,22 @@ function Header() {
     }
 
     return (
-        <header>
+        <header className='font-medium'>
             <div className="menu" onClick={() => setMenu(!menu)}>
                 <img src={Menu} alt="" width="30" />
             </div>
 
-            <div className="logo">
-                <h1>
-                    <Link to="/">{isAdmin ? 'Happy_Admin' : 'Happy Mobile'}</Link>
+            <div className="logo pl-3">
+                <h1 className='happyTopicNav'>
+                    <Link to="/">{isAdmin ? 'Happy Admin' : 'Happy Mobile'}</Link>
                 </h1>
+                <style>{`
+                        .happyTopicNav:hover a {
+                            background-image: linear-gradient(to right, #EDFE00, #E6BA09, #C06F05);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                          }
+                    `}</style>
             </div>
 
             <ul style={styleMenu}>
@@ -103,4 +131,4 @@ function Header() {
     )
 }
 
-export default Header
+export default Header;

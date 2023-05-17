@@ -1,38 +1,347 @@
-.login-page{
-    max-width: 500px;
-    border: 2px solid rgb(3, 165, 206);
-    border-radius: 5px;
-    padding: 30px;
-    margin: 50px auto;
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Montserrat:wght@300;500;800&display=swap');
+/* 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+} */
+
+:root {
+    --primaryColor: linear-gradient(to right, #b300ff, #5f049b);;
+    --hoverColor: hsl(93, 75%, 76%);
+    --paleGreen: hsl(96, 75%, 89%);
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(0, 0%, 18%);
+    --greyText: hsl(306, 89%, 30%);
+    --bgColor: hsl(300, 11%, 85%);
+    --inputColor: linear-gradient(180deg, #001f55 0%, #5a0040 100%);
+    --biggestFontSize: 2.5rem;
+    --h1FontSize: 1.5rem;
+    --h2FontSize: 1.25rem;
+    --h3FontSize: 1rem;
+    --normalFontSize: .938rem;
+    --smallFontSize: .813rem;
+    --smallestFontSize: .75rem;
 }
-.login-page h2{
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #555;
+
+.flexLR {
+  display: flex;
+  align-items: center;
 }
-.login-page form input,
-.login-page form button{
-    width: 100%;
-    height: 40px;
-    margin: 10px 0;
-    padding: 0 5px;
-    outline: rgb(3, 165, 206);
-    border: 1px solid rgb(3, 165, 206);
+
+.grid {
+  display: grid;
+  align-items: center;
+  gap: 1.5rem;
 }
-.login-page form .row{
-    display: flex;
+/* 
+html {
+  font-size: 90%;
+} */
+
+.icon {
+  font-size: var(--h2FontSize);
+  cursor: pointer;
+}
+
+/* img, video {
+  height: auto;
+  width: 100%;
+} */
+
+.message {
+  display: none;
+}
+
+.showMessage {
+  display: block;
+  color: var(--whiteColor);
+  /* background: linear-gradient(180deg, #00DBDE 0%, #FC00FF 100%); */
+  -o-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  text-align: center;
+  color: #65022e;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+  text-decoration: underline;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  -o-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+  padding: .8rem 1rem;
+  color: var(--greyText);
+}
+
+.btn .icon {
+  margin-left: .5rem;
+}
+.btn:hover {
+  color: var(--primaryColor);
+  background: var(--paleGreen);
+}
+
+.loginPageLR, .registerPageLR {
+  height: 100vh;
+  width: 100%;
+  margin: auto;
+  -o-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  /* box-shadow: 0 7px 50px rgb(214, 223, 213); */
+}
+
+.loginPageLR .containerLR, .registerPageLR .containerLR {
+    height: 75vh;
+    width: 60%;
+    margin: auto;
     justify-content: space-between;
-    align-items: center;
+    -o-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
 }
-.login-page form button{
-    width: 150px;
-    background: rgb(3, 165, 206);
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+
+.loginPageLR .containerLR .videoDiv, .registerPageLR .containerLR .videoDiv {
+    position: relative;
+      display: flex;
+      flex-basis: 50%;
+      width: 70%;
+      height: 100%;
+      padding: 0 1.5rem;
+      text-align: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: auto;
+      -o-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      border-radius: 10px;
+      overflow: hidden;
 }
-.login-page form a{
-    color: orange;
-    letter-spacing: 1.3px;
-    text-transform: uppercase;
+
+.loginPageLR .containerLR .videoDiv video, .registerPageLR .containerLR .videoDiv video, .loginPageLR .containerLR .videoDiv .footerDiv, .registerPageLR .containerLR .videoDiv .footerDiv {
+    position: absolute;
+}
+
+.loginPageLR .containerLR .videoDiv video, .registerPageLR .containerLR .videoDiv video {
+    height: 100%;
+        width: 100%;
+        object-fit: cover;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+}
+
+.loginPageLR .containerLR .videoDiv .textDiv, .registerPageLR .containerLR .videoDiv .textDiv {
+    position: relative
+}
+
+.loginPageLR .containerLR .videoDiv .textDiv .title, .registerPageLR .containerLR .videoDiv .textDiv .title {
+    color: var(--whiteColor);
+          font-size: 35px;
+          font-weight: 800;
+}
+
+.loginPageLR .containerLR .videoDiv .textDiv p, .registerPageLR .containerLR .videoDiv .textDiv p {
+    color: var(--whiteColor);
+          padding: 1rem;
+          font-weight: 400;
+}
+
+.loginPageLR .containerLR .videoDiv .footerDiv, .registerPageLR .containerLR .videoDiv .footerDiv {
+    bottom: 10px;
+        padding: 0 1rem;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.248);
+        left: 10px;
+        right: 10px;
+        justify-content: space-between;
+        /* backdrop-filter: blur(1px); */
+        -o-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        border-radius: 10px;
+}
+
+.loginPageLR .containerLR .videoDiv .footerDiv .text, .registerPageLR .containerLR .videoDiv .footerDiv .text {
+    color: var(--whiteColor);
+}
+
+.loginPageLR .containerLR .videoDiv .footerDiv .btn, .registerPageLR .containerLR .videoDiv .footerDiv .btn {
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+          color: var(--primaryColor);
+          padding: 8px 20px;
+          -o-border-radius: 10px;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          -ms-border-radius: 10px;
+          border-radius: 10px;
+          font-weight: 400;
+          -o-transition: .3s ease;
+          -webkit-transition: .3s ease;
+          -moz-transition: .3s ease;
+          -ms-transition: .3s ease;
+          transition: .3s ease;
+}
+
+
+.loginPageLR .containerLR .videoDiv .footerDiv .btn:hover, .registerPageLR .containerLR .videoDiv .footerDiv .btn:hover {
+    background: linear-gradient(to left, #8e2de2, #4a00e0);
+            color: gold;
+}
+
+.loginPageLR .containerLR .formDiv , .registerPageLR .containerLR .formDiv {
+    flex-basis: 50%;
+      margin: auto;
+      flex-direction: column;
+      gap: 1.5rem;
+      -o-transform: translateY(-1rem);
+      -webkit-transform: translateY(-1rem);
+      -moz-transform: translateY(-1rem);
+      -ms-transform: translateY(-1rem);
+      transform: translateY(-1rem);
+}
+
+.loginPageLR .containerLR .formDiv .headerDiv , .registerPageLR .containerLR .formDiv .headerDiv {
+    text-align: center;
+        padding: 1.5rem 0;
+}
+
+.loginPageLR .containerLR .formDiv .headerDiv img , .registerPageLR .containerLR .formDiv .headerDiv img {
+    width: 60px;
+    padding-bottom: .5rem;
+}
+
+.loginPageLR .containerLR .formDiv .headerDiv h3 , .registerPageLR .containerLR .formDiv .headerDiv h3 {
+    font-size: 25px;
+          color: var(--blackColor);
+          font-weight: 600;
+}
+
+.loginPageLR .containerLR .formDiv .form , .registerPageLR .containerLR .formDiv .form {
+    gap: 1rem;
+}
+
+.loginPageLR .containerLR .formDiv .form .inputDiv .icon , .registerPageLR .containerLR .formDiv .form .inputDiv .icon {
+    color: var(--greyText);
+}
+
+.loginPageLR .containerLR .formDiv .form .inputDiv input , .registerPageLR .containerLR .formDiv .form .inputDiv input {
+            background: linear-gradient(180deg, #001f55 0%, #5a0040 100%) !important;
+            outline: none;
+            border: none;
+            width: 200px;
+}
+
+.loginPageLR .containerLR .formDiv .form .inputDiv input:-webkit-autofill,
+.registerPageLR .containerLR .formDiv .form .inputDiv input:-webkit-autofill {
+    box-shadow: 0 0 0 30px #001f55 inset;
+}
+
+
+.loginPageLR .containerLR .formDiv .form .inputDiv label , .registerPageLR .containerLR .formDiv .form .inputDiv label {
+    color: var(--blackColor);
+            font-weight: 400;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 0;
+            display: block;
+}
+
+.loginPageLR .containerLR .formDiv .form .inputDiv .input , .registerPageLR .containerLR .formDiv .form .inputDiv .input {
+            gap: .5rem;
+            padding: 5px 20px;
+            background: var(--inputColor);
+            -o-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            border-radius: 10px;
+}
+
+.loginPageLR .containerLR .formDiv .form .btn , .registerPageLR .containerLR .formDiv .form .btn {
+    /* padding: .8rem; */
+          background: var(--primaryColor);
+          -o-border-radius: 10px;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          -ms-border-radius: 10px;
+          border-radius: 10px;
+          color: var(--whiteColor);
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          width: 100%;
+          gap: .5rem;
+          margin-top: 20px;
+          -o-transition: .3s ease;
+          -webkit-transition: .3s ease;
+          -moz-transition: .3s ease;
+          -ms-transition: .3s ease;
+          transition: .3s ease;
+}
+
+.loginPageLR .containerLR .formDiv .form .btn:hover,
+.registerPageLR .containerLR .formDiv .form .btn:hover {
+  background: linear-gradient(to right, #bb0764, #65022e);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0.5, 0.5);
+  color: gold;
+}
+
+.loginPageLR .containerLR .formDiv .form .btn .icon , .registerPageLR .containerLR .formDiv .form .btn .icon {
+    font-size: 25px;
+            -o-transition: .3s ease;
+            -webkit-transition: .3s ease;
+            -moz-transition: .3s ease;
+            -ms-transition: .3s ease;
+            transition: .3s ease;
+}
+
+.loginPageLR .containerLR .formDiv .form .btn .icon:hover , .registerPageLR .containerLR .formDiv .form .btn .icon:hover {
+    background:var(--hoverColor);
+            color: var(--blackColor);
+}
+
+.loginPageLR .containerLR .formDiv .form .btn .icon:hover .icon , .registerPageLR .containerLR .formDiv .form .btn .icon:hover .icon {
+    font-size: 25px;
+              -o-transform: translateX(5px);
+              -webkit-transform: translateX(5px);
+              -moz-transform: translateX(5px);
+              -ms-transform: translateX(5px);
+              transform: translateX(5px);
+}
+
+.loginPageLR .containerLR .formDiv .form .forgotPassword , .registerPageLR .containerLR .formDiv .form .forgotPassword {
+    font-size: 13px;
+          color: var(--blackColor);
+          opacity: .7;
+          text-align: center;
+          font-weight: bold;
+}
+
+.loginPageLR .containerLR .formDiv .form .forgotPassword a , .registerPageLR .containerLR .formDiv .form .forgotPassword a {
+    text-decoration: underline;
+          cursor: pointer;
+          opacity: 1;
+}
+
+.loginPageLR .containerLR .formDiv .form .forgotPassword a:hover , .registerPageLR .containerLR .formDiv .form .forgotPassword a:hover {
+  color: red;
 }
