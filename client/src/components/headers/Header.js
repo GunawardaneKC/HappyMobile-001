@@ -73,6 +73,8 @@ function Header() {
 
                 <li><Link to="/cuswarranty">{isAdmin ? '' : 'Your Warranties'}</Link></li>
 
+                <li><Link to="/cusrepair">{isAdmin ? '' : 'Your Repairs'}</Link></li>
+
                 {isAdmin && adminRouter()}
 
                 {isUser && UserRouter()}

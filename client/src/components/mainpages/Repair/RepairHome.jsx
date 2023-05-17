@@ -80,6 +80,7 @@ const Home = () => {
             <th scope='col'>Phone Number</th>
             <th scope='col'>Device</th>
             <th scope='col'>Brand</th>
+            <th scope='col'>Status</th>
             <th scope='col'>Actions</th>
           </tr>
         </thead>
@@ -96,6 +97,28 @@ const Home = () => {
               <td>{post.phoneNum}</td>
               <td>{post.device}</td>
               <td>{post.Brand}</td>
+              <td>
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                  value={post.status}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    const id = post._id;
+                    axios.put(`/repair/update/${id}`, { status: value })
+                      .then((response) => {
+                        console.log(response.data);
+                        retrievePosts();
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                      });
+                  }}
+                >
+                  <option value="Pending">Pending</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </td>
               <td>
                 <Link to={`/editRepair/${post._id}`} className='btn btn-warning'>
                   <i className='fas fa-edit'></i>&nbsp;Edit

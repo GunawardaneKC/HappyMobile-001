@@ -58,13 +58,14 @@ const Emp = () => {
         <button className="btn btn-success"><Link to='/add/emp' style={{textDecoration: 'none', color:'black'}}>Add New Employee</Link></button>&nbsp;
       </div>
 
-      <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/warranty/reports`}>Get Report</a> 
+      <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/empR`}>Get Report</a> 
 
       <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>Employees</h3>
       <table className='table table-hover' style={{ marginTop: '40px' }}>
         <thead>
           <tr>
           <th scope='col'>No</th>
+            <th scope='col'>Employee ID</th>
             <th scope='col'>First Name</th>
             <th scope='col'>Last Name</th>
             <th scope='col'>Email Address</th>
@@ -84,6 +85,7 @@ const Emp = () => {
                   {post.repairID}
                 </Link>
               </td> */}
+              <td>{post.empID}</td>
               <td>{post.first_name}</td>
               <td>{post.last_name}</td>
               <td>{post.email}</td>

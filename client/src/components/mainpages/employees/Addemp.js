@@ -1,9 +1,9 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 
 const CreatePosts = () => {
   const [formData, setFormData] = useState({
+    empID:'',
     first_name: '',
     last_name: '',
     email: '',
@@ -26,6 +26,10 @@ const CreatePosts = () => {
 
   const validate = () => {
     const newErrors = {};
+
+    if (!formData.empID) {
+      newErrors.first_name = 'Employee ID is required';
+    }
 
     if (!formData.first_name) {
       newErrors.first_name = 'First Name is required';
@@ -77,6 +81,7 @@ const CreatePosts = () => {
           if (res.data.success) {
             alert('New Employee added Successfully!');
             setFormData({
+              empID:'',
               first_name: '',
               last_name: '',
               email: '',
@@ -97,6 +102,23 @@ const CreatePosts = () => {
     <div className="col-md-8 mt-4 mx-auto">
       <h1 className="h3 mb-3 font-weight-normal">Add new Employee</h1>
       <form className="needs-validation" onSubmit={handleSubmit} noValidate>
+
+      <div className="form-group" style={{ marginBottom: '15px' }}>
+          <label style={{ marginBottom: '5px' }}>Employee ID</label>
+          <input
+            type="text"
+            className={`form-control ${errors.empID && 'is-invalid'}`}
+            name="first_name"
+            placeholder="Enter Employee ID"
+            value={formData.empID}
+            onChange={handleInputChange}
+            required
+          />
+          {errors.empID && (
+            <div className="invalid-feedback" style={{color:"red"}}>{errors.empID}</div>
+          )}
+        </div>
+
         <div className="form-group" style={{ marginBottom: '15px' }}>
           <label style={{ marginBottom: '5px' }}>First Name</label>
           <input

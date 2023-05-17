@@ -51,7 +51,7 @@ const Ord = () => {
         </div>
       </div>
 
-      <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/warranty/reports`}>Get Report</a> 
+      <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/orderRep`}>Get Report</a> 
 
       <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>Orders</h3>
       <table className='table table-hover' style={{ marginTop: '40px' }}>

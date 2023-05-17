@@ -5,7 +5,7 @@ import html2canvas from "html2canvas";
 
 import  Button  from "react-bootstrap/Button";
 
-export default class RepairR extends Component {
+export default class orderR extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,13 +73,13 @@ export default class RepairR extends Component {
       const date = Date().split(" ");
       // we use a date string to generate our filename.
       const dateStr =
-        "Repair_Management" + date[0] + date[1] + date[2] + date[3] + date[4];
+        "Orders_Management" + date[0] + date[1] + date[2] + date[3] + date[4];
       doc.save(`report_${dateStr}.pdf`);
     });
   }
 
   viewPosts(){
-    axios.get("/getRepairs").then(res =>{
+    axios.get("/Ord").then(res =>{
       if(res.data.success){
         this.setState({
           ReportData:res.data.existingPosts,
@@ -106,14 +106,13 @@ export default class RepairR extends Component {
        <table className="table table-striped text-center" >
            <thead>
              <tr>
-              <th scope='col'>Repair No</th>
-              <th scope='col'>Repair ID</th>
-              <th scope='col'>Customer Name</th>
-              <th scope='col'>Phone Number</th>
-              <th scope='col'>Customer Device</th>
-              <th scope='col'>Given Date</th>
-              <th scope='col'>Repaired Price</th>
-              <th scope='col'>Damaged Reason</th>
+              <th scope='col'> No </th>
+              <th scope='col'>Order ID</th>
+              <th scope='col'>User ID</th>
+              <th scope='col'>User Name</th>
+              <th scope='col'>User Email</th>
+              <th scope='col'>Payment Status</th>
+              <th scope='col'>Details</th>
              </tr>
            </thead>
          
@@ -121,13 +120,33 @@ export default class RepairR extends Component {
             {this.state.ReportData.map((posts,index)=>(
                  <tr key={index}>
                     <th scope="row">{index+1}</th>
-                    <td>{posts.repairID}</td>
-                    <td>{posts.customerName}</td>
-                    <td>{posts.phoneNum}</td>
-                    <td>{posts.device}</td>
-                    <td>{posts.givenDate}</td>
-                    <td>{posts.repairPrize}</td>
-                    <td>{posts.reason}</td>
+                    <td>{posts.orderId}</td>
+                    <td>{posts.user_id}</td>
+                    <td>{posts.name}</td>
+                    <td>{posts.email}</td>
+                    <td>{posts.payment}</td>
+                    <td>
+                <table style={{ margin: "30px 0px" }}>
+                  <thead>
+                    <tr>
+                      <th>Product ID</th>
+                      <th>Products</th>
+                      <th>Quantity</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {posts.cart.map((item) => (
+                      <tr key={item._id}>
+                        <td>{item.product_id}</td>
+                        <td>{item.title}</td>
+                        <td>{item.quantity}</td>
+                        <td>LKR {item.price * item.quantity}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </td>
                  </tr>
 
             ))}

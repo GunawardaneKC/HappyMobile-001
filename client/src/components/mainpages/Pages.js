@@ -28,10 +28,14 @@ import AddWarranty from './warranty/AddWarranty';
 import AllWarranty from './warranty/AddedWarranty';
 import Allreturn from './warranty/return';
 import Cuswarranty from './warranty/cuswarranty';
-
+import Cusrepair from './Repair/cusRepair';
+import ReportDelivery from './Delivery/DeliveryR';
+import ReportEmp from './employees/empR';
+import ReportOrder from './history/OrderR';
+import ReportPro from './products/ProductR';
+import Reportwarranty from './warranty/warrantyR';
 
 import {GlobalState} from '../../GlobalState'
-
 
 function Pages() {
     const state = useContext(GlobalState)
@@ -43,6 +47,7 @@ function Pages() {
         <Routes>
             <Route path="/" exact element={<Products/>} />
             <Route path="/detail/:id" exact element={<DetailProduct/>} />
+            <Route path="/ProR" exact element={<ReportPro/>} />
 
             <Route path="/login" exact element={isLogged ? <NotFound/> : <Login/>} />
             <Route path="/register" exact element={isLogged ? <NotFound/> : <Register/>} />
@@ -54,6 +59,7 @@ function Pages() {
 
             <Route path="/history" exact element={isLogged ? <OrderHistory/> : <NotFound/>} />
             <Route path="/history/:id" exact element={isLogged ? <OrderDetails/> : <NotFound/>} />
+            <Route path="/orderRep" exact element={<ReportOrder />} />
 
             <Route path="/cart" exact element={<Cart/>} />
 
@@ -65,6 +71,7 @@ function Pages() {
             <Route path="/Emp"  exact element={isAdmin ? <ViewEmp/> : <NotFound/>} /> 
             <Route path="/Editemp/:id"  exact element={<Editemp/>}></Route> 
             <Route path="/add/emp"  exact element={<Addemp/>}></Route> 
+            <Route path="/empR"  exact element={<ReportEmp/>}></Route> 
 
             //repair
             <Route path="/Repair" exact element={<RepairHome />} />
@@ -73,6 +80,7 @@ function Pages() {
             <Route path="/postRepair/:id" exact element={<RepairPostDetails />} />
             <Route path="/completedRepair" exact element={<RepairCompletedTable />} />
             <Route path="/repair/reports" exact element={<ReportRepair />} />
+            <Route path="/cusrepair" exact element={<Cusrepair />} />
 
 
             <Route path="*" exact element={<NotFound/>} />
@@ -81,11 +89,15 @@ function Pages() {
 
             <Route path="/delivery-info" exact element={<AddDelivery />} />
             <Route path="/all-deliveries" exact element={<AllDeliveries />} />
+            <Route path="/deliveryrepo" exact element={<ReportDelivery />} />
+           
+
 
             <Route path="/addwarranty" exact element={<AddWarranty />} />
             <Route path="/addedwarranty" exact element={<AllWarranty />} />
             <Route path="/returnitems" exact element={<Allreturn />} />
             <Route path="/cuswarranty" exact element={<Cuswarranty />} />
+            <Route path="/warrantyR" exact element={<Reportwarranty />} />
 
         </Routes>
     )

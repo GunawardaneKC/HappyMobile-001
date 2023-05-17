@@ -5,7 +5,7 @@ import html2canvas from "html2canvas";
 
 import  Button  from "react-bootstrap/Button";
 
-export default class RepairR extends Component {
+export default class EmployeeR extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,13 +73,13 @@ export default class RepairR extends Component {
       const date = Date().split(" ");
       // we use a date string to generate our filename.
       const dateStr =
-        "Repair_Management" + date[0] + date[1] + date[2] + date[3] + date[4];
+        "Employee_Management" + date[0] + date[1] + date[2] + date[3] + date[4];
       doc.save(`report_${dateStr}.pdf`);
     });
   }
 
   viewPosts(){
-    axios.get("/getRepairs").then(res =>{
+    axios.get("/Emp").then(res =>{
       if(res.data.success){
         this.setState({
           ReportData:res.data.existingPosts,
@@ -106,14 +106,15 @@ export default class RepairR extends Component {
        <table className="table table-striped text-center" >
            <thead>
              <tr>
-              <th scope='col'>Repair No</th>
-              <th scope='col'>Repair ID</th>
-              <th scope='col'>Customer Name</th>
+              <th scope='col'> No </th>
+              <th scope='col'>Employee ID</th>
+              <th scope='col'>First Name</th>
+              <th scope='col'>Last Name</th>
+              <th scope='col'>Email</th>
+              <th scope='col'>Address</th>
+              <th scope='col'>NIC</th>
               <th scope='col'>Phone Number</th>
-              <th scope='col'>Customer Device</th>
-              <th scope='col'>Given Date</th>
-              <th scope='col'>Repaired Price</th>
-              <th scope='col'>Damaged Reason</th>
+              <th scope='col'>Allocated Date</th>
              </tr>
            </thead>
          
@@ -121,13 +122,14 @@ export default class RepairR extends Component {
             {this.state.ReportData.map((posts,index)=>(
                  <tr key={index}>
                     <th scope="row">{index+1}</th>
-                    <td>{posts.repairID}</td>
-                    <td>{posts.customerName}</td>
-                    <td>{posts.phoneNum}</td>
-                    <td>{posts.device}</td>
-                    <td>{posts.givenDate}</td>
-                    <td>{posts.repairPrize}</td>
-                    <td>{posts.reason}</td>
+                    <td>{posts.empID}</td>
+                    <td>{posts.first_name}</td>
+                    <td>{posts.last_name}</td>
+                    <td>{posts.email}</td>
+                    <td>{posts.Address}</td>
+                    <td>{posts.NIC}</td>
+                    <td>{posts.Phone}</td>
+                    <td>{posts.date}</td>
                  </tr>
 
             ))}

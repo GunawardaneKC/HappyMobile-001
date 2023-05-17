@@ -7,6 +7,7 @@ export default function EditPost() {
   const navigate = useNavigate();
   const [post, setPost] = useState({});
   const [updatedPost, setUpdatedPost] = useState({
+      empID:'',
       first_name:"",
       last_name:"",
       email:"",
@@ -20,6 +21,7 @@ export default function EditPost() {
       if (res.data.success) {
         setPost(res.data.post);
         setUpdatedPost({
+          empID: res.data.post.empID,
           first_name: res.data.post.first_name,
           last_name: res.data.post.last_name,
           email: res.data.post.email,
@@ -32,7 +34,7 @@ export default function EditPost() {
   }, [id]);
   console.log(post);
 
-  const {first_name, last_name, email, Address, NIC, Phone} = updatedPost;
+  const {empID,first_name, last_name, email, Address, NIC, Phone} = updatedPost;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -47,6 +49,7 @@ export default function EditPost() {
     e.preventDefault();
 
     const data = {
+      empID : updatedPost.empID,
       first_name: updatedPost.first_name,
       last_name: updatedPost.last_name,
       email: updatedPost.email,
@@ -59,6 +62,7 @@ export default function EditPost() {
       console.log(res.data);
       alert('Post updated successfully!');
       setUpdatedPost({
+        empID:"",
         first_name:"",
         last_name:"",
         email:"",
@@ -76,6 +80,18 @@ export default function EditPost() {
       <hr />
 
       <form onSubmit={handleFormSubmit}>
+
+      <div className='form-group'>
+          <label>Employee ID</label>
+          <input
+            type='text'
+            className='form-control'
+            name='empID'
+            value={empID}
+            onChange={handleInputChange}
+          />
+        </div>
+
         <div className='form-group'>
           <label>First name:</label>
           <input

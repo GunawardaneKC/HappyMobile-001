@@ -79,6 +79,13 @@ const validate = () => {
           });
           setError({});
         }
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 409) {
+          setError({ email: 'Email is already in use' });
+        } else {
+          console.log(error);
+        }
       });
     }
   };
@@ -86,7 +93,7 @@ const validate = () => {
     return (
 
       <div className='col-md-8 mt-4 mx-auto'>
-        <h1 className='h3 mb-3 font-weight-normal'>Add new Repair</h1>
+        <h1 className='h3 mb-3 font-weight-normal'>Add new Delivery</h1>
         <form className='needs-validation' noValidate>
 
         <div className="form-group">
@@ -135,7 +142,7 @@ const validate = () => {
         </div>
 
         <div className='form-group' style={{marginBottom: '15px'}}>
-          <label style={{marginBottom: '5px'}}>NIC</label>
+          <label style={{marginBottom: '5px'}}>Recipient's NIC</label>
           <input type="text" 
           className='form-control'
           name='NIC'
