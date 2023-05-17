@@ -344,7 +344,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const CreatePosts = () => {
+
+const Form = () => {
   const [formData, setFormData] = useState({
     empID: '',
     first_name: '',

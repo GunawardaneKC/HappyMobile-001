@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Ord = () => {
   const [posts, setPosts] = useState([]);
@@ -217,12 +218,12 @@ const Ord = () => {
             </tbody>
           </table>
         </td>
-        <td className="px-6 py-4 whitespace-nowrap">
+        {/* <td className="px-6 py-4 whitespace-nowrap">
           &nbsp;
           <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline" onClick={() => deletePost(post._id)}>
                 <i className='fas fa-trash-alt'></i>&nbsp;Delete
               </button>
-            </td>
+            </td> */}
           </tr>
         ))}
       </tbody>
