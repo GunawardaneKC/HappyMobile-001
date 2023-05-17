@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route,} from 'react-router-dom';
 import Products from './products/Products';
 import DetailProduct from './detailProduct/DetailProduct';
 import Login from './auth/Login';
@@ -23,6 +23,8 @@ import RepairPostDetails from './Repair/RepairPostDetails';
 import RepairCompletedTable from './Repair/RepairCompletedTable';
 import ReportRepair from './Repair/RepairR';
 import Allorders from './history/Allorders';
+import SupportChat from './LiveChat/SupportAdmin/index';
+import ContactUs from './LiveChat/ContactUs';
 import AddDelivery from './Delivery/AddDelivery';
 import AllDeliveries from './Delivery/AllDeliveries';
 import AddWarranty from './warranty/AddWarranty';
@@ -36,7 +38,7 @@ import ReportOrder from './history/OrderR';
 import ReportPro from './products/ProductR';
 import Reportwarranty from './warranty/warrantyR';
 
-import {GlobalState} from '../../GlobalState'
+import {GlobalState} from '../../GlobalState';
 
 function Pages() {
     const state = useContext(GlobalState)
@@ -49,6 +51,8 @@ function Pages() {
             <Route path="/" exact element={<Products/>} />
             <Route path="/detail/:id" exact element={<DetailProduct/>} />
             <Route path="/ProR" exact element={<ReportPro/>} />
+
+            <Route path="/supportChat" exact element={<SupportChat/>} />
 
             <Route path="/login" exact element={isLogged ? <NotFound/> : <Login/>} />
             <Route path="/register" exact element={isLogged ? <NotFound/> : <Register/>} />
@@ -87,7 +91,9 @@ function Pages() {
 
             <Route path="*" exact element={<NotFound/>} />
 
-            <Route path="/allord" exact element={<Allorders />} />
+            <Route path="/allOrder" exact element={<Allorders />} />
+            <Route path="/contactUs" exact element={<ContactUs />} />
+            
 
             <Route path="/delivery-info" exact element={<AddDelivery />} />
             <Route path="/all-deliveries" exact element={<AllDeliveries />} />
@@ -102,6 +108,7 @@ function Pages() {
             <Route path="/warrantyR" exact element={<Reportwarranty />} />
 
         </Routes>
+        
     )
 }
 

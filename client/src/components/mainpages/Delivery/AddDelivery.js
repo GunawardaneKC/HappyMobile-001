@@ -91,85 +91,97 @@ const validate = () => {
   };
   
     return (
+      <div className="flex flex-col mt-8 items-center justify-center bg-purple-900 bg-opacity-100 backdrop-filter backdrop-blur-lg rounded-lg p-6 w-2/5 mx-auto">
+  <h1 className="text-2xl font-bold mb-4">Enter Your Delivery Details</h1>
+  <form noValidate className="w-full">
 
-      <div className='col-md-8 mt-4 mx-auto'>
-        <h1 className='h3 mb-3 font-weight-normal'>Add new Delivery</h1>
-        <form className='needs-validation' noValidate>
+    <div className="mb-4">
+      <label htmlFor="orderId" className="text-sm font-semibold">Order ID</label>
+      <input
+        type="text"
+        id="orderId"
+        value={orderId}
+        readOnly
+        onChange={(e) => setOrderId(e.target.value)}
+        className="w-full px-4 py-2 rounded-md bg-gray-100 text-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
 
-        <div className="form-group">
-        <label htmlFor="orderId">Order ID</label>
-        <input
-          type="text"
-          className="form-control"
-          id="orderId"
-          value={orderId}
-          readOnly
-          onChange={(e) => setOrderId(e.target.value)}
-        />
-      </div>
+    <div className="mb-4">
+      <label className="text-sm font-semibold">Recipient's Name</label>
+      <input
+        type="text"
+        name="Name"
+        placeholder="Enter Recipient's Name"
+        value={formData.Name}
+        onChange={handleInputChange}
+        className="w-full px-4 py-2 rounded-md bg-gray-100 text-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      {error.Name && <div className="text-red-500 text-sm">{error.Name}</div>}
+    </div>
 
-      <div className='form-group' style={{marginBottom: '15px'}}>
-          <label style={{marginBottom: '5px'}}>Recipient's Name</label>
-          <input type="text" 
-          className='form-control'
-          name='Name'
-          placeholder='Enter Recipients Name'
-          value={formData.Name}
-          onChange={handleInputChange}/>
-          {error.Name && <div className='invalid-feedback' style={{color:"red"}}>{error.Name}</div>}
-        </div>
+    <div className="mb-4">
+      <label className="text-sm font-semibold">Phone Number</label>
+      <input
+        type="number"
+        name="phone"
+        placeholder="Enter Phone Number"
+        value={formData.phone}
+        onChange={handleInputChange}
+        className="w-full px-4 py-2 rounded-md bg-gray-100 text-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      {error.phone && <div className="text-red-500 text-sm">{error.phone}</div>}
+    </div>
 
-        <div className='form-group' style={{marginBottom: '15px'}}>
-          <label style={{marginBottom: '5px'}}>Phone Number</label>
-          <input type="number" 
-          className='form-control'
-          name='phone'
-          placeholder='Enter Phone Number'
-          value={formData.phone}
-          onChange={handleInputChange}/>
-          {error.phone && <div className='invalid-feedback' style={{color:"red"}}>{error.phone}</div>}
-        </div>
+    <div className="mb-4">
+      <label className="text-sm font-semibold">Recipient's Address</label>
+      <input
+        type="text"
+        name="Address"
+        placeholder="Enter Address"
+        value={formData.Address}
+        onChange={handleInputChange}
+        className="w-full px-4 py-2 rounded-md bg-gray-100 text-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      {error.Address && <div className="text-red-500 text-sm">{error.Address}</div>}
+    </div>
 
-        <div className='form-group' style={{marginBottom: '15px'}}>
-          <label style={{marginBottom: '5px'}}>Recipient's Address</label>
-          <input type="text" 
-          className='form-control'
-          name='Address'
-          placeholder='Enter Address'
-          value={formData.Address}
-          onChange={handleInputChange}/>
-          {error.Address && <div className='invalid-feedback' style={{color:"red"}}>{error.Address}</div>}
-        </div>
+    <div className="mb-4">
+      <label className="text-sm font-semibold">NIC</label>
+      <input
+        type="text"
+        name="NIC"
+        placeholder="Enter the NIC"
+        value={formData.NIC}
+        onChange={handleInputChange}
+        className="w-full px-4 py-2 rounded-md bg-gray-100 text-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      {error.NIC && <div className="text-red-500 text-sm">{error.NIC}</div>}
+    </div>
 
-        <div className='form-group' style={{marginBottom: '15px'}}>
-          <label style={{marginBottom: '5px'}}>Recipient's NIC</label>
-          <input type="text" 
-          className='form-control'
-          name='NIC'
-          placeholder='Enter the NIC'
-          value={formData.NIC}
-          onChange={handleInputChange}/>
-          {error.NIC && <div className='invalid-feedback' style={{color:"red"}}>{error.NIC}</div>}
-        </div>
+    <div className="mb-4">
+      <label className="text-sm font-semibold">Recipient's email</label>
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter the email"
+        value={formData.email}
+        onChange={handleInputChange}
+        className="w-full px-4 py-2 rounded-md bg-gray-100 text-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      {error.email && <div className="text-red-500 text-sm">{error.email}</div>}
+    </div>
 
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom: '5px'}}>Recipient's email</label>
-            <input type="email" 
-            className='form-control'
-            name='email'
-            placeholder='Enter the email'
-            value={formData.email}
-            onChange={handleInputChange}/>
-            {error.email && <div className='invalid-feedback' style={{color:"red"}}>{error.email}</div>}
-          </div>
+    <button
+      type="submit"
+      onClick={onSubmit}
+      className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md w-full"
+    >
+      <i></i>&nbsp;Save
+    </button>
 
-          <button className='btn btn-success' type="submit" style={{marginTop: '15px'}} onClick={onSubmit}>
-              <i className='far fa-check-square'></i>
-              &nbsp;Save
-          </button>
-
-        </form>
-      </div>
+  </form>
+</div>      
     );
 
 }

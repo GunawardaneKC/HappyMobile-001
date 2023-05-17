@@ -5,9 +5,6 @@ import Loading from '../utils/loading/Loading';
 import axios from 'axios';
 import Filters from './Filters';
 import LoadMore from './LoadMore';
-import Button from 'react-bootstrap/Button';
-import { BsCart4} from "react-icons/bs";
-import Form from 'react-bootstrap/Form';
 import {FaGithub, FaYoutube, FaFacebook} from 'react-icons/fa';
 import {TypeAnimation} from 'react-type-animation';
 import {motion} from 'framer-motion';
@@ -87,7 +84,7 @@ function Products() {
                         Happy Mobile is the largest Apple Products Seller in Gampaha and we strive to bring the Apple products and other devices you love closer to you.
                     </motion.p>
                     <motion.div variants={fadeIn('up', 0.6)} initial="hidden" whileInView={'show'} viewport={{once: false, amount: 0.7}} className='flex gap-6 items-center my-12'>
-                        <button className='btn btn-lg text-cyan-50 hover:text-purple-700'>Contact Us</button>
+                    <a href={`/contactUs`}><button className='btn btn-lg text-cyan-50 hover:bg-gradient-to-r hover:from-purple-500 hover:via-pink-500 hover:to-red-500'>Contact Us</button></a>
                         <Link to="productsId1" smooth={true} duration={900} className='text-purple-500 text-xl hover:text-red-700'>Our Products</Link>
                     </motion.div>
                     <motion.div variants={fadeIn('up', 0.7)} initial="hidden" whileInView={'show'} viewport={{once: false, amount: 0.7}} className='flex text-2xl gap-6 max-w-max mx-auto lg:mx-0'>
@@ -124,14 +121,16 @@ function Products() {
             </div>
         } */}
 
-        <div className="products" id='productsId1'>
+        <motion.div variants={fadeIn('left', 0.6)} initial="hidden" whileInView={'show'} className="products" id='productsId1'>
             {
                 products.map(product => {
-                    return <ProductItem key={product._id} product={product}
+                    
+                    return ( <ProductItem key={product._id} product={product}
                     isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck} />
+                    )
                 })
             } 
-        </div>
+        </motion.div>
 
         <LoadMore />
         {products.length === 0 && <Loading />}

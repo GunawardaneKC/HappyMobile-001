@@ -1,72 +1,109 @@
-
 import React, { useContext, useEffect } from 'react'
 import { GlobalState } from '../../../GlobalState'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import React, { useContext, useEffect } from "react";
-import { GlobalState } from "../../../GlobalState";
-import { Link } from "react-router-dom";
-import axios from "axios";
-
 
 function OrderHistory() {
-  const state = useContext(GlobalState);
-  const [history, setHistory] = state.userAPI.history;
-  const [isAdmin] = state.userAPI.isAdmin;
-  const [token] = state.token;
+  const state = useContext(GlobalState)
+  const [history, setHistory] = state.userAPI.history
+  const [isAdmin] = state.userAPI.isAdmin
+  const [token] = state.token
 
   useEffect(() => {
     if (token) {
       const getHistory = async () => {
         if (isAdmin) {
-          const res = await axios.get("/api/payment", {
+          const res = await axios.get('/api/payment', {
             headers: { Authorization: token },
-          });
-          setHistory(res.data);
+          })
+          setHistory(res.data)
         } else {
-          const res = await axios.get("/user/history", {
+          const res = await axios.get('/user/history', {
             headers: { Authorization: token },
-          });
-          setHistory(res.data);
+          })
+          setHistory(res.data)
         }
-      };
-      getHistory();
+      }
+      getHistory()
     }
-  }, [token, isAdmin, setHistory]);
+  }, [token, isAdmin, setHistory])
+
+  const params = useParams()
+
+  useEffect(() => {
+    if (params.id) {
+      history.forEach((item) => {
+        if (item._id === params.id) setHistory(item)
+      })
+    }
+
+  }, [params.id, history])
+
+  const handleDelete = (id) => {
+    axios.delete(`payment/delete/${id}`, {
+      headers: { Authorization: token },
+    }).then((res) => {
+      setHistory(history.filter((item) => item._id !== id))
+      alert('Order Cancled Successfully');
+    }).catch((err) => {
+      alert(err.response.data.msg)
+    })
+  }
 
   return (
-    <div className="history-page bg-opacity-60 backdrop-filter backdrop-blur-lg bg-purple-900 text-white mt-8 py-8 px-4 rounded-lg mx-8 shadow-xl">
-  <h2 className="text-3xl font-bold mb-4">Order History</h2>
+    <div className="history-page m-8">
+      <h2>History</h2>
 
-  <h4 className="text-lg mb-2">
-    You have {history.length} {history.length === 1 ? "order" : "orders"}
-  </h4>
+      <h4>You have {history.length} ordered</h4>
 
-  <table className="w-full table-auto">
-    <thead>
-      <tr>
-        {/* <th>Payment ID</th> */}
-        <th className="px-4 py-2">Date of Purchased</th>
-        <th className="px-4 py-2">Products</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {history.map((items) => (
-        <tr key={items._id}>
-          {/* <td>{items.paymentID}</td> */}
-          <td className="border px-4 py-2">
-            {new Date(items.createdAt).toLocaleDateString()}
-          </td>
-          <td className="border px-4 py-2">{`${items._id}`}</td>
-          <td className="border px-4 py-2">{`${items.title}`}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
-
-  );
+      <table>
+        <thead>
+          <tr>
+            <th>Date of Purchased</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {history.map((items) => (
+            <tr key={items._id}>
+              <td>{new Date(items.createdAt).toLocaleDateString()}</td>
+              <td>
+                <table style={{ margin: '30px 0px' }}>
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Products</th>
+                      <th>Quantity</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {items.cart.map((item) => (
+                      <tr key={item._id}>
+                        <td>
+                          <img src={item.images.url} alt="" />
+                        </td>
+                        <td>{item.title}</td>
+                        <td>{item.quantity}</td>
+                        <td>LKR {item.price * item.quantity}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <td>
+                {
+                  <div className="delete-payment ">
+                    <button className=' hover:text-red-700' onClick={() => handleDelete(items._id)}>Cancel Order</button>
+                  </div>
+                }
+                </td>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
 }
 
 export default OrderHistory;

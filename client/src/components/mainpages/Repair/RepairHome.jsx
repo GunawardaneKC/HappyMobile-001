@@ -56,47 +56,52 @@ const Home = () => {
   };
 
   return (
+    
     <div className='mx-auto max-w-7xl mt-16'>
   <div className='flex items-center justify-between mb-8'>
     <div className='flex items-center'>
-      <div className='w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center'>
+      <div className='w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center shadow-lg'>
         <i className='fas fa-search text-gray-500'></i>
       </div>
 
-      <div>
-        <button className="btn btn-success"><Link to='/addRepair' style={{textDecoration: 'none', color:'Black'}}>Add New Repair</Link></button>&nbsp;
-        <button className="btn btn-primary"> <br></br>
-          <Link to='/completedRepair' style={{textDecoration: 'none', color:'Black'}}>View Completed Repairs</Link>
-        </button>
-      </div>
-      <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>All Repairs</h3>
-      <table className='table table-hover' style={{ marginTop: '40px' }}>
-        <thead>
-          <tr>
-            <th scope='col'>No</th>
-            <th scope='col'>Repair ID</th>
-            <th scope='col'>Customer Name</th>
-            <th scope='col'>Phone Number</th>
-            <th scope='col'>Device</th>
-            <th scope='col'>Brand</th>
-            <th scope='col'>Status</th>
-            <th scope='col'>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {posts.map((post, index) => (
-            <tr key={post._id}>
-              <th scope='row'>{index + 1}</th>
-              <td>
-                <Link to={`/postRepair/${post._id}`} style={{ textDecoration: 'none' }}>
-                  {post.repairID}
-                </Link>
-              </td>
-              <td>{post.customerName}</td>
-              <td>{post.phoneNum}</td>
-              <td>{post.device}</td>
-              <td>{post.Brand}</td>
-              <td>
+    </div>
+    <div className='flex space-x-4'>
+      <button className='py-2 px-4 bg-purple-500 hover:bg-purple-600 text-white rounded-md shadow-lg'>
+        <Link to='/addRepair' style={{ textDecoration: 'none' }}>Add New Repair</Link>
+      </button>
+      <button className='py-2 px-4 bg-cyan-500 hover:bg-cyan-600 text-white rounded-md shadow-lg'>
+        <Link to='/completedRepair' style={{ textDecoration: 'none' }}>View Completed Repairs</Link>
+      </button>
+    </div>
+  </div>
+  <h3 className='mb-4 text-lg font-medium'>Pending Repairs</h3>
+  <table class="w-full border-collapse border border-gray-400">
+  <thead>
+    <tr class="bg-purple-950">
+      <th class="px-4 py-2 text-left border border-gray-400" scope="col">No</th>
+      <th class="px-4 py-2 text-left border border-gray-400" scope="col">Repair ID</th>
+      <th class="px-4 py-2 text-left border border-gray-400" scope="col">Customer Name</th>
+      <th class="px-4 py-2 text-left border border-gray-400" scope="col">Phone Number</th>
+      <th class="px-4 py-2 text-left border border-gray-400" scope="col">Device</th>
+      <th class="px-4 py-2 text-left border border-gray-400" scope="col">Model</th>
+      <th class="px-4 py-2 text-left border border-gray-400" scope="col">Status</th>
+      <th class="px-4 py-2 text-left border border-gray-400" scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {posts.map((post, index) => (
+      <tr key={post._id} class="bg-purple-600">
+        <td class="px-4 py-2 text-left border border-gray-400 ">{index + 1}</td>
+        <td class="px-4 py-2 text-left border border-gray-400 font-bold hover:underline hover:text-cyan-400">
+          <Link className="text-cyan-400 hover:underline" to={`/postRepair/${post._id}`} style={{ textDecoration: 'none' }}>
+            {post.repairID}
+          </Link>
+        </td>
+        <td class="px-4 py-2 text-left border border-gray-400">{post.customerName}</td>
+        <td class="px-4 py-2 text-left border border-gray-400">{post.phoneNum}</td>
+        <td class="px-4 py-2 text-left border border-gray-400">{post.device}</td>
+        <td class="px-4 py-2 text-left border border-gray-400">{post.Model}</td>
+         <td>
                 <select
                   className="form-select"
                   aria-label="Default select example"
@@ -118,61 +123,6 @@ const Home = () => {
                   <option value="Completed">Completed</option>
                 </select>
               </td>
-              <td>
-                <Link to={`/editRepair/${post._id}`} className='btn btn-warning'>
-                  <i className='fas fa-edit'></i>&nbsp;Edit
-                </Link>
-                &nbsp;
-                <button className="btn btn-success" onClick={() => markAsComplete(post._id)}>
-                  <i className="fa-solid fa-circle-check"></i>&nbsp;Complete
-                </button>
-                &nbsp;
-                <button className='btn btn-danger' onClick={() => deletePost(post._id)}>
-                  <i className='fas fa-trash-alt'></i>&nbsp;Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <input className='ml-3 py-2 px-4 w-80 border border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-cyan-500 text-gray-950' type='search' placeholder='Search' name='searchQuery' onChange={handleSearch} />
-    </div>
-    <div className='flex space-x-4'>
-      <button className='py-2 px-4 bg-purple-500 hover:bg-purple-600 text-white rounded-md'>
-        <Link to='/addRepair' style={{ textDecoration: 'none' }}>Add New Repair</Link>
-      </button>
-      <button className='py-2 px-4 bg-cyan-500 hover:bg-cyan-600 text-white rounded-md'>
-        <Link to='/completedRepair' style={{ textDecoration: 'none' }}>View Completed Repairs</Link>
-      </button>
-    </div>
-  </div>
-  <h3 className='mb-4 text-lg font-medium'>Pending Repairs</h3>
-  <table class="w-full border-collapse border border-gray-400">
-  <thead>
-    <tr class="bg-purple-950">
-      <th class="px-4 py-2 text-left border border-gray-400" scope="col">No</th>
-      <th class="px-4 py-2 text-left border border-gray-400" scope="col">Repair ID</th>
-      <th class="px-4 py-2 text-left border border-gray-400" scope="col">Customer Name</th>
-      <th class="px-4 py-2 text-left border border-gray-400" scope="col">Phone Number</th>
-      <th class="px-4 py-2 text-left border border-gray-400" scope="col">Device</th>
-      <th class="px-4 py-2 text-left border border-gray-400" scope="col">Model</th>
-      <th class="px-4 py-2 text-left border border-gray-400" scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    {posts.map((post, index) => (
-      <tr key={post._id} class="bg-purple-600">
-        <td class="px-4 py-2 text-left border border-gray-400 ">{index + 1}</td>
-        <td class="px-4 py-2 text-left border border-gray-400 font-bold">
-          <Link class="text-cyan-400 hover:underline" to={`/postRepair/${post._id}`} style={{ textDecoration: 'none' }}>
-            {post.repairID}
-          </Link>
-        </td>
-        <td class="px-4 py-2 text-left border border-gray-400">{post.customerName}</td>
-        <td class="px-4 py-2 text-left border border-gray-400">{post.phoneNum}</td>
-        <td class="px-4 py-2 text-left border border-gray-400">{post.device}</td>
-        <td class="px-4 py-2 text-left border border-gray-400">{post.Model}</td>
         <td class="px-4 py-2 text-left border border-gray-400 font-bold">
           <Link to={`/editRepair/${post._id}`} class="text-amber-400 hover:underline mr-6">
             <i class="fas fa-edit"></i>&nbsp;Edit
