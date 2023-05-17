@@ -20,10 +20,10 @@ const Home = () => {
   const filterPosts = (posts, searchKey) => {
     const result = posts.filter(post =>
       post.invoiceNo.toLowerCase().includes(searchKey) ||
-      post.cName.toLowerCase().includes(searchKey) ||
-      post.phoneNo.toLowerCase().includes(searchKey) ||
-      post.imeiNo.toLowerCase().includes(searchKey) ||
-      post.model.toLowerCase().includes(searchKey)
+      post.cName.toLowerCase().includes(searchKey) 
+      // post.phoneNo.toLowerCase().includes(searchKey) ||
+      // post.imeiNo.toLowerCase().includes(searchKey) ||
+      // post.model.toLowerCase().includes(searchKey)
     );
     setPosts(result);
   };
@@ -56,8 +56,6 @@ const Home = () => {
           <th className="py-2">No</th>
           <th className="py-2">Invoice Number</th>
           <th className="py-2">Customer Name</th>
-          <th className="py-2">Phone Number</th>
-          <th className="py-2">IMEI Number</th>
           <th className="py-2">Phone Model</th>
           <th className="py-2">Warranty Status</th>
         </tr>
@@ -68,8 +66,6 @@ const Home = () => {
             <td className="py-2">{index + 1}</td>
             <td className="py-2">{post.invoiceNo}</td>
             <td className="py-2">{post.cName}</td>
-            <td className="py-2">{post.phoneNo}</td>
-            <td className="py-2">{post.imeiNo}</td>
             <td className="py-2">{post.model}</td>
             <td className="py-2">{post.status}</td>
           </tr>
@@ -78,7 +74,6 @@ const Home = () => {
     </table>
   </div>
 </div>
-
   );
 }
 

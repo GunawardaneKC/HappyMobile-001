@@ -53,7 +53,7 @@ const Ord = () => {
       onChange={handleSearch}
     />
   </div>
-  <a className="bg-yellow-400 hover:bg-yellow-700 text-white py-2 px-4 rounded-l mb-4" href="/warranty/reports">Get Report</a>
+  <a className="bg-yellow-400 hover:bg-yellow-700 text-white py-2 px-4 rounded-l mb-4" href="/deliveryrepo">Get Report</a>
   <h3 className="mb-4 mt-4">Deliveries</h3>
   <table className="w-full" style={{ borderCollapse: "collapse" }}>
   <thead>
@@ -112,7 +112,6 @@ const Ord = () => {
 </table>
 
 </div>
-
   );
 }
   export default Ord;

@@ -65,7 +65,6 @@ const Home = () => {
       <div className="ml-4">
         <input className="p-2 bg-transparent border border-gray-300 rounded-md focus:outline-none" type="search" placeholder='Search' name='searchQuery' onChange={handleSearch} />
       </div>
-    </div>
     <div>
       <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg mr-2">
         <Link to='/addwarranty'>Add Warranty</Link>
@@ -74,7 +73,7 @@ const Home = () => {
         <Link to='/returnitems'>Returned Items</Link>
       </button>
       <button className="bg-yellow-400 hover:bg-yellow-700 text-white py-2 px-4 rounded-lg">
-        <Link to='/warranty/reports'>Get Report</Link>
+        <Link to='warrantyR'>Get Report</Link>
       </button>
     </div>
   </div>

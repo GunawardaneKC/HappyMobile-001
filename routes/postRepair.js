@@ -104,7 +104,7 @@ router.put('/repair/markAsComplete/:id', async (req, res) => {
       const {repairID, customerName, phoneNum, device, Brand, Model, reason, givenDate, customerAddress, repairPrize} = post;
       const completedPost = new Completed({repairID, customerName, phoneNum, device, Brand, Model, reason, givenDate, customerAddress, repairPrize});
       await completedPost.save();
-      await Posts.findByIdAndDelete(req.params.id);
+    //   await Posts.findByIdAndDelete(req.params.id);
       res.json({ success: true });
     } catch (error) {
       console.log(error);

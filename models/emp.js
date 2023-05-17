@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const validator = require('validator');
 
  const EmpSchema = new mongoose.Schema({
-    // CusImg:{
-    //      type:String,
-    // },
+    empID:{
+         type:String,
+    },
     first_name: {
          type: String,
         },

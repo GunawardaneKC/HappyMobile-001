@@ -58,13 +58,14 @@ const Ord = () => {
           onChange={handleSearch}
         />
       </div>
-    </div>
-  </div>
+
+   <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/orderRep`}>Get Report</a> 
+
   <h3 className="text-2xl mt-8 mb-4 font-bold text-zinc-50">Orders</h3>
   <table className="min-w-full divide-y divide-gray-200">
   <thead className='bg-blue-500 text-lg'>
     <tr>
-      <th style={{ border: "2px solid blue" }} className="px-6 py-3 text-center text-gray-900 uppercase tracking-wider">#
+      <th style={{ border: "2px solid blue" }} className="px-6 py-3 text-center text-gray-900 uppercase tracking-wider">No
       </th>
       <th style={{ border: "2px solid blue" }} className="px-6 py-3 text-center text-gray-900 uppercase tracking-wider">Order ID
       </th>

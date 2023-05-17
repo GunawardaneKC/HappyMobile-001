@@ -110,7 +110,7 @@ function Products() {
        </div>
         <Filters />
         
-        <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/warranty/reports`}>Get Report</a> 
+        <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/ProR`}>Get Report</a> 
 
         {/* {
             isAdmin && 
