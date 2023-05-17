@@ -29,9 +29,8 @@ const Emp = () => {
   const filterPosts = (posts, searchKey) => {
     const result = posts.filter(post =>
       post.first_name.toLowerCase().includes(searchKey)||
-      post.last_name.toLowerCase().includes(searchKey)||
       post.email.toLowerCase().includes(searchKey)||
-      post.NIC.toLowerCase().includes(searchKey)
+      post.NIC.toLowerCase().includes(searchKey) 
 
     );
     setPosts(result);

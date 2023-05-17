@@ -1,283 +1,219 @@
-// import React from 'react'
-// import axios from 'axios';
-// import { useState } from 'react'
- 
-// export default function Addemp() {
-    
-//     const [first_name , setfirst_name] = useState("");
-//     const [last_name , setlast_name] = useState("");
-//     const [email,setemail] = useState("");
-//     const [Address,setAddress] = useState("");
-//     const[NIC,setNIC] = useState("");
-//     const[Phone,setPhone] = useState("");
-//     // const[CusImg,setCusImg] = useState("")
-//     const[massage,setMessage] = useState("")
-   
-   
-   
-    
-//   //  const onChangeFile = e =>{
-//   //   setCusImg(e.target.files[0]);
-//   //  }
 
-//    const changeOnClick = (e) =>{
-//     e.preventDefault();
-    
-//     const formData = new FormData();
-
-//     formData.append("first_name",first_name)
-//     formData.append("last_name",last_name)
-//     formData.append("email",email)
-//     formData.append("Address",Address)
-//     formData.append("NIC",NIC)
-//     formData.append("Phone",Phone)
-//     // formData.append("CusImg",CusImg)
-
-//      setfirst_name("");
-//      setlast_name("");
-//      setemail("");
-//      setAddress("");
-//      setNIC("");
-//      setPhone("");
-//     //  setCusImg("");
-//     axios.post("http://localhost:5000/Emp/save",formData)
-//     .then((res) =>setMessage(res.data))
-//     alert("Added Successfully")
-//     .catch((err)=>{
-//         console.log(err);
-//     });
-        
-
-//     }
-    
-   
-//    return (
-//      <div className='container'>
-//          <form onSubmit={changeOnClick} encType='multipart/form-data'>
-//            <div className='form-group'>
-//            <label htmlFor="first_name">First Name</label>
-//             <input type={'text'}
-//              value={first_name}
-//              onChange={(e)=>setfirst_name(e.target.value)}
-//              className='form-control'
-//              placeholder='first_name'
-//              />
-//              </div>
-
-//            <div className='form-group'>
-//            <label htmlFor="last_name">Last Name</label>
-//             <input type={'text'}
-//              value={last_name}
-//              onChange={(e)=>setlast_name(e.target.value)}
-//              className='form-control'
-//              placeholder='Last_Name'
-//              />
-//              </div>
-
-//              <div className='form-group'>
-//            <label htmlFor="email">Email</label>
-//             <input type={'email'}
-//              value={email}
-//              onChange={(e)=>setemail(e.target.value)}
-//              className='form-control'
-//              placeholder='email'
-//              />
-//              </div>
-
-
-//            <div className='form-group'>
-//            <label htmlFor="Address">Address</label>
-//             <input type={'text'}
-//              value={Address}
-//              onChange={(e)=>setAddress(e.target.value)}
-//              className='form-control'
-//              placeholder='Address'
-//              />
-//              </div>
-
-
-//            <div className='form-group'>
-//            <label htmlFor="NIC">NIC</label>
-//             <input type={'text'}
-//              value={NIC}
-//              onChange={(e)=>setNIC(e.target.value)}
-//              className='form-control'
-//              placeholder='NIC'
-//              />
-//              </div>
-
-//              <div className='form-group'>
-//            <label htmlFor="Phone">Phone</label>
-//             <input type={'number'}
-//              value={Phone}
-//              onChange={(e)=>setPhone(e.target.value)}
-//              className='form-control'
-//              placeholder='Phone'
-//              />
-//              </div>
-
-//              {/* <div className='form-group'>
-//            <label htmlFor="file">image</label>
-//             <input type={'file'}
-//              image="CusImg"
-//              onChange={onChangeFile}
-//              className='form-control'
-//              placeholder='add c'
-//              />
-//              </div> */}
-//              <button type='submit'>add</button>
-//          </form>
-//      </div>
-//    )
-//  }
-
-import React, { Component } from 'react'
+import React, { useState } from 'react';
 import axios from 'axios';
-export default class CreatePosts extends Component {
 
-  constructor(props){
-    super(props);
-    this.state={
-       first_name:"",
-       last_name:"",
-       email:"",
-       Address:"",
-       NIC:"",
-      Phone:"",
-      date:"",
+const CreatePosts = () => {
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    Address: '',
+    NIC: '',
+    Phone: '',
+    date: '',
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const validate = () => {
+    const newErrors = {};
+
+    if (!formData.first_name) {
+      newErrors.first_name = 'First Name is required';
     }
-  }
 
-  handleInputChange = (e) => {
-    const {name, value} = e.target;
+    if (!formData.last_name) {
+      newErrors.last_name = 'Last Name is required';
+    }
 
-    this.setState({
-      ...this.state,
-      [name]:value
-    })
-  }
+    if (!formData.Phone) {
+      newErrors.Phone = 'Phone Number is required';
+    } else if (!/^[0-9]{10}$/i.test(formData.Phone)) {
+      newErrors.Phone = 'Phone Number is invalid';
+    }
 
+    if (!formData.email) {
+      newErrors.email = 'Email is required';
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)
+    ) {
+      newErrors.email = 'Invalid email address';
+    }
 
-  onSubmit = (e) => {
+    if (!formData.NIC) {
+      newErrors.NIC = 'NIC is required';
+    } else if (!/^[0-9]{12}$/i.test(formData.NIC)) {
+      newErrors.NIC = 'NIC is invalid (############V/v)';
+    }
+
+    if (!formData.Address) {
+      newErrors.Address = 'Address is required';
+    }
+
+    if (!formData.date) {
+      newErrors.date = 'Date is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const {first_name,last_name,email,Address,NIC,Phone,date} = this.state;
-
-    const data = {
-      first_name:first_name,
-       last_name:last_name,
-       email:email,
-       Address:Address,
-       NIC:NIC,
-       Phone:Phone,
-       date:date,
+    if (validate()) {
+      axios
+        .post('/Emp/save', formData)
+        .then((res) => {
+          if (res.data.success) {
+            alert('New Employee added Successfully!');
+            setFormData({
+              first_name: '',
+              last_name: '',
+              email: '',
+              Address: '',
+              NIC: '',
+              Phone: '',
+              date: '',
+            });
+            setErrors({});
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
-
-    console.log(data)
-
-    axios.post("/Emp/save",data).then((res) => {
-      if(res.data.success){
-        alert("New Employee added Successfully!");
-        	this.setState({
-        	first_name:"",
-       		last_name:"",
-      		email:"",
-          Address:"",
-       		NIC:"",
-      		Phone:"",
-          date:"",
-       	 })
-      }
-    })
-
-  }
-
-  render() {
-    return (
-
-      <div className='col-md-8 mt-4 mx-auto'>
-        <h1 className='h3 mb-3 font-weight-normal'>Add new Employee</h1>
-        <form className='needs-validation' noValidate>
-
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom: '5px'}}>First Name</label>
-            <input type="text" 
-            className='form-control'
-            name='first_name'
-            placeholder='Enter First Name'
-            value={this.state.first_name}
-            onChange={this.handleInputChange}
+  };
+  return (
+    <div className="col-md-8 mt-4 mx-auto">
+      <h1 className="h3 mb-3 font-weight-normal">Add new Employee</h1>
+      <form className="needs-validation" onSubmit={handleSubmit} noValidate>
+        <div className="form-group" style={{ marginBottom: '15px' }}>
+          <label style={{ marginBottom: '5px' }}>First Name</label>
+          <input
+            type="text"
+            className={`form-control ${errors.first_name && 'is-invalid'}`}
+            name="first_name"
+            placeholder="Enter First Name"
+            value={formData.first_name}
+            onChange={handleInputChange}
             required
-            />
-          </div>
+          />
+          {errors.first_name && (
+            <div className="invalid-feedback" style={{color:"red"}}>{errors.first_name}</div>
+          )}
+        </div>
 
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom: '5px'}}>Last Name</label>
-            <input type="text" 
-            className='form-control'
-            name='last_name'
-            placeholder='Enter Last Name'
-            value={this.state.last_name}
-            onChange={this.handleInputChange}/>
-          </div>
+        <div className="form-group" style={{ marginBottom: '15px' }}>
+          <label style={{ marginBottom: '5px' }}>Last Name</label>
+          <input
+            type="text"
+            className="form-control"
+            name="last_name"
+            placeholder="Enter Last Name"
+            value={formData.last_name}
+            onChange={handleInputChange}
+          />
+          {errors.last_name && (
+            <div className="invalid-feedback" style={{color:"red"}}>{errors.last_name}</div>
+          )}
+        </div>
 
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom: '5px'}}>Email</label>
-            <input type="email" 
-            className='form-control'
-            name='email'
-            placeholder='Enter Email'
-            value={this.state.email}
-            onChange={this.handleInputChange}/>
-          </div>
+        <div className="form-group" style={{ marginBottom: '15px' }}>
+          <label style={{ marginBottom: '5px' }}>Email</label>
+          <input
+            type="email"
+            className={`form-control ${errors.email && 'is-invalid'}`}
+            name="email"
+            placeholder="Enter Email"
+            value={formData.email}
+            onChange={handleInputChange}
+          />
+          {errors.email && (
+            <div className="invalid-feedback" style={{color:"red"}}>{errors.email}</div>
+          )}
+        </div>
 
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom: '5px'}}>Address</label>
-            <input type="text" 
-            className='form-control'
-            name='Address'
-            placeholder='Enter Address'
-            value={this.state.Address}
-            onChange={this.handleInputChange}/>
-          </div>
+        <div className="form-group" style={{ marginBottom: '15px' }}>
+          <label style={{ marginBottom: '5px' }}>Address</label>
+          <input
+            type="text"
+            className="form-control"
+            name="Address"
+            placeholder="Enter Address"
+            value={formData.Address}
+            onChange={handleInputChange}
+          />
+          {errors.Address && (
+            <div className="invalid-feedback" style={{color:"red"}}>{errors.Address}</div>
+          )}
+        </div>
 
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom: '5px'}}>NIC</label>
-            <input type="text" 
-            className='form-control'
-            name='NIC'
-            placeholder='Enter NIC'
-            value={this.state.NIC}
-            onChange={this.handleInputChange}/>
-          </div>
+        <div className="form-group" style={{ marginBottom: '15px' }}>
+          <label style={{ marginBottom: '5px' }}>NIC</label>
+          <input
+            type="text"
+            className="form-control"
+            name="NIC"
+            placeholder="Enter NIC"
+            value={formData.NIC}
+            onChange={handleInputChange}
+          />
+          {errors.NIC && (
+            <div className="invalid-feedback" style={{color:"red"}}>{errors.NIC}</div>
+          )}
+        </div>
 
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom: '5px'}}>Phone Number</label>
-            <input type="number" 
-            className='form-control'
-            name='Phone'
-            placeholder='Enter Phone Number'
-            value={this.state.Phone}
-            onChange={this.handleInputChange}/>
-          </div>
+        <div className="form-group" style={{ marginBottom: '15px' }}>
+          <label style={{ marginBottom: '5px' }}>Phone Number</label>
+          <input
+            type="number"
+            className="form-control"
+            name="Phone"
+            placeholder="Enter Phone Number"
+            value={formData.Phone}
+            onChange={handleInputChange}
+          />
+          {errors.Phone && (
+            <div className="invalid-feedback" style={{color:"red"}}>{errors.Phone}</div>
+          )}
+        </div>
 
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom: '5px'}}>Allocated Date</label>
-            <input type="date" 
-            className='form-control'
-            name='date'
-            placeholder='Enter the Date'
-            value={this.state.date}
-            onChange={this.handleInputChange}/>
-          </div>
+        <div className="form-group" style={{ marginBottom: '15px' }}>
+          <label style={{ marginBottom: '5px' }}>Allocated Date</label>
+          <input
+            type="date"
+            className="form-control"
+            name="date"
+            placeholder="Enter the Date"
+            value={formData.date}
+            onChange={handleInputChange}
+          />
+          {errors.date && (
+            <div className="invalid-feedback" style={{color:"red"}}>{errors.date}</div>
+          )}
+        </div>
 
-          <button className='btn btn-success' type="submit" style={{marginTop: '15px'}} onClick={this.onSubmit}>
-              <i className='far fa-check-square'></i>
-              &nbsp;Save
-          </button>
+        <button
+          className="btn btn-success"
+          type="submit"
+          style={{ marginTop: '15px' }}
+        >
+          <i className="far fa-check-square"></i>
+          &nbsp;Save
+        </button>
+      </form>
+    </div>
+  );
+};
 
-        </form>
-      </div>
-    );
-  }
-}
+export default CreatePosts

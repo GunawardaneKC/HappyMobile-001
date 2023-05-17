@@ -28,8 +28,8 @@ const validate = () => {
 
   if (!formData.NIC) {
     newError.NIC = 'NIC is required';
-  } else if (!/^[0-9]{10}[vV]$/i.test(formData.NIC)) {
-    newError.NIC = 'NIC is invalid (##########V/v)';
+  } else if (!/^[0-9]{12}[vV]$/i.test(formData.NIC)) {
+    newError.NIC = 'NIC is invalid (############V/v)';
   }
 
   if (!formData.email) {

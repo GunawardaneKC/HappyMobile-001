@@ -20,10 +20,10 @@ const Home = () => {
   const filterPosts = (posts, searchKey) => {
     const result = posts.filter(post =>
       post.invoiceNo.toLowerCase().includes(searchKey) ||
-      post.cName.toLowerCase().includes(searchKey) ||
-      post.phoneNo.toLowerCase().includes(searchKey) ||
-      post.imeiNo.toLowerCase().includes(searchKey) ||
-      post.model.toLowerCase().includes(searchKey)
+      post.cName.toLowerCase().includes(searchKey) 
+      // post.phoneNo.toLowerCase().includes(searchKey) ||
+      // post.imeiNo.toLowerCase().includes(searchKey) ||
+      // post.model.toLowerCase().includes(searchKey)
     );
     setPosts(result);
   };
@@ -53,8 +53,6 @@ const Home = () => {
             <th scope='col'>No</th>
             <th scope='col'>Invoice Number</th>
             <th scope='col'>Customer Name</th>
-            <th scope='col'>Phone Number</th>
-            <th scope='col'>Imei Number</th>
             <th scope='col'>Phone Model</th>
             <th scope='col'>Warranty Status</th>
           </tr>
@@ -65,8 +63,6 @@ const Home = () => {
               <th scope='row'>{index + 1}</th>
               <td>{post.invoiceNo}</td>
               <td>{post.cName}</td>
-              <td>{post.phoneNo}</td>
-              <td>{post.imeiNo}</td>
               <td>{post.model}</td>
               <td>{post.status}</td>
               
