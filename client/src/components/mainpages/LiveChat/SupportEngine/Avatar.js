@@ -7,13 +7,13 @@ const Avatar = (props) => {
   return (
     <div style={props.style}>
         <div
-            className='transition-3'
+            className='transition-3 font-bold'
             style={{
                 ...styles.avatarHello,
                 ...{ opacity: hovered ? '1' : '0'}
             }}
         >
-            Hey it's Osh!!
+          Click to Chat
         </div>
 
       <div

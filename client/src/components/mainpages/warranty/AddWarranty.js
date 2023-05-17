@@ -74,73 +74,85 @@ const validate = () => {
   };
   
     return (
-
-      <div className='col-md-8 mt-4 mx-auto'>
-        <h1 className='h3 mb-3 font-weight-normal'>Add Warranty</h1>
-        <form className='needs-validation' noValidate>
-
-        <div className='form-group' style={{marginBottom: '15px'}}>
-          <label style={{marginBottom: '5px'}}>Invoice Number</label>
-          <input type="text" 
-          className='form-control'
-          name='invoiceNo'
-          placeholder='Enter invoice'
-          value={formData.invoiceNo}
-          onChange={handleInputChange}/>
-          {error.invoiceNo && <div className='invalid-feedback' style={{color:"red"}}>{error.invoiceNo}</div>}
+      <div className="flex justify-center items-center h-screen">
+  <div className="bg-opacity-10 bg-gray-100 backdrop-filter backdrop-blur-lg p-6 rounded-md">
+    <h1 className="text-3xl mb-4">Add Warranty</h1>
+    <form noValidate className="flex">
+      <div className="mr-6">
+        <div className="mb-5">
+          <label className="mb-1 block">Invoice Number</label>
+          <input
+            type="text"
+            name="invoiceNo"
+            placeholder="Enter invoice"
+            value={formData.invoiceNo}
+            onChange={handleInputChange}
+            className="w-full p-2 border border-gray-300 text-slate-900 rounded-md focus:outline-none"
+          />
+          {error.invoiceNo && <div className="text-red-500">{error.invoiceNo}</div>}
         </div>
-
-      <div className='form-group' style={{marginBottom: '15px'}}>
-          <label style={{marginBottom: '5px'}}>Customer's Name</label>
-          <input type="text" 
-          className='form-control'
-          name='cName'
-          placeholder='Enter customer Name'
-          value={formData.cName}
-          onChange={handleInputChange}/>
-          {error.cName && <div className='invalid-feedback' style={{color:"red"}}>{error.cName}</div>}
+        <div className="mb-5">
+          <label className="mb-1 block">Customer's Name</label>
+          <input
+            type="text"
+            name="cName"
+            placeholder="Enter customer Name"
+            value={formData.cName}
+            onChange={handleInputChange}
+            className="w-full p-2 border border-gray-300 text-slate-900 rounded-md focus:outline-none"
+          />
+          {error.cName && <div className="text-red-500">{error.cName}</div>}
         </div>
-
-        <div className='form-group' style={{marginBottom: '15px'}}>
-          <label style={{marginBottom: '5px'}}>Phone Number</label>
-          <input type="number" 
-          className='form-control'
-          name='phoneNo'
-          placeholder='Enter Phone Number'
-          value={formData.phoneNo}
-          onChange={handleInputChange}/>
-          {error.phoneNo && <div className='invalid-feedback' style={{color:"red"}}>{error.phoneNo}</div>}
-        </div>
-
-        <div className='form-group' style={{marginBottom: '15px'}}>
-          <label style={{marginBottom: '5px'}}>Imei Number</label>
-          <input type="text" 
-          className='form-control'
-          name='imeiNo'
-          placeholder='Enter imei'
-          value={formData.imeiNo}
-          onChange={handleInputChange}/>
-          {error.imeiNo && <div className='invalid-feedback' style={{color:"red"}}>{error.imeiNo}</div>}
-        </div>
-
-        <div className='form-group' style={{marginBottom: '15px'}}>
-          <label style={{marginBottom: '5px'}}>Phone Model</label>
-          <input type="text" 
-          className='form-control'
-          name='model'
-          placeholder='Enter model'
-          value={formData.model}
-          onChange={handleInputChange}/>
-          {error.model && <div className='invalid-feedback' style={{color:"red"}}>{error.model}</div>}
-        </div>
-
-          <button className='btn btn-success' type="submit" style={{marginTop: '15px'}} onClick={onSubmit}>
-              <i className='far fa-check-square'></i>
-              &nbsp;Save
-          </button>
-
-        </form>
       </div>
+      <div>
+        <div className="mb-5">
+          <label className="mb-1 block">Phone Number</label>
+          <input
+            type="number"
+            name="phoneNo"
+            placeholder="Enter Phone Number"
+            value={formData.phoneNo}
+            onChange={handleInputChange}
+            className="w-full p-2 border border-gray-300 text-slate-900 rounded-md focus:outline-none"
+          />
+          {error.phoneNo && <div className="text-red-500">{error.phoneNo}</div>}
+        </div>
+        <div className="mb-5">
+          <label className="mb-1 block">IMEI Number</label>
+          <input
+            type="text"
+            name="imeiNo"
+            placeholder="Enter imei"
+            value={formData.imeiNo}
+            onChange={handleInputChange}
+            className="w-full p-2 border border-gray-300 text-slate-900 rounded-md focus:outline-none"
+          />
+          {error.imeiNo && <div className="text-red-500">{error.imeiNo}</div>}
+        </div>
+        <div className="mb-5">
+          <label className="mb-1 block">Phone Model</label>
+          <input
+            type="text"
+            name="model"
+            placeholder="Enter model"
+            value={formData.model}
+            onChange={handleInputChange}
+            className="w-full p-2 border border-gray-300 text-slate-900 rounded-md focus:outline-none"
+          />
+          {error.model && <div className="text-red-500">{error.model}</div>}
+        </div>
+      </div>
+    </form>
+    <button
+      type="submit"
+      className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md mt-5"
+      onClick={onSubmit}
+    >
+      <i></i>&nbsp;Save
+    </button>
+  </div>
+</div>
+
     );
 
 }

@@ -43,75 +43,76 @@ const Ord = () => {
   };
 
   return (
-    <div className='container'>
-      <div className="row">
-        <div className="col-lg-9 mt-2 mb-2">
-        </div>
-        <div className="col-lg-3 mt-2 mb-2">
-          <input className='form-control' type="search" placeholder='Search' name='searchQuery' onChange={handleSearch} />
-        </div>
-      </div>
+    <div className="bg-opacity-10 bg-gray-100 backdrop-filter backdrop-blur-lg m-4 p-6 rounded-md">
+  <div className="mb-4">
+    <input
+      className="w-1/5 p-2 border border-gray-300 rounded-md focus:outline-none"
+      type="search"
+      placeholder="Search"
+      name="searchQuery"
+      onChange={handleSearch}
+    />
+  </div>
+  <a className="bg-yellow-400 hover:bg-yellow-700 text-white py-2 px-4 rounded-l mb-4" href="/warranty/reports">Get Report</a>
+  <h3 className="mb-4 mt-4">Deliveries</h3>
+  <table className="w-full" style={{ borderCollapse: "collapse" }}>
+  <thead>
+    <tr>
+      <th scope="col" style={{ border: "2px solid blue" }}>No</th>
+      <th scope="col" style={{ border: "2px solid blue" }}>Order ID</th>
+      <th scope="col" style={{ border: "2px solid blue" }}>Recipient's Name</th>
+      <th scope="col" style={{ border: "2px solid blue" }}>Phone Number</th>
+      <th scope="col" style={{ border: "2px solid blue" }}>Recipient's Address</th>
+      <th scope="col" style={{ border: "2px solid blue" }}>NIC</th>
+      <th scope="col" style={{ border: "2px solid blue" }}>Recipient's Email</th>
+      <th scope="col" style={{ border: "2px solid blue" }}>Delivery Status</th>
+      <th scope="col" style={{ border: "2px solid blue" }}>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {posts.map((post, index) => (
+      <tr key={post._id}>
+        <th scope="row" style={{ border: "2px solid blue" }}>{index + 1}</th>
+        <td style={{ border: "2px solid blue" }}>{post.OrderID}</td>
+        <td style={{ border: "2px solid blue" }}>{post.Name}</td>
+        <td style={{ border: "2px solid blue" }}>{post.phone}</td>
+        <td style={{ border: "2px solid blue" }}>{post.Address}</td>
+        <td style={{ border: "2px solid blue" }}>{post.NIC}</td>
+        <td style={{ border: "2px solid blue" }}>{post.email}</td>
+        <td style={{ border: "2px solid blue" }}>
+          <select
+            className="text-slate-900"
+            aria-label="Default select example"
+            value={post.Status}
+            onChange={(e) => {
+              const value = e.target.value;
+              const id = post._id;
+              axios.put(`/delivery/update/${id}`, { Status: value })
+                .then((response) => {
+                  console.log(response.data);
+                  retrievePosts();
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            }}
+          >
+            <option value="Pending">Pending</option>
+            <option value="Delivered">Delivered</option>
+          </select>
+        </td>
+        <td style={{ border: "2px solid blue" }}>
+          <button className="text-red-500 hover:text-red-600" onClick={() => deletePost(post._id)}>
+            <i className="fas fa-trash-alt"></i>&nbsp;Delete
+          </button>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
-      <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/warranty/reports`}>Get Report</a> 
-     
-      <h3 style={{ marginTop: '40px', marginBottom: '-30px'}}>Deliveries</h3>
-      <table className='table table-hover' style={{ marginTop: '40px' }}>
-        <thead>
-          <tr>
-            <th scope='col'>No</th>
-            <th scope='col'>Order ID</th>
-            <th scope='col'>Recipient's Name</th>
-            <th scope='col'>Phone Number</th>
-            <th scope='col'>Recipient's Address</th>
-            <th scope='col'>NIC</th>
-            <th scope='col'>Recipient's email</th>
-            <th scope='col'>Delivery Status</th>
-            <th scope='col'></th>
-          </tr>
-        </thead>
-        <tbody>
-          {posts.map((post, index) => (
-            <tr key={post._id}>
-              <th scope='row'>{index + 1}</th>
-              <td>{post.OrderID}</td>
-              <td>{post.Name}</td>
-              <td>{post.phone}</td>
-              <td>{post.Address}</td>
-              <td>{post.NIC}</td>
-              <td>{post.email}</td>
-              <td>
-                <select
-                  className="form-select"
-                  aria-label="Default select example"
-                  value={post.Status}
-                  onChange={(e) => {
-                    const value = e.target.value;
-                    const id = post._id;
-                    axios.put(`/delivery/update/${id}`, { Status: value })
-                      .then((response) => {
-                        console.log(response.data);
-                        retrievePosts();
-                      })
-                      .catch((error) => {
-                        console.log(error);
-                      });
-                  }}
-                >
-                  <option value="Pending">Pending</option>
-                  <option value="Delivered">Delivered</option>
-                </select>
-              </td>
-              <td>
-                &nbsp;
-                <button className='btn btn-danger' onClick={() => deletePost(post._id)}>
-                  <i className='fas fa-trash-alt'></i>&nbsp;Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+</div>
+
   );
 }
   export default Ord;

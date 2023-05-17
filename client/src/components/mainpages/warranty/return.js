@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const CompletedTable = () => {
   const [completedPosts, setCompletedPosts] = useState([]);
@@ -44,43 +45,50 @@ const CompletedTable = () => {
   });
 
   return (
-    <div className='container'>
-      <div className="row">
-        <div className="col-lg-9 mt-2 mb-2">
-        </div>
-        <div className="col-lg-3 mt-2 mb-2">
-          <input className='form-control' type="search" placeholder='Search' value={searchQuery} onChange={handleSearch} />
-        </div>
-      </div>
-      <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/repair/reports`}>Get Report</a> 
-      <h3 className="mt-4">Returned Items</h3>
-      <div className="table-responsive mt-4">
-        <table className='table table-hover'>
-          <thead>
-            <tr>
-              <th scope='col'> No </th>
-              <th scope='col'>Invoice Number</th>
-              <th scope='col'>Customer Name</th>
-              <th scope='col'>Phone Number</th>
-              <th scope='col'>Imei Number</th>
-              <th scope='col'>Phone Model</th>
-              <th scope='col'>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredPosts.map((post, index) => (
-              <tr key={post._id}>
-                <td>{index + 1}</td>
-                <td>{post.invoiceNo}</td>
-                <td>{post.cName}</td>
-                <td>{post.phoneNo}</td>
-                <td>{post.imeiNo}</td>
-                <td>{post.model}</td>
-                <td>
-                  <button className='btn btn-danger' onClick={() => handleDelete(post._id)}>Delete</button>
-                </td>
-              </tr>
-            ))}
+    <div className="bg-opacity-10 bg-gray-100 backdrop-filter backdrop-blur-lg p-6 mt-8 mx-8 rounded-md">
+  <div className="mb-4">
+    <input
+      type="search"
+      placeholder="Search"
+      value={searchQuery}
+      onChange={handleSearch}
+      className="w-1/5 p-2 border border-gray-300 rounded-md focus:outline-none"
+    />
+  </div>
+  <div className='my-6'>
+      <button className="bg-yellow-400 hover:bg-yellow-700 text-white py-2 px-4 rounded-lg">
+        <Link to='/warranty/reports'>Get Report</Link>
+      </button>
+  </div>
+  {/* <a href="/repair/reports" className="text-blue-500 hover:text-blue-600">Get Report</a> */}
+  <h3 className="mb-4 text-2xl my-4">Returned Items</h3>
+  <div>
+    <table className="w-full">
+      <thead>
+        <tr>
+          <th className="py-2">No</th>
+          <th className="py-2">Invoice Number</th>
+          <th className="py-2">Customer Name</th>
+          <th className="py-2">Phone Number</th>
+          <th className="py-2">IMEI Number</th>
+          <th className="py-2">Phone Model</th>
+          <th className="py-2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {filteredPosts.map((post, index) => (
+          <tr key={post._id}>
+            <td className="py-2">{index + 1}</td>
+            <td className="py-2">{post.invoiceNo}</td>
+            <td className="py-2">{post.cName}</td>
+            <td className="py-2">{post.phoneNo}</td>
+            <td className="py-2">{post.imeiNo}</td>
+            <td className="py-2">{post.model}</td>
+            <td className="py-2">
+              <button onClick={() => handleDelete(post._id)} className="text-red-500 hover:text-red-600">Delete</button>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   </div>

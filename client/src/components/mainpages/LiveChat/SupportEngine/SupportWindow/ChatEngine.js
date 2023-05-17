@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { ChatEngineWrapper, Socket, ChatFeed } from 'react-chat-engine'
+import { ChatEngineWrapper, Socket, ChatFeed } from 'react-chat-engine';
 
 const ChatEngine = props => {
     const [showChat, setShowChat] = useState(false)
@@ -15,7 +15,7 @@ const ChatEngine = props => {
 
     return (
         <div
-            className='transition-5'
+            className='transition-5 text-slate-950'
             style={{
                 ...styles.chatEngineWindow,
                 ...{ 
@@ -44,6 +44,7 @@ export default ChatEngine;
 const styles = {
     chatEngineWindow: {
         width: '100%',  
-        backgroundColor: '#fff',
+        backgroundColor: '#000000',
+        color:'#000000'
     }
 }

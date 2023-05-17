@@ -1,3 +1,4 @@
+import { color } from 'framer-motion'
 import self from './Messenger_logo.webp'
 export const styles = {
     chatWithMeButton: {
@@ -6,7 +7,7 @@ export const styles = {
         // Border
         borderRadius: '50%',
         // Background 
-        // backgroundColor: '#9D6DEB', 
+        backgroundColor: '#9D6DEB', 
         backgroundImage:`url(${self})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -76,6 +77,7 @@ export const styles = {
         textAlign: 'center',
         outline: 'none',
         padding: '12px',
+        color:'#000000',
         borderRadius: '12px',
         border: '2px solid #7a39e0',
     },
@@ -103,6 +105,7 @@ export const styles = {
     },
     chatEngineWindow: {
         width: '100%',  
-        backgroundColor: '#fff',
+        backgroundColor: '#0001323',
+        color: '#000321',
     }
 }

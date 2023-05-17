@@ -59,17 +59,9 @@ const Emp = () => {
           <button className="py-2 px-4 bg-purple-500 hover:bg-purple-600 text-white rounded-md"><Link to='/add/emp' style={{textDecoration: 'none'}}>Add New Employee</Link></button>&nbsp;
         </div>
       </div>
- master
-      <div>
-        <button className="btn btn-success"><Link to='/add/emp' style={{textDecoration: 'none', color:'black'}}>Add New Employee</Link></button>&nbsp;
-      </div>
-
-      <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/warranty/reports`}>Get Report</a> 
-
-  
-      <h3 className='mb-4 mt-8 text-lg font-medium'>Employees</h3>
+      <a className="bg-yellow-400 hover:bg-yellow-700 text-white py-2 px-4 rounded-lg" style={{textDecoration:'none'}} href={`/warranty/reports`}>Get Report</a> 
+      <h3 className='mb-4 mt-8 text-3xl font-medium'>Employees</h3>
       <table className='w-full border-collapse border border-gray-400'>
- oshStyles
         <thead>
           <tr class="bg-purple-950">
             <th class="px-4 py-2 text-left border border-gray-400" scope='col'>No</th>
