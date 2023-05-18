@@ -3,7 +3,7 @@ import {motion} from 'framer-motion';
 import {fadeIn} from '../../../variants';
 import orderingGif from '../../../images/order.gif';
 import deliveryImg from '../../../images/delivery.jpg';
-import productImg from '../../../images/ProductImg.jpg';
+import reportImg from '../../../images/reportss.gif';
 import repairImg from '../../../images/repairGIF.gif';
 import warrantyImg from '../../../images/service-warranty.jpg';
 import rentImg from '../../../images/rentingIMG.jpg';
@@ -82,15 +82,15 @@ export default function Dashboard() {
                         </a>                                              
                     </motion.div>
                     <motion.div variants={fadeIn('left', 0.2)} initial='hidden' whileInView={'show'} viewport={{once: false, amount:0.3}} className='flex-1 flex flex-col gap-y-14'>
-                        <a href={`/create_product`}>
+                        <a href={`/ProR`}>
                            <div className='group relative overflow-hidden border-2 border-white/50 rounded-xl w-200 h-56'>
                                <div className='group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300'></div>
-                               <img className='group-hover:scale-125 transition-all duration-500' src={productImg} alt="pImg1" />
+                               <img className='group-hover:scale-125 transition-all duration-500' src={reportImg} alt="pImg1" />
                                <div className='absolute -bottom-full left-12 group-hover:bottom-24 transition-all duration-500 z-50'>
-                                   <span className='text-3xl font-bold bg-gradient-to-r from-yellow-500 to-pink-500 bg-clip-text text-transparent'>Product</span>
+                                   <span className='text-3xl font-bold bg-gradient-to-r from-yellow-500 to-pink-500 bg-clip-text text-transparent'>Product Reports</span>
                                </div>
                                <div className='absolute -bottom-full left-12 group-hover:bottom-14 transition-all duration-700 z-50'>
-                                   <span className='text-white text-xl'><a href='work'>Management</a></span>
+                                   <span className='text-white text-xl'><a href='work'>Our Monthly Reports</a></span>
                                </div>
                            </div>
                         </a>

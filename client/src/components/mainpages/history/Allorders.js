@@ -204,7 +204,7 @@ const Ord = () => {
             />
           </div>
         </div>
-        <a className="btn btn-primary" style={{ textDecoration: 'none' }} href={`/orderRep`}>Get Report</a>
+        <a className="py-2 px-4 bg-orange-500 hover:bg-cyan-600 text-white rounded-md shadow-lg" href={`/orderRep`}>Get Report</a>
       </div>
       <h3 className="text-2xl mt-8 mb-4 font-bold text-zinc-50">Orders</h3>
       <table className="min-w-full divide-y divide-gray-200">
@@ -216,7 +216,6 @@ const Ord = () => {
             <th style={{ border: "2px solid blue" }} className="px-6 py-3 text-center text-gray-900 uppercase tracking-wider">Email Address</th>
             <th style={{ border: "2px solid blue" }} className="px-6 py-3 text-center text-gray-900 uppercase tracking-wider">Payment</th>
             <th style={{ border: "2px solid blue" }} className="px-6 py-3 text-center text-gray-900 uppercase tracking-wider">Details</th>
-            <th style={{ border: "2px solid blue" }} className="px-6 py-3">Action</th>
           </tr>
         </thead>
         <tbody className="bg-blue-400 divide-y divide-gray-200">

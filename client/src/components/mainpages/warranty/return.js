@@ -34,12 +34,11 @@ const CompletedTable = () => {
   };
 
   const filteredPosts = completedPosts.filter(post => {
-    const { invoiceNo, cName, phoneNo, imeiNo } = post;
+    const { invoiceNo, cName, imeiNo } = post;
     const lowerCaseQuery = searchQuery.toLowerCase();
     return (
         invoiceNo.toLowerCase().includes(lowerCaseQuery) ||
         cName.toLowerCase().includes(lowerCaseQuery) ||
-        phoneNo.toLowerCase().includes(lowerCaseQuery) ||
         imeiNo.toLowerCase().includes(lowerCaseQuery)
     );
   });
@@ -52,14 +51,10 @@ const CompletedTable = () => {
       placeholder="Search"
       value={searchQuery}
       onChange={handleSearch}
-      className="w-1/5 p-2 border border-gray-300 rounded-md focus:outline-none"
+      className="w-1/5 p-2 border border-gray-300 rounded-md focus:outline-none text-slate-950"
     />
   </div>
-  <div className='my-6'>
-      <button className="bg-yellow-400 hover:bg-yellow-700 text-white py-2 px-4 rounded-lg">
-        <Link to='/warranty/reports'>Get Report</Link>
-      </button>
-  </div>
+  
   {/* <a href="/repair/reports" className="text-blue-500 hover:text-blue-600">Get Report</a> */}
   <h3 className="mb-4 text-2xl my-4">Returned Items</h3>
   <div>

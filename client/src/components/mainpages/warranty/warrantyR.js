@@ -22,7 +22,7 @@ export default class EmployeeR extends Component {
       doc.text(85, 10, "Happy Mobile");
       doc.setTextColor(0, 0, 255);
       doc.setFontSize(16);
-      doc.text(10, 70, "Repair Details");
+      doc.text(10, 70, "Warranty Details");
       doc.setTextColor(0, 255, 0);
       doc.setFontSize(12);
       
@@ -99,33 +99,33 @@ export default class EmployeeR extends Component {
   render() {
     return (
       <>
-      <div className='container' id="pdfdiv">
-         <div className='row my-4'>
+      <div className='container mx-auto mt-8' id="pdfdiv">
+         <div className='shadow-md rounded my-6 bg-slate-500'>
           <div className='col-lg-12'>
             <div className='table-responsive'> 
-       <table className="table table-striped text-center" >
+       <table className="min-w-full bg-slate-200" >
            <thead>
-             <tr>
-              <th scope='col'> No </th>
-              <th scope='col'>Invoice Number</th>
-              <th scope='col'>Customer Name</th>
-              <th scope='col'>Imei Number</th>
-              <th scope='col'>Model</th>
-              <th scope='col'>Phone number</th>
-              <th scope='col'>Warranty Status</th>
+             <tr className="bg-zinc-950 text-zinc-100">
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'> No </th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Invoice Number</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Customer Name</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Imei Number</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Model</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Phone number</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Warranty Status</th>
              </tr>
            </thead>
          
          <tbody style={{background:'pink'}}>
             {this.state.ReportData.map((posts,index)=>(
-                 <tr key={index}>
+                 <tr key={index} className={index % 2 === 0 ? 'bg-purple-400' : ''}>
                     <th scope="row">{index+1}</th>
-                    <td>{posts.invoiceNo}</td>
-                    <td>{posts.cName}</td>
-                    <td>{posts.imeiNo}</td>
-                    <td>{posts.model}</td>
-                    <td>{posts.phoneNo}</td>
-                    <td>{posts.status}</td>
+                    <td className=' text-slate-950 px-6'>{posts.invoiceNo}</td>
+                    <td className=' text-slate-950 px-6'>{posts.cName}</td>
+                    <td className=' text-slate-950 px-6'>{posts.imeiNo}</td>
+                    <td className=' text-slate-950 px-6'>{posts.model}</td>
+                    <td className=' text-slate-950 px-6'>{posts.phoneNo}</td>
+                    <td className=' text-slate-950 px-6'>{posts.status}</td>
                  </tr>
 
             ))}
@@ -137,7 +137,7 @@ export default class EmployeeR extends Component {
         <center>
           <div>
             <Button
-              className="btn btn-warning"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               onClick={this.printDocument}
               variant="contained"
               color="primary"

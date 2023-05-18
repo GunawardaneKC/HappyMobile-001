@@ -22,7 +22,7 @@ export default class orderR extends Component {
       doc.text(85, 10, "Happy Mobile");
       doc.setTextColor(0, 0, 255);
       doc.setFontSize(16);
-      doc.text(10, 70, "Repair Details");
+      doc.text(10, 70, "Order Details");
       doc.setTextColor(0, 255, 0);
       doc.setFontSize(12);
       
@@ -99,66 +99,63 @@ export default class orderR extends Component {
   render() {
     return (
       <>
-      <div className='container' id="pdfdiv">
-         <div className='row my-4'>
+      <div className='container mx-auto mt-8' id="pdfdiv">
+         <div className='shadow-md rounded my-6'>
           <div className='col-lg-12'>
             <div className='table-responsive'> 
-       <table className="table table-striped text-center" >
-           <thead>
-             <tr>
-              <th scope='col'> No </th>
-              <th scope='col'>Order ID</th>
-              <th scope='col'>User ID</th>
-              <th scope='col'>User Name</th>
-              <th scope='col'>User Email</th>
-              <th scope='col'>Payment Status</th>
-              <th scope='col'>Details</th>
-             </tr>
-           </thead>
-         
-         <tbody style={{background:'pink'}}>
-            {this.state.ReportData.map((posts,index)=>(
-                 <tr key={index}>
-                    <th scope="row">{index+1}</th>
-                    <td>{posts.orderId}</td>
-                    <td>{posts.user_id}</td>
-                    <td>{posts.name}</td>
-                    <td>{posts.email}</td>
-                    <td>{posts.payment}</td>
-                    <td>
-                <table style={{ margin: "30px 0px" }}>
-                  <thead>
-                    <tr>
-                      <th>Product ID</th>
-                      <th>Products</th>
-                      <th>Quantity</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {posts.cart.map((item) => (
-                      <tr key={item._id}>
-                        <td>{item.product_id}</td>
-                        <td>{item.title}</td>
-                        <td>{item.quantity}</td>
-                        <td>LKR {item.price * item.quantity}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </td>
-                 </tr>
+            <table className="w-full border border-red-950 text-xs">
+  <thead>
+    <tr className="bg-zinc-950 text-zinc-100">
+      <th scope="col" className="py-2 px-4 font-medium border border-red-950">No</th>
+      <th scope="col" className="py-2 px-4 font-medium border border-red-950">Order ID</th>
+      <th scope="col" className="py-2 px-4 font-medium border border-red-950">User ID</th>
+      <th scope="col" className="py-2 px-4 font-medium border border-red-950">User Name</th>
+      <th scope="col" className="py-2 px-4 font-medium border border-red-950">User Email</th>
+      <th scope="col" className="py-2 px-4 font-medium border border-red-950">Payment Status</th>
+      <th scope="col" className="py-2 px-4 font-medium border border-red-950">Details</th>
+    </tr>
+  </thead>
+  <tbody style={{ background: 'pink' }}>
+    {this.state.ReportData.map((posts, index) => (
+      <tr key={index} className={index % 2 === 0 ? 'bg-transparent' : ''}>
+        <th scope="row" className="border-red-950">{index + 1}</th>
+        <td className="text-slate-950 px-2 border border-red-950">{posts.orderId}</td>
+        <td className="text-slate-950 px-2 border border-red-950">{posts.user_id}</td>
+        <td className="text-slate-950 px-2 border border-red-950">{posts.name}</td>
+        <td className="text-slate-950 px-2 border border-red-950">{posts.email}</td>
+        <td className="text-slate-950 px-2 border border-red-950">{posts.payment}</td>
+        <td className="text-slate-950 px-2 border border-red-950">
+          <table style={{ margin: "10px 0" }} className="border border-gray-300">
+            <thead>
+              <tr className="bg-purple-700 text-zinc-100">
+                <th className="text-slate-50 px-4 border border-red-950">Product ID</th>
+                <th className="text-slate-50 px-4 border border-red-950">Products</th>
+                <th className="text-slate-50 px-4 border border-red-950">Quantity</th>
+                <th className="text-slate-50 px-4 border border-red-950">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {posts.cart.map((item) => (
+                <tr key={item._id}>
+                  <td className="border border-red-950">{item.product_id}</td>
+                  <td className="border border-red-950">{item.title}</td>
+                  <td className="border border-red-950">{item.quantity}</td>
+                  <td className="border border-red-950">LKR {item.price * item.quantity}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
-            ))}
-         </tbody>
-       </table>
-       
-      
       </div></div></div></div>
         <center>
           <div>
             <Button
-              className="btn btn-warning"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               onClick={this.printDocument}
               variant="contained"
               color="primary"

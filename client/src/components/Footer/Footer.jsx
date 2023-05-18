@@ -38,8 +38,8 @@ export default function footer() {
                   </ul>     
                 </div>
                 <div className='mb-5'>
-                  <h4 className='pb-4'>Join Our Newsletter</h4>
-                  <p className='text-gray-500 pb-2'>Join 25,000+ others and never miss out on new tips, tutorials, and more</p>
+                  <h4 className='pb-4'>Join Our Community</h4>
+                  <p className='text-gray-500 pb-2'>We are providing customer serveries to our customers for 10+ years.</p>
                   <form className='flex flex-row flex-wrap'>
                     <input type="text" className='text-gray-500 w-2/3 p-2 focus:border-yellow-500' placeholder='email@example.com' />
                     <button className='w-1/3 bg-purple-700 text-white hover:bg-red-700'>Subscribe</button>

@@ -45,7 +45,7 @@ const Home = () => {
       placeholder="Search"
       name="searchQuery"
       onChange={handleSearch}
-      className="w-1/5 p-2 border border-gray-300 rounded-md focus:outline-none"
+      className="w-1/5 p-2 text-slate-950 border border-gray-300 rounded-md focus:outline-none"
     />
   </div>
   <h3 className="mb-4 text-3xl text-cyan-500 font-bold">About Your Warranty</h3>

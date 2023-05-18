@@ -22,7 +22,7 @@ export default class DeliveryR extends Component {
       doc.text(85, 10, "Happy Mobile");
       doc.setTextColor(0, 0, 255);
       doc.setFontSize(16);
-      doc.text(10, 70, "Repair Details");
+      doc.text(10, 70, "Delivery Details");
       doc.setTextColor(0, 255, 0);
       doc.setFontSize(12);
       
@@ -99,34 +99,35 @@ export default class DeliveryR extends Component {
   render() {
     return (
       <>
-      <div className='container' id="pdfdiv">
-         <div className='row my-4'>
+      <div className='container mx-auto mt-8' id="pdfdiv">
+         <div className='shadow-md rounded my-6 bg-slate-500'>
           <div className='col-lg-12'>
             <div className='table-responsive'> 
-       <table className="table table-striped text-center" >
+       <table className="min-w-full bg-slate-200" >
            <thead>
-             <tr>
-              <th scope='col'>Order ID</th>
-              <th scope='col'>Recipient's Name</th>
-              <th scope='col'>Recipient's Phone Number</th>
-              <th scope='col'>Recipient's Address</th>
-              <th scope='col'>Recipient's NIC</th>
-              <th scope='col'>Recipient's email</th>
-              <th scope='col'>Delivery Status</th>
+             <tr className="bg-zinc-950 text-zinc-100">
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>No</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Order ID</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Recipient's Name</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Recipient's Address</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Recipient's Phone Number</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Recipient's NIC</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Recipient's email</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Delivery Status</th>
              </tr>
            </thead>
          
          <tbody style={{background:'pink'}}>
             {this.state.ReportData.map((posts,index)=>(
-                 <tr key={index}>
+                 <tr key={index} className={index % 2 === 0 ? 'bg-purple-400' : ''}>
                     <th scope="row">{index+1}</th>
-                    <td>{posts.OrderID}</td>
-                    <td>{posts.Name}</td>
-                    <td>{posts.Address}</td>
-                    <td>{posts.phone}</td>
-                    <td>{posts.NIC}</td>
-                    <td>{posts.email}</td>
-                    <td>{posts.Status}</td>
+                    <td className=' text-slate-950 px-6'>{posts.OrderID}</td>
+                    <td className=' text-slate-950 px-6'>{posts.Name}</td>
+                    <td className=' text-slate-950 px-6'>{posts.Address}</td>
+                    <td className=' text-slate-950 px-6'>{posts.phone}</td>
+                    <td className=' text-slate-950 px-6'>{posts.NIC}</td>
+                    <td className=' text-slate-950 px-6'>{posts.email}</td>
+                    <td className=' text-slate-950 px-6'>{posts.Status}</td>
                  </tr>
 
             ))}
@@ -138,7 +139,7 @@ export default class DeliveryR extends Component {
         <center>
           <div>
             <Button
-              className="btn btn-warning"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               onClick={this.printDocument}
               variant="contained"
               color="primary"

@@ -108,10 +108,7 @@ function Products() {
     </section>
     </div>
        </div>
-        <Filters />
-        
-        <a className="btn btn-primary" style={{textDecoration:'none'}} href={`/ProR`}>Get Report</a> 
-
+        <Filters /> 
         {/* {
             isAdmin && 
             <div className="delete-all">

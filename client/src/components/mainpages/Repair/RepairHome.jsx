@@ -63,7 +63,7 @@ const Home = () => {
       <div className='w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center shadow-lg'>
         <i className='fas fa-search text-gray-500'></i>
       </div>
-
+      <input className='ml-3 py-2 px-4 w-80 border border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-cyan-500 text-gray-950 bg-white' type='search' placeholder='Search' name='searchQuery' onChange={handleSearch} />
     </div>
     <div className='flex space-x-4'>
       <button className='py-2 px-4 bg-purple-500 hover:bg-purple-600 text-white rounded-md shadow-lg'>
@@ -72,9 +72,12 @@ const Home = () => {
       <button className='py-2 px-4 bg-cyan-500 hover:bg-cyan-600 text-white rounded-md shadow-lg'>
         <Link to='/completedRepair' style={{ textDecoration: 'none' }}>View Completed Repairs</Link>
       </button>
+      <button className='py-2 px-4 bg-orange-500 hover:bg-cyan-600 text-white rounded-md shadow-lg'>
+        <Link to='/repairRepo' style={{ textDecoration: 'none' }}>Get Report</Link>
+      </button>
     </div>
   </div>
-  <h3 className='mb-4 text-lg font-medium'>Pending Repairs</h3>
+  <h3 className='mb-4 text-2xl font-bold'>Added Repairs</h3>
   <table class="w-full border-collapse border border-gray-400">
   <thead>
     <tr class="bg-purple-950">
@@ -103,7 +106,7 @@ const Home = () => {
         <td class="px-4 py-2 text-left border border-gray-400">{post.Model}</td>
          <td>
                 <select
-                  className="form-select"
+                  className="form-select text-slate-950"
                   aria-label="Default select example"
                   value={post.status}
                   onChange={(e) => {

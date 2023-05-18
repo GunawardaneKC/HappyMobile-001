@@ -26,9 +26,9 @@ const Ord = () => {
   const filterPosts = (posts, searchKey) => {
     const result = posts.filter(post =>
       post.OrderID.toLowerCase().includes(searchKey) ||
-      post.Address.toLowerCase().includes(searchKey) ||
-      post.email.toLowerCase().includes(searchKey) ||
-      post.NIC.toLowerCase().includes(searchKey)
+      // post.email.toLowerCase().includes(searchKey) ||
+      post.NIC.toLowerCase().includes(searchKey) ||
+      post.Name.toLowerCase().includes(searchKey)
     );
     setPosts(result);
   };
@@ -46,7 +46,7 @@ const Ord = () => {
     <div className="bg-opacity-10 bg-gray-100 backdrop-filter backdrop-blur-lg m-4 p-6 rounded-md">
   <div className="mb-4">
     <input
-      className="w-1/5 p-2 border border-gray-300 rounded-md focus:outline-none"
+      className="w-1/5 p-2 border border-gray-300 text-black rounded-md focus:outline-none"
       type="search"
       placeholder="Search"
       name="searchQuery"

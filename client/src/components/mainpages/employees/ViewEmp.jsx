@@ -208,8 +208,8 @@ const Emp = () => {
         <thead>
           <tr className="bg-purple-950">
             <th className="px-4 py-2 text-left border border-gray-400">No</th>
+            <th className="px-4 py-2 text-left border border-gray-400">Employee ID</th>
             <th className="px-4 py-2 text-left border border-gray-400">First Name</th>
-            <th className="px-4 py-2 text-left border border-gray-400">Last Name</th>
             <th className="px-4 py-2 text-left border border-gray-400">Email Address</th>
             <th className="px-4 py-2 text-left border border-gray-400">Phone Number</th>
             <th className="px-4 py-2 text-left border border-gray-400">Address</th>
@@ -222,8 +222,8 @@ const Emp = () => {
           {posts.map((post, index) => (
             <tr key={post._id} className='bg-transparent'>
               <td className="px-4 py-2 text-left border border-gray-400">{index + 1}</td>
+              <td className="px-4 py-2 text-left border border-gray-400">{post.empID}</td>
               <td className="px-4 py-2 text-left border border-gray-400">{post.first_name}</td>
-              <td className="px-4 py-2 text-left border border-gray-400">{post.last_name}</td>
               <td className="px-4 py-2 text-left border border-gray-400">{post.email}</td>
               <td className="px-4 py-2 text-left border border-gray-400">{post.Phone}</td>
               <td className="px-4 py-2 text-left border border-gray-400">{post.Address}</td>

@@ -22,7 +22,7 @@ export default class EmployeeR extends Component {
       doc.text(85, 10, "Happy Mobile");
       doc.setTextColor(0, 0, 255);
       doc.setFontSize(16);
-      doc.text(10, 70, "Repair Details");
+      doc.text(10, 70, "Employee Details");
       doc.setTextColor(0, 255, 0);
       doc.setFontSize(12);
       
@@ -99,49 +99,46 @@ export default class EmployeeR extends Component {
   render() {
     return (
       <>
-      <div className='container' id="pdfdiv">
-         <div className='row my-4'>
+      <div className='container mx-auto mt-8' id="pdfdiv">
+         <div className='shadow-md rounded my-6 bg-slate-500'>
           <div className='col-lg-12'>
             <div className='table-responsive'> 
-       <table className="table table-striped text-center" >
+       <table className="min-w-full bg-slate-200" >
            <thead>
-             <tr>
-              <th scope='col'> No </th>
-              <th scope='col'>Employee ID</th>
-              <th scope='col'>First Name</th>
-              <th scope='col'>Last Name</th>
-              <th scope='col'>Email</th>
-              <th scope='col'>Address</th>
-              <th scope='col'>NIC</th>
-              <th scope='col'>Phone Number</th>
-              <th scope='col'>Allocated Date</th>
+             <tr className="bg-zinc-950 text-zinc-100">
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'> No </th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Employee ID</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>First Name</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Email</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Address</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>NIC</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Phone Number</th>
+              <th scope='col' className='py-3 px-6 font-medium text-zinc-100'>Allocated Date</th>
              </tr>
            </thead>
          
          <tbody style={{background:'pink'}}>
             {this.state.ReportData.map((posts,index)=>(
-                 <tr key={index}>
+                 <tr key={index} className={index % 2 === 0 ? 'bg-purple-400' : ''}>
                     <th scope="row">{index+1}</th>
-                    <td>{posts.empID}</td>
-                    <td>{posts.first_name}</td>
-                    <td>{posts.last_name}</td>
-                    <td>{posts.email}</td>
-                    <td>{posts.Address}</td>
-                    <td>{posts.NIC}</td>
-                    <td>{posts.Phone}</td>
-                    <td>{posts.date}</td>
+                    <td className=' text-slate-950 px-6'>{posts.empID}</td>
+                    <td className=' text-slate-950 px-6'>{posts.first_name}</td>
+                    <td className=' text-slate-950 px-6'>{posts.email}</td>
+                    <td className=' text-slate-950 px-6'>{posts.Address}</td>
+                    <td className=' text-slate-950 px-6'>{posts.NIC}</td>
+                    <td className=' text-slate-950 px-6'>{posts.Phone}</td>
+                    <td className=' text-slate-950 px-6'>{posts.date}</td>
                  </tr>
 
             ))}
          </tbody>
        </table>
        
-      
       </div></div></div></div>
         <center>
           <div>
             <Button
-              className="btn btn-warning"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               onClick={this.printDocument}
               variant="contained"
               color="primary"

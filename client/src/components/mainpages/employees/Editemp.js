@@ -250,97 +250,99 @@ export default function EditPost() {
   };
 
   return (
-    <div className='max-w-lg mx-auto my-8'>
-      <h4 className='text-3xl font-bold mb-4'>Edit Employee</h4>
-      <hr />
-      <form onSubmit={handleFormSubmit}>
-        <div className='form-group'>
-          <label>Employee ID</label>
-          <input
-            type='text'
-            className='form-control'
-            name='empID'
-            value={empID}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div className='form-group'>
-          <label>First name:</label>
-          <input
-            type='text'
-            className='form-control'
-            name='first_name'
-            value={first_name}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div className='form-group'>
-          <label>Last_name:</label>
-          <input
-            type='text'
-            className='form-control'
-            name='last_name'
-            value={last_name}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div className='form-group'>
-          <label>Phone:</label>
-          <input
-            type='number'
-            pattern="[0-9]{10}"
-            className='form-control'
-            name='Phone'
-            value={Phone}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div className='form-group'>
-          <label>Address:</label>
-          <input
-            type='text'
-            className='form-control'
-            name='Address'
-            value={Address}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div className='form-group'>
-          <label>Email:</label>
-          <input
-            type='text'
-            className='form-control'
-            name='email'
-            value={email}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div className='form-group'>
-          <label>NIC:</label>
-          <input
-            type='text'
-            className='form-control'
-            name='NIC'
-            value={NIC}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <button
-          type='submit'
-          className='btn btn-primary'
-          style={{ marginTop: '15px' }}
-        >
-          <i className='far fa-check-square'></i>
-          &nbsp;Update
-        </button>
-      </form>
-    </div>
+    <div className="max-w-lg mx-auto mt-8 p-6 rounded-lg bg-purple-700">
+    <h4 className="text-xl font-bold mb-2">Edit Employee</h4>
+    <hr className="mb-4" />
+  
+    <form onSubmit={handleFormSubmit}>
+      <div className="mb-4">
+        <label className="block mb-1 font-bold">Employee ID</label>
+        <input
+          type="text"
+          className="w-full px-3 py-2 border border-gray-300 text-slate-950 rounded-md"
+          name="empID"
+          value={empID}
+          onChange={handleInputChange}
+        />
+      </div>
+  
+      <div className="mb-4">
+        <label className="block mb-1 font-bold">First Name</label>
+        <input
+          type="text"
+          className="w-full px-3 py-2 border border-gray-300 text-slate-950 rounded-md"
+          name="first_name"
+          value={first_name}
+          onChange={handleInputChange}
+        />
+      </div>
+  
+      <div className="mb-4">
+        <label className="block mb-1 font-bold">Last Name</label>
+        <input
+          type="text"
+          className="w-full px-3 py-2 border border-gray-300 text-slate-950 rounded-md"
+          name="last_name"
+          value={last_name}
+          onChange={handleInputChange}
+        />
+      </div>
+  
+      <div className="mb-4">
+        <label className="block mb-1 font-bold">Phone</label>
+        <input
+          type="number"
+          pattern="[0-9]{10}"
+          className="w-full px-3 py-2 border border-gray-300 text-slate-950 rounded-md"
+          name="Phone"
+          value={Phone}
+          onChange={handleInputChange}
+        />
+      </div>
+  
+      <div className="mb-4">
+        <label className="block mb-1 font-bold">Address</label>
+        <input
+          type="text"
+          className="w-full px-3 py-2 border border-gray-300 text-slate-950 rounded-md"
+          name="Address"
+          value={Address}
+          onChange={handleInputChange}
+        />
+      </div>
+  
+      <div className="mb-4">
+        <label className="block mb-1 font-bold">Email</label>
+        <input
+          type="text"
+          className="w-full px-3 py-2 border border-gray-300 text-slate-950 rounded-md"
+          name="email"
+          value={email}
+          onChange={handleInputChange}
+        />
+      </div>
+  
+      <div className="mb-4">
+        <label className="block mb-1 font-bold">NIC</label>
+        <input
+          type="text"
+          className="w-full px-3 py-2 border border-gray-300 text-slate-950 rounded-md"
+          name="NIC"
+          value={NIC}
+          onChange={handleInputChange}
+        />
+      </div>
+  
+      <button
+        type="submit"
+        className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
+        style={{ marginTop: '15px' }}
+      >
+        <i className="far fa-check-square"></i>
+        &nbsp;Update
+      </button>
+    </form>
+  </div>
+  
   );
 }

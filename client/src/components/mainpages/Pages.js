@@ -85,7 +85,7 @@ function Pages() {
             <Route path="/editRepair/:id" exact element={<RepairEditPost />} />
             <Route path="/postRepair/:id" exact element={<RepairPostDetails />} />
             <Route path="/completedRepair" exact element={<RepairCompletedTable />} />
-            <Route path="/repair/reports" exact element={<ReportRepair />} />
+            <Route path="/repairRepo" exact element={<ReportRepair />} />
             <Route path="/cusrepair" exact element={<Cusrepair />} />
 
 
