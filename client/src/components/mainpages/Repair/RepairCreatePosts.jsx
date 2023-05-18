@@ -254,12 +254,12 @@ const CreatePosts = () => {
     </div>
 
     <div className='w-full md:w-1/2 px-3 mb-6 md:mb-0'>
-      <label className='block mb-2 font-bold'>Repair Prize</label>
+      <label className='block mb-2 font-bold'>Repair Price</label>
       <input
         type='text'
         className={`w-full p-2 border rounded text-slate-950 ${errors.repairPrize && 'border-red-500'}`}
         name='repairPrize'
-        placeholder='Enter repair prize'
+        placeholder='Enter repair price'
         value={formData.repairPrize}
         onChange={handleInputChange}
         required
