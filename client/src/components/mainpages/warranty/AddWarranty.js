@@ -10,6 +10,8 @@ const validate = () => {
 
   if (!formData.invoiceNo) {
     newError.invoiceNo = 'invoice No is required';
+  } else if (!/^[0-9]{5}$/i.test(formData.invoiceNo)) {
+    newError.invoiceNo = 'invoice Number is invalid';
   }
 
   if (!formData.cName) {

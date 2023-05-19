@@ -46,7 +46,7 @@ const CompletedTable = () => {
 
   return (
     <div className="container mx-auto px-4 mt-4">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => window.location.href = "/repair/reports"}>Get Report</button> 
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => window.location.href = "/repairRepo"}>Get Report</button> 
   <div className="flex justify-between items-center my-8">
     <div className="flex-1">
       <input className="border border-gray-400 py-2 px-4 rounded-lg w-full text-gray-950" type="search" placeholder='Search' value={searchQuery} onChange={handleSearch} />

@@ -32,7 +32,10 @@ const CreatePosts = () => {
 
     if (!formData.repairID) {
       newErrors.repairID = 'Repair ID is required';
-    }
+    } 
+    // else if (!/^[0-5]{5}$/i.test(formData.repairID)) {
+    //   newErrors.repairID = 'Repair ID should be 1-5 digits';
+    // }
 
     if (!formData.customerName) {
       newErrors.customerName = 'Customer Name is required';
