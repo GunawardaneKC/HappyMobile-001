@@ -99,29 +99,29 @@ function Cart() {
 
     return (
         <PayPalScriptProvider>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-zinc-200 mt-8 ml-8">
+        <div className="grid grid-cols-1 gap-6 mt-8 ml-8 md:grid-cols-2 lg:grid-cols-3 text-zinc-200">
   {cart.map((product) => (
-    <div className="bg-purple-950 rounded-lg shadow-lg p-6 h-full w-4/5 border border-red-950" key={product._id}>
-      <img src={product.images.url} alt={product.title} className="w-48 h-48 object-cover rounded-md" />
+    <div className="w-4/5 h-full p-6 border rounded-lg shadow-lg bg-purple-950 border-red-950" key={product._id}>
+      <img src={product.images.url} alt={product.title} className="object-cover w-48 h-48 rounded-md" />
 
       <div className="mt-4">
-        <h2 className="text-3xl font-semibold">{product.title}</h2>
+        <h2 className="text-3xl font-semibold uppercase">{product.title}</h2>
 
         <h3 className="text-lg font-medium">LKR {product.price * product.quantity}</h3>
-        <p className="text-cyan-300 my-4">{product.description}</p>
-        <p className="text-cyan-300 my-4">{product.content}</p>
+        <p className="my-4 text-cyan-300">{product.description}</p>
+        <p className="my-4 text-cyan-300">{product.content}</p>
 
         <div className="flex items-center mt-4">
-          <button className="px-3 py-1 rounded-md bg-purple-500 hover:bg-purple-600 text-neutral-950 text-2xl font-bold" onClick={() => decrement(product._id)}>
+          <button className="px-3 py-1 text-2xl font-bold bg-purple-500 rounded-md hover:bg-purple-600 text-neutral-950" onClick={() => decrement(product._id)}>
             -
           </button>
           <span className="mx-2 text-lime-50">{product.quantity}</span>
-          <button className="px-3 py-1 rounded-md bg-purple-500 hover:bg-purple-600 text-neutral-950 text-2xl font-bold" onClick={() => increment(product._id)}>
+          <button className="px-3 py-1 text-2xl font-bold bg-purple-500 rounded-md hover:bg-purple-600 text-neutral-950" onClick={() => increment(product._id)}>
             +
           </button>
         </div>
 
-        <div className="mt-4 cursor-pointer text-red-500 hover:underline" onClick={() => removeProduct(product._id)}>
+        <div className="mt-4 text-red-500 cursor-pointer hover:underline" onClick={() => removeProduct(product._id)}>
         <i class="fas fa-trash-alt"></i>&nbsp;Delete
         </div>
       </div>
@@ -135,7 +135,7 @@ function Cart() {
   <PaypalButton total={total} tranSuccess={tranSuccess} />
 
   <div>
-    <button onClick={() => tranSuccess()} className="px-4 py-2 mt-4 bg-purple-500 hover:bg-purple-600 text-white rounded-md shadow-lg">
+    <button onClick={() => tranSuccess()} className="px-4 py-2 mt-4 text-white bg-purple-500 rounded-md shadow-lg hover:bg-purple-600">
       Purchase
     </button>
   </div>

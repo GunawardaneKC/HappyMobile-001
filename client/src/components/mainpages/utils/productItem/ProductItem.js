@@ -4,23 +4,23 @@ import BtnRender from './BtnRender';
 function ProductItem({product, isAdmin, deleteProduct, handleCheck}) {
     return (
 
-        <div className="bg-white rounded-lg shadow-md ml-4 mr-4 p-6">
+        <div className="p-6 ml-4 mr-4 bg-white rounded-lg shadow-md">
             {isAdmin && (
                 <input
                     type="checkbox"
-                    className="form-checkbox h-5 w-5 text-purple-600"
+                    className="w-5 h-5 text-purple-600 form-checkbox"
                     checked={product.checked}
                     onChange={() => handleCheck(product._id)}
                 />
             )}
-            <img src={product.images.url} alt="" className="mx-auto w-64 h-64 object-contain" />
+            <img src={product.images.url} alt="" className="object-contain w-64 h-64 mx-auto" />
 
 
-            <div className="text-center mt-6">
-                <h2 className="text-lg font-medium text-gray-900 mb-2" title={product.title}>
+            <div className="mt-6 text-center">
+                <h2 className="mb-2 text-lg font-medium text-gray-900 uppercase" title={product.title}>
                     {product.title}
                 </h2>
-                <span className="font-bold text-purple-600 text-xl mb-4">LKR {product.price}</span>
+                <span className="mb-4 text-xl font-bold text-purple-600">LKR {product.price}</span>
                 <p className="text-gray-600">{product.description}</p>
             </div>
 
